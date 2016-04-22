@@ -1,0 +1,133 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+html {
+  height:100%;
+
+}
+
+  html, body {
+    margin: 0px;
+        height: 100%;
+    }
+
+body{
+    background-image:url('https://res.cloudinary.com/lqyghlh2f/image/upload/v1461331820/bg_iwgsez.jpg');
+    background-size:50%;
+  background-repeat:repeat;
+  background-color:black;
+
+}
+.bold {
+  font-weight: bold;
+}
+.navbar-btn{
+  margin-left:4px;
+}
+.no-padding {
+  padding:0px;
+  margin:0px;
+}
+.navbar {
+  border-radius: 0px;
+}
+.purple {
+  color:purple;
+}
+.block {
+  display:block;
+}
+html,body {
+
+}
+.uppercase {
+text-transform: uppercase;
+}
+h2 a {
+  text-decoration:none;
+}
+a:hover {
+  text-decoration:none;
+}
+.app-panel {
+  margin-top:10px;
+  margin-bottom:10px;
+}
+.app {
+    border-radius: 4px;
+    padding: 10px 10px 10px 10px;
+    background:linear-gradient(to bottom, rgba(39, 39, 39, 0.64) 0%, rgba(23, 23, 23, 0.6) 100%);
+
+    border: 1px solid #black;
+    color: inherit!important;
+}
+.app.wrapper {
+  float:left;
+}
+.app.hero{
+background-color:transparent;
+}
+.app .menu {
+z-index:999;
+  position:absolute;
+  right:25px;
+  top:10px;
+}
+.app h2 a{
+  font-size:20px;
+}
+a:hover {
+color:white;  
+}
+a,small,b,label,h2,h3,h4,h5 {
+  color:white;
+}
+.app .body{
+  height:200px;
+}
+.app.hero .body {
+    height:195px;
+
+}
+.app .footer{
+  height:50px;
+}
+h1,h2,h3,h4 {
+  margin:0px;
+}
+
+h2 a {
+  color:#92969A;
+}
+.full-width {
+  width:100%;
+}
+.navbar-default {
+  border:0px;
+}
+.input-group-addon.glyphicon {
+  top:0px;
+}
+.phase {
+  margin-bottom:5px;
+  padding:10px;
+  clear:both;
+  border-bottom:1px solid #EEEEEE;
+}
+img.logo {
+  width:100px;
+  height:auto;
+}
+.btn {
+  background:transparent;
+  color:white;
+}
+a,h1, {
+          color:white;
+}
+.navbar {
+  background:linear-gradient(to bottom, rgba(23, 23, 23, 0.8) 0%, rgba(197, 197, 197, 0.12) 100%);
+
+}

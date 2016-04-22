@@ -1,0 +1,121 @@
+<h1>Application</h1>
+<div class="row">
+<div class="col-md-3">
+<h5>Account Token</h5>
+
+
+
+
+
+<div class="input-group">
+               <input id="token" class="form-control" ng-model="token"/>
+     <span class="input-group-addon glyphicon glyphicon-copy" ngclipboard data-clipboard-target="#token"></span>    
+
+                 
+            </div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+<div class="row">
+
+<div class="col-md-4 app-panel">
+<div class="wrapper app hero">
+<div class=" menu">
+  </div>
+
+<div class="col-md-12 header">
+<h2 class="uppercase"><a>Create Application</a></h2>
+
+
+</div>
+<div class="col-md-12 body">
+
+
+
+                  <label>APP NAME</label>
+          <input class="form-control" type="text" ng-model="name"/>
+
+
+          <label>APP URL</label>
+          <input class="form-control" type="text" ng-model="ngDeployUrl"/>
+          <small>https://<span class="purple">example</span>.ngdeploy.com</small>
+      
+  
+
+
+
+
+
+</div>
+<div class="col-md-12 footer">
+<button class="btn btn-success full-width" ng-click="createApplication(ngDeployUrl,name)">Create Application</button>
+
+</div>
+</div>
+</div>
+
+<div class="col-md-4 app-panel" ng-repeat="app in apps">
+<div class="wrapper app">
+<div class="menu">
+    <button class="btn btn-danger btn-xs pull-right" ng-click="delete(app.ngDeployUrl)"><i class="glyphicon glyphicon-trash
+"></i></button>
+  </div>
+
+<div class="col-md-12 header">
+<h2 class="uppercase"><a>{{app.name}}</a></h2>
+</div>
+
+<div class="col-md-12 body">
+
+<div class="phase">
+<div class="phase-body">
+<b class="block ">Development
+<small class="pull-right"><a href="javascript:void;" ng-click="promote(app,'staging')">Promote</a></small>
+</b>
+<small class="block">
+  https://development-{{app.ngDeployUrl}}.ngdeploy.com
+</small>
+</div>
+</div>
+<div class="phase">
+<div class="phase-body">
+<b class="block ">
+Staging
+<small class="pull-right"><a href="javascript:void;" ng-click="promote(app,'production')">Promote</a></small>
+</b>
+<small>
+  https://staging-{{app.ngDeployUrl}}.ngdeploy.com
+</small>
+</div>
+</div>
+
+<div class="phase">
+<div class="phase-body">
+
+<b class="block">Production
+<small class="pull-right"><a href="javascript:void;" ng-click="setupHosting(app)">Setup Hosting</a></small>
+
+</b>
+<small>
+	https://production-{{app.ngDeployUrl}}.ngdeploy.com
+</small>
+</div>
+</div>
+
+
+
+
+</div>
+<div class="col-md-12 footer">
+
+</div>
+</div>
+</div>
+</div>

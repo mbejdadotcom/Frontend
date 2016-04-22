@@ -1,0 +1,196 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="fragment" content="!"> 
+    <meta name="google-site-verification" content="5G1QYlK1FBmRSMUd40Uy60ph51b8cXch9kq5MaG_ROA" />
+<script src="//use.edgefonts.net/quattrocento-sans.js"></script>  
+
+
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+
+  </head>
+  <body ng-app="ngdeployApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+
+
+
+<nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+
+            </a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse" ui-view="navbar">
+     
+ 
+
+
+     
+
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+
+
+
+
+
+    <div class="container page">
+
+    <div ui-view="layout"></div>
+    </div>
+
+
+
+<script type="text/ng-template" id="ssl.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Add SSL</h3>
+        </div>
+        <div class="modal-body">
+         
+          <textarea class="form-control" ng-model="ssl">
+
+          </textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="addSSL()">Add SSL</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+
+
+<script type="text/ng-template" id="createApplicationModalCtrl.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Create Application</h3>
+        </div>
+        <div class="modal-body">
+                  <label>APP NAME</label>
+          <input class="form-control" type="text" ng-model="name"/>
+
+
+          <label>APP URL</label>
+          <input class="form-control" type="text" ng-model="ngDeployUrl"/>
+          <small>https://<span class="purple">example</span>.ngdeploy.com</small>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="createApplication(ngDeployUrl,name)">Create</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+
+
+<script type="text/ng-template" id="setupHosting.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Setup Hosting</h3>
+        </div>
+        <div class="modal-body">
+       <label class="block">DOMAIN</label>
+          <input class="form-control" type="text" ng-model="hosting.domain"/>
+          <small>example.com</small>
+     
+        <label class="block">SSL KEY</label>
+             <textarea class="form-control" ng-model="hosting.ssl.key">
+
+          </textarea>
+ <label class="block">SSL CERTIFICATE</label>
+             <textarea class="form-control" ng-model="hosting.ssl.certificate">
+
+          </textarea>
+             </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="save(hosting)">Save</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+
+
+
+
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/angularfire/dist/angularfire.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/oauth-js/dist/oauth.min.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-base64/angular-base64.js"></script>
+    <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="bower_components/angular-sweetalert/dist/ngSweetAlert.js"></script>
+    <script src="bower_components/angular-sweetalert/dist/ngSweetAlert.min.js"></script>
+    <script src="bower_components/clipboard/dist/clipboard.js"></script>
+    <script src="bower_components/ngclipboard/dist/ngclipboard.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+   
+
+
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/filters/reverse.js"></script>
+          <script src="scripts/services/app.js"></script>
+
+
+
+        <script src="scripts/directives/ngShowAuth.js"></script>
+        <script src="scripts/directives/ngHideAuth.js"></script>
+        <script src="scripts/routes.js"></script>
+        <script src="scripts/services/userservice.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
