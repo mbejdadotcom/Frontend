@@ -85,14 +85,14 @@ a,small,b,label,h2,h3,h4,h5 {
   color:white;
 }
 .app .body{
-  height:200px;
+  height:250px;
 }
 .app.hero .body {
-    height:195px;
+    height:248px;
 
 }
 .app .footer{
-  height:50px;
+  height:20px;
 }
 h1,h2,h3,h4 {
   margin:0px;
@@ -128,6 +128,48 @@ a,h1, {
           color:white;
 }
 .navbar {
-  background:linear-gradient(to bottom, rgba(23, 23, 23, 0.8) 0%, rgba(197, 197, 197, 0.12) 100%);
+  background:linear-gradient(to right ,rgba(23, 23, 23, 0.29) 0,rgba(212, 212, 212, 0.16) 100%);
 
+}
+.small-glyphicon {
+  font-size:8px;
+}
+.app label {
+  margin-bottom:0px;
+  margin-top:8px;
+  font-size:12px;
+}
+.form-control {
+}
+.phase [class*="col-"] {
+  margin:0px;
+  padding:0px;
+}
+.phase ul {
+margin:0px;
+padding:0px;
+  
+}
+.btn.create-app {
+  margin-top:50px
+}
+.sweet-alert {
+  background-color:black;
+}
+.sweet-alert .sa-icon.sa-success::before, .sweet-alert .sa-icon.sa-success::after {
+  background:black;
+}
+.sweet-alert .sa-icon.sa-success .sa-fix {
+  background-color:black;
+}
+.sweet-alert .sa-icon.sa-success .sa-placeholder {
+  border:4px solid rgba(165, 220, 134,.5);
+}
+.sweet-alert h2,.sweet-alert a, .sweet-alert h2 span, .sweet-alert h3, .sweet-alert h1 {
+  color:white;
+}
+.sweet-alert button {
+  background-color:transparent;
+  border:1px solid;
+  border-radius:4px;
 }
