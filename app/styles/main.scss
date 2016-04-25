@@ -10,7 +10,7 @@ html {
 
   html, body {
     margin: 0px;
-        height: 100%;
+        height: auto;
     }
 
 body{
@@ -117,7 +117,7 @@ h2 a {
   border-bottom:1px solid #EEEEEE;
 }
 img.logo {
-  width:100px;
+  width:125px;
   height:auto;
 }
 .btn {
@@ -172,4 +172,63 @@ padding:0px;
   background-color:transparent;
   border:1px solid;
   border-radius:4px;
+}
+
+.btn.btn-default {
+    color: white;
+     -webkit-transition: background linear 200ms;
+    background: transparent;
+
+}
+
+.btn.btn-default:hover {
+ -webkit-transition: background linear 200ms;
+    background: white ;
+    color:black;
+}
+
+
+.btn.btn-success {
+    color: white;
+     -webkit-transition: background linear 200ms;
+    background: transparent;
+
+}
+
+.btn.btn-success:hover {
+ -webkit-transition: background linear 200ms;
+    background: #5cb85c ;
+    color:white;
+}
+
+
+.btn.btn-danger:hover {
+ -webkit-transition: background linear 200ms;
+    background: #d43f3a ;
+    color:white;
+}
+
+.btn.btn-danger {
+ -webkit-transition: background linear 200ms;
+    background: transparent ;
+        color:white;
+
+}
+
+
+.sweet-alert button.cancel {
+  background-color:transparent;
+  border:1px solid #C1C1C1;
+}
+.sweet-alert button.cancel:hover {
+ -webkit-transition: background linear 200ms;
+
+  background-color:#C1C1C1;
+  border:1px solid #C1C1C1;
+}
+.modal-content {
+  background-color:black;
+}
+.app h2 a{
+  cursor:default;
 }
