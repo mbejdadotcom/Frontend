@@ -1,82 +1,75 @@
-<h1>Application</h1>
 <div class="row">
-<div class="col-md-3">
-<h5>Account Token</h5>
+<div class="col-md-12">
+<h1>Application</h1>
+</div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <h5>Account Token</h5>
+        <div class="input-group">
+            <input id="token" class="form-control" ng-model="token" />
+            <span class="input-group-addon lnr lnr-paperclip" ngclipboard data-clipboard-target="#token"></span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 app-panel">
+        <div class="wrapper app panel panel-default hero">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-12 header">
 
-
-
-
-
-<div class="input-group">
-               <input id="token" class="form-control" ng-model="token"/>
-     <span class="input-group-addon glyphicon glyphicon-copy" ngclipboard data-clipboard-target="#token"></span>    
-
-                 
+                <h2 class="uppercase title">Create Application</h2>
+            </div>
+            </div>
+                </div>
+            <div class="col-md-12 body">
+                <label>APP NAME</label>
+                <input class="form-control" type="text" ng-model="name" />
+                <label>APP URL</label>
+                <input class="form-control" type="text" ng-model="ngDeployUrl" />
+                <small>https://development-<span class="">example</span>.ngdeploy.com</small>
+                <button class="btn btn-success full-width create-app" ng-click="createApplication(ngDeployUrl,name)">Create Application</button>
+            </div>
+ 
+        
+        </div>
+    </div>
+    <div class="col-md-4 app-panel" ng-repeat="app in apps">
+        <div class="wrapper app panel panel-default">
+        <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="uppercase title">{{app.name}}</h2>
             </div>
 
+                      <div class="col-md-6">
+            <div class="menu">
+            <ul class="list-inline list-unstyled">
+                      <li>
+                <button class="btn  btn-xs btn-info" ng-click="team(app.ngDeployUrl)">
+                    <span class="lnr lnr-users"></span>
+                </button>
+                </li>
 
-
-
-
-</div>
-
-
-</div>
-
-<div class="row">
-
-<div class="col-md-4 app-panel">
-<div class="wrapper app hero">
-<div class=" menu">
-  </div>
-
-<div class="col-md-12 header">
-<h2 class="uppercase"><a>Create Application</a></h2>
-
-
-</div>
-<div class="col-md-12 body">
-
-
-
-                  <label>APP NAME</label>
-          <input class="form-control" type="text" ng-model="name"/>
-
-
-          <label>APP URL</label>
-          <input class="form-control" type="text" ng-model="ngDeployUrl"/>
-          <small>https://development-<span class="purple">example</span>.ngdeploy.com</small>
+            <li>
+                <button class="btn btn-danger btn-xs" ng-click="delete(app.ngDeployUrl)">
+                    <span class="lnr lnr-trash"></span>
+                </button>
+                </li>
       
-  
-
-
-
-
-<button class="btn btn-success full-width create-app" ng-click="createApplication(ngDeployUrl,name)">Create Application</button>
-
-</div>
-<div class="col-md-12 footer">
-
-</div>
-</div>
+                </ul>
+            </div>
+            </div>
 </div>
 
-<div class="col-md-4 app-panel" ng-repeat="app in apps">
-<div class="wrapper app">
-<div class="menu">
-    <button class="btn btn-danger btn-xs pull-right" ng-click="delete(app.ngDeployUrl)"><i class="glyphicon glyphicon-trash
-"></i></button>
-  </div>
 
-<div class="col-md-12 header">
-<h2 class="uppercase"><a>{{app.name}}</a></h2>
-</div>
+            </div>
 
-<div class="col-md-12 body">
-
-<div class="phase">
-<div class="phase-body">
-<b class="block col-md-12">Development
+            <div class="col-md-12 body">
+                <div class="phase">
+                    <div class="phase-body">
+                        <b class="block col-md-12">Development
 <ul class="list-unstyled list-inline pull-right">
 <li><small class="pull-right"><a href="javascript:;" ng-click="promote(app,'staging')">Promote</a></small></li>
 </ul>
@@ -84,36 +77,33 @@
 
 
 </b>
-<small class="block">
-<i class="small-glyphicon glyphicon glyphicon-link"></i>  https://development-{{app.ngDeployUrl}}.ngdeploy.com
+                        <small class="block">
+<span class="lnr lnr-link"></span>  https://development-{{app.ngDeployUrl}}.ngdeploy.com
 </small>
-<small class="block">
-  <i class="small-glyphicon glyphicon glyphicon-open-file"></i> <a href="javascript:;" ng-click="environment(app,'development')">Environment</a>
+                        <small class="block">
+  <span class="lnr lnr-file-add"></span> <a href="javascript:;" ng-click="environment(app,'development')">Environment</a>
 </small>
-</div>
-</div>
-<div class="phase">
-<div class="phase-body">
-<b class="block col-md-12">
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-body">
+                        <b class="block col-md-12">
 Staging
 <ul class="list-unstyled list-inline pull-right">
 <li><small class="pull-right"><a href="javascript:;" ng-click="promote(app,'production')">Promote</a></small></li>
 </ul>
 </b>
-<small>
- <i class="small-glyphicon glyphicon glyphicon-link"></i>  https://staging-{{app.ngDeployUrl}}.ngdeploy.com
+                        <small>
+<span class="lnr lnr-link"></span>  https://staging-{{app.ngDeployUrl}}.ngdeploy.com
 </small>
-<small class="block">
-  <i class="small-glyphicon glyphicon glyphicon-open-file"></i> <a href="javascript:;" ng-click="environment(app,'staging')">Environment</a>
+                        <small class="block">
+  <span class="lnr lnr-file-add"></span> <a href="javascript:;" ng-click="environment(app,'staging')">Environment</a>
 </small>
-
-</div>
-</div>
-
-<div class="phase">
-<div class="phase-body">
-
-<b class="block col-md-12">Production
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-body">
+                        <b class="block col-md-12">Production
 <ul class="list-unstyled list-inline pull-right">
 <li ng-if="!app.zoneId"><small class="pull-right btn btn-xs btn-info"><a href="javascript:;" ng-click="upgrade(app,'staging')">Upgrade</a></small></li>
 <li ng-if="app.zoneId"><small class="pull-right btn btn-xs btn-success"><a href="javascript:;" ng-click="setupHosting(app,'staging')">Setup</a></small></li>
@@ -122,24 +112,17 @@ Staging
 
 
 </b>
-<small class="block">
-	<i class="small-glyphicon glyphicon glyphicon-link"></i> https://{{app.ngDeployUrl}}.ngdeploy.com
+                        <small class="block">
+ <span class="lnr lnr-link"></span> https://{{app.ngDeployUrl}}.ngdeploy.com
   
 </small>
-<small class="block">
-  <i class="small-glyphicon glyphicon glyphicon-open-file"></i> <a href="javascript:;" ng-click="environment(app,'production')">Environment</a>
+                        <small class="block">
+  <span class="lnr lnr-file-add"></span> <a href="javascript:;" ng-click="environment(app,'production')">Environment</a>
 </small>
-
-</div>
-</div>
-
-
-
-
-</div>
-<div class="col-md-12 footer">
-
-</div>
-</div>
-</div>
+                    </div>
+                </div>
+            </div>
+     
+        </div>
+    </div>
 </div>

@@ -1,13 +1,20 @@
     <ul class="nav navbar-nav navbar-right">
-                <li>
+
+                <li ui-sref-active="active">
                 <p class="navbar-btn">
-                    <a href="javascript:;" class="btn btn-default">Account</a>
+                    <a href="javascript:;" ui-sref="private.apps" class="btn btn-default"><span class="lnr lnr-list"></span></a>
                 </p>
             </li>
 
-            <li>
+                <li ui-sref-active="active">
                 <p class="navbar-btn">
-                    <a href="javascript:;" class="btn btn-default" ng-click="logout()">Logout</a>
+                    <a href="javascript:;" ui-sref="private.accounts" class="btn btn-default"><span class="lnr lnr-user"></span></a>
+                </p>
+            </li>
+
+            <li ui-sref-active="active">
+                <p class="navbar-btn">
+                    <a href="javascript:;" class="btn btn-default" ng-click="logout()"><span class="lnr lnr-exit"></span></a>
                 </p>
             </li>
         </ul>

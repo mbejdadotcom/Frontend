@@ -1,14 +1,14 @@
 <!doctype html>
 <html class="no-js">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
-    <meta name="fragment" content="!"> 
+    <meta name="fragment" content="!">
     <meta name="google-site-verification" content="5G1QYlK1FBmRSMUd40Uy60ph51b8cXch9kq5MaG_ROA" />
-<script src="//use.edgefonts.net/quattrocento-sans.js"></script>  
-<script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <script src="//use.edgefonts.net/quattrocento-sans.js"></script>
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
@@ -19,134 +19,97 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+</head>
 
-
-  </head>
-  <body ng-app="ngdeployApp">
+<body ng-app="ngdeployApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
     <!-- Add your site or application content here -->
-
-
-
-<nav class="navbar navbar-default">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#/">
-<img class="logo" src="http://res.cloudinary.com/lqyghlh2f/image/upload/v1461546660/logo4_kmrmgm.svg"/>
-            </a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse" ui-view="navbar">
-     
- 
-
-
-     
-
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
-
-
-
-
-
-
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/">
+                    <img class="logo" src="https://res.cloudinary.com/lqyghlh2f/image/upload/v1461703810/logo6_s8w1iy.svg" />
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse" ui-view="navbar">
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+        <!--/.container-fluid -->
+    </nav>
     <div class="container page">
-
-    <div ui-view="layout"></div>
+        <div ui-view="layout"></div>
     </div>
-
-
-
-<script type="text/ng-template" id="ssl.html">
+    <script type="text/ng-template" id="ssl.html">
         <div class="modal-header">
             <h3 class="modal-title">Add SSL</h3>
         </div>
         <div class="modal-body">
-         
-          <textarea class="form-control" ng-model="ssl">
-
-          </textarea>
+            <textarea class="form-control" ng-model="ssl">
+            </textarea>
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" type="button" ng-click="addSSL()">Add SSL</button>
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>
     </script>
-
-
-
-<script type="text/ng-template" id="createApplicationModalCtrl.html">
+    <script type="text/ng-template" id="createApplicationModalCtrl.html">
         <div class="modal-header">
             <h3 class="modal-title">Create Application</h3>
         </div>
         <div class="modal-body">
-                  <label>APP NAME</label>
-          <input class="form-control" type="text" ng-model="name"/>
-
-
-          <label>APP URL</label>
-          <input class="form-control" type="text" ng-model="ngDeployUrl"/>
-          <small>https://<span class="purple">example</span>.ngdeploy.com</small>
+            <label>APP NAME</label>
+            <input class="form-control" type="text" ng-model="name" />
+            <label>APP URL</label>
+            <input class="form-control" type="text" ng-model="ngDeployUrl" />
+            <small>https://<span class="purple">example</span>.ngdeploy.com</small>
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" type="button" ng-click="createApplication(ngDeployUrl,name)">Create</button>
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>
     </script>
-
-
-
-<script type="text/ng-template" id="setupHosting.html">
+    <script type="text/ng-template" id="setupHosting.html">
         <div class="modal-header">
             <h3 class="modal-title">Setup Hosting</h3>
         </div>
         <div class="modal-body">
-       <label class="block">DOMAIN</label>
-          <input class="form-control" type="text" ng-model="hosting.domain"/>
-          <small>example.com</small>
-     
-        <label class="block">SSL KEY</label>
-             <textarea class="form-control" ng-model="hosting.ssl.key">
-
-          </textarea>
- <label class="block">SSL CERTIFICATE</label>
-             <textarea class="form-control" ng-model="hosting.ssl.certificate">
-
-          </textarea>
-             </div>
+            <label class="block">DOMAIN</label>
+            <input class="form-control" type="text" ng-model="hosting.domain" />
+            <small>example.com</small>
+            <button class="btn btn-primary" type="button" ng-click="addDomain(hosting)">Add Domain</button>
+            <label class="block">SSL KEY</label>
+            <textarea class="form-control" ng-model="hosting.ssl.key">
+            </textarea>
+            <label class="block">SSL CERTIFICATE</label>
+            <textarea class="form-control" ng-model="hosting.ssl.certificate">
+            </textarea>
+            <button class="btn btn-primary" type="button" ng-click="addSSL(hosting)">Add SSL</button>
+        </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="save(hosting)">Save</button>
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>
     </script>
-
-
-
-
-
-
-
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script>
+    ! function(A, n, g, u, l, a, r) {
+        A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+                (A[l].q = A[l].q || []).push(arguments)
+            }, A[l].l = +new Date, a = n.createElement(g),
+            r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
     </script>
-
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -174,23 +137,17 @@
     <script src="bower_components/ngclipboard/dist/ngclipboard.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
-   
-
-
-
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/filters/reverse.js"></script>
-          <script src="scripts/services/app.js"></script>
-
-
-
-        <script src="scripts/directives/ngShowAuth.js"></script>
-        <script src="scripts/directives/ngHideAuth.js"></script>
-        <script src="scripts/routes.js"></script>
-        <script src="scripts/services/userservice.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/filters/reverse.js"></script>
+    <script src="scripts/services/app.js"></script>
+    <script src="scripts/directives/ngShowAuth.js"></script>
+    <script src="scripts/directives/ngHideAuth.js"></script>
+    <script src="scripts/routes.js"></script>
+    <script src="scripts/services/userservice.js"></script>
+    <script src="scripts/controllers/account.js"></script>
+    <!-- endbuild -->
 </body>
+
 </html>

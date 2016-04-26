@@ -14,10 +14,8 @@ html {
     }
 
 body{
-    background-image:url('https://res.cloudinary.com/lqyghlh2f/image/upload/v1461331820/bg_iwgsez.jpg');
-    background-size:50%;
-  background-repeat:repeat;
-  background-color:black;
+  background-color:#312c2c;
+
 
 }
 .bold {
@@ -53,14 +51,15 @@ a:hover {
 }
 .app-panel {
   margin-top:10px;
-  margin-bottom:10px;
 }
 .app {
-    border-radius: 4px;
-    padding: 10px 10px 10px 10px;
-    background:linear-gradient(to bottom, rgba(39, 39, 39, 0.64) 0%, rgba(23, 23, 23, 0.6) 100%);
+-webkit-box-shadow: -1px -2px 18px -1px rgba(15,15,15,0.57);
+-moz-box-shadow: -1px -2px 18px -1px rgba(15,15,15,0.57);
+box-shadow: -1px -2px 18px -1px rgba(15,15,15,0.57);
 
-    border: 1px solid #black;
+    border-radius: 0px;
+
+    border: 1px solid #211e1e;
     color: inherit!important;
 }
 .app.wrapper {
@@ -68,12 +67,10 @@ a:hover {
 }
 .app.hero{
 background-color:transparent;
+
 }
 .app .menu {
-z-index:999;
-  position:absolute;
-  right:25px;
-  top:10px;
+
 }
 .app h2 a{
   font-size:20px;
@@ -86,11 +83,15 @@ a,small,b,label,h2,h3,h4,h5 {
 }
 .app .body{
   height:250px;
+  box-shadow:inset 0px 1px 4px 4px rgba(39, 35, 35, 0.94);
 }
 .app.hero .body {
     height:248px;
+     box-shadow:inset 0 4px 14px 14px rgba(33, 30, 30, 0.40);
 
 }
+
+
 .app .footer{
   height:20px;
 }
@@ -111,10 +112,9 @@ h2 a {
   top:0px;
 }
 .phase {
-  margin-bottom:5px;
   padding:10px;
   clear:both;
-  border-bottom:1px solid #EEEEEE;
+  border-bottom:1px solid #313131;
 }
 img.logo {
   width:125px;
@@ -128,7 +128,9 @@ a,h1, {
           color:white;
 }
 .navbar {
-  background:linear-gradient(to right ,rgba(23, 23, 23, 0.29) 0,rgba(212, 212, 212, 0.16) 100%);
+  background-color:#564e4e;
+  border-bottom:1px solid #717171;
+  box-shadow:inset 0px 5px 10px 0px rgba(148, 139, 139, 0.35);
 
 }
 .small-glyphicon {
@@ -154,13 +156,14 @@ padding:0px;
   margin-top:50px
 }
 .sweet-alert {
-  background-color:black;
+  background-color:#312C2C;
+  border-radius:0px;
 }
 .sweet-alert .sa-icon.sa-success::before, .sweet-alert .sa-icon.sa-success::after {
-  background:black;
+  background:#312C2C;
 }
 .sweet-alert .sa-icon.sa-success .sa-fix {
-  background-color:black;
+  background-color:#312C2C;
 }
 .sweet-alert .sa-icon.sa-success .sa-placeholder {
   border:4px solid rgba(165, 220, 134,.5);
@@ -171,7 +174,7 @@ padding:0px;
 .sweet-alert button {
   background-color:transparent;
   border:1px solid;
-  border-radius:4px;
+  border-radius:0px;
 }
 
 .btn.btn-default {
@@ -215,6 +218,17 @@ padding:0px;
 
 }
 
+.btn.btn-info:hover {
+ -webkit-transition: background linear 200ms;
+    background: #5bc0de ;
+    color:white;
+}
+
+.btn.btn-info {
+   -webkit-transition: background linear 200ms;
+    background: transparent ;
+        color:white;
+}
 
 .sweet-alert button.cancel {
   background-color:transparent;
@@ -227,8 +241,121 @@ padding:0px;
   border:1px solid #C1C1C1;
 }
 .modal-content {
-  background-color:black;
+  background-color:#312C2C;
 }
 .app h2 a{
   cursor:default;
 }
+.menu ul li {
+  margin:0px;
+  padding:0px;
+}
+.nav  li.active a {
+  background-color:white !important;
+  color:black !important;
+}
+.nav  li.active .btn {
+  background-color:white !important;
+  color:black !important;
+}
+
+
+
+/* CSS for Credit Card Payment form */
+.credit-card-box .panel-title {
+    display: inline;
+    font-weight: bold;
+}
+.credit-card-box .form-control.error {
+    border-color: red;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(255,0,0,0.6);
+}
+.credit-card-box label.error {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.credit-card-box .payment-errors {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.credit-card-box label {
+    display: block;
+}
+/* The old "center div vertically" hack */
+.credit-card-box .display-table {
+    display: table;
+}
+.credit-card-box .display-tr {
+    display: table-row;
+}
+.credit-card-box .display-td {
+    display: table-cell;
+    vertical-align: middle;
+    width: 50%;
+}
+/* Just looks nicer */
+.credit-card-box .panel-heading img {
+    min-width: 180px;
+}
+.panel-default {
+  background-color:#211e1e;
+  border:1px solid rgba(16, 15, 15, 0.65);
+}
+.panel-default > .panel-heading {
+background-color:#383535;
+  border:1px solid rgba(72, 72, 72, 0.75);
+
+width:100%;
+}
+.panel-heading h3, .panel-heading h2, .panel-heading a {
+  color:white;
+}
+.btn, input.form-control,.input-group-addon, .panel-heading  {
+  border-radius:0px;
+}
+h1 {
+  margin-bottom:5px;
+}
+.app .panel-heading {
+}
+.app .panel-heading .menu {
+  text-align:right;
+}
+.app .body {
+  border:1px solid rgba(49, 49, 49, 0.75);
+  border-top:1px solid black;
+}
+.menu ul {
+  margin:0px;
+  padding:0px;
+}
+.panel-heading {
+box-shadow:inset 0px 10px 10px 0px rgba(56, 56, 56, 0.92);
+background: -moz-linear-gradient(45deg, #383535 0%, #403D3D 48%, #403D3D 100%); /* ff3.6+ */
+background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #383535), color-stop(48%, #403D3D), color-stop(100%, #403D3D)); /* safari4+,chrome */
+background: -webkit-linear-gradient(45deg, #383535 0%, #403D3D 48%, #403D3D 100%); /* safari5.1+,chrome10+ */
+background: -o-linear-gradient(45deg, #383535 0%, #403D3D 48%, #403D3D 100%); /* opera 11.10+ */
+background: -ms-linear-gradient(45deg, #383535 0%, #403D3D 48%, #403D3D 100%); /* ie10+ */
+background: linear-gradient(45deg, #383535 0%, #403D3D 48%, #403D3D 100%); /* w3c */
+}
+.phase:last-child {
+border-bottom:0px;
+}
+.app .title {
+  font-size:20px;
+}
+
+h1,h2  {
+  color: white;
+  text-shadow:
+   -1px -1px 0 rgba(0, 0, 0, 0.50),  
+    1px -1px 0 rgba(0, 0, 0, 0.50),
+    -1px 1px 0 rgba(0, 0, 0, 0.50),
+     1px 1px 0 rgba(0, 0, 0, 0.50);
+}
+

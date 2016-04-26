@@ -1,32 +1,3 @@
-'use strict';
-/**
- * @ngdoc overview
- * @name ngdeployApp:routes
- * @description
- * # routes.js
- *
- * Configure routes for use with Angular, and apply authentication security
- * Add new routes using `yo angularfire:route` with the optional --auth-required flag.
- *
- * Any controller can be secured so that it will only load if user is logged in by
- * using `whenAuthenticated()` in place of `when()`. This requires the user to
- * be logged in to view this route, and adds the current user into the dependencies
- * which can be injected into the controller. If user is not logged in, the promise is
- * rejected, which is handled below by $routeChangeError
- *
- * Any controller can be forced to wait for authentication to resolve, without necessarily
- * requiring the user to be logged in, by adding a `resolve` block similar to the one below.
- * It would then inject `user` as a dependency. This could also be done in the controller,
- * but abstracting it makes things cleaner (controllers don't need to worry about auth state
- * or timing of displaying its UI components; it can assume it is taken care of when it runs)
- *
- *   resolve: {
- *     user: ['Auth', function(Auth) {
- *       return Auth.$getAuth();
- *     }]
- *   }
- *
- */
 angular.module('ngdeployApp')
 
 
@@ -69,6 +40,7 @@ angular.module('ngdeployApp')
 
 
             $locationProvider.hashPrefix('!');
+
             $stateProvider
                 .state('public', {
                     url: "",
@@ -141,68 +113,80 @@ angular.module('ngdeployApp')
                 })
 
             .state('private', {
-                    url: "/user",
-                    abstract: true,
-                    resolve: {
-                        token: function($q, $window, userService) {
-                            if ($window.User.isLogged()) {
+                url: "/user",
+                abstract: true,
+                resolve: {
+                    token: function($q, $window, userService) {
+                        if ($window.User.isLogged()) {
 
 
-                                var u = $window.User.getIdentity();
+                            var u = $window.User.getIdentity();
 
-                                var token = localStorage.getItem('token');
-                                if (!token) {
-                                    userService.getToken({
-                                        name: u.data.name,
-                                        stormId: u.data.id
-                                    }).then(function(response) {
+                            var token = localStorage.getItem('token');
+                            if (!token) {
+                                userService.getToken({
+                                    name: u.data.name,
+                                    stormId: u.data.id
+                                }).then(function(response) {
 
-                                        localStorage.setItem('token', response);
-                                        return $q.resolve(response)
+                                    localStorage.setItem('token', response);
+                                    return $q.resolve(response)
 
-                                    })
-                                } else {
-
-
-                                    return $q.resolve(token);
-                                }
-
+                                })
                             } else {
-                                return $q.reject(false);
+
+
+                                return $q.resolve(token);
                             }
 
+                        } else {
+                            return $q.reject(false);
+                        }
+
+                    }
+                },
+
+
+                views: {
+                    "navbar@": {
+                        templateUrl: "views/navbar/private.html",
+                        controller: function($scope, $rootScope, $window, $state) {
+                            $scope.logout = function(provider) {
+                                var user = $window.User.getIdentity();
+                                user.logout().done(function() {
+                                    $rootScope.$broadcast('USER::LOGOUT');
+
+                                    $state.go('public.home');
+                                });
+
+
+                            }
                         }
                     },
+                    "layout": {
+                        templateUrl: "views/layout/private.html",
+                        controller: ['$scope', '$state',
+                            function($scope, $state) {
+                                console.log('private')
+                                    // $state.go('private.apps');
 
-
-                    views: {
-                        "navbar@": {
-                            templateUrl: "views/navbar/private.html",
-                            controller: function($scope, $rootScope, $window, $state) {
-                                $scope.logout = function(provider) {
-                                    var user = $window.User.getIdentity();
-                                    user.logout().done(function() {
-                                        $rootScope.$broadcast('USER::LOGOUT');
-
-                                        $state.go('public.home');
-                                    });
-
-
-                                }
                             }
-                        },
-                        "layout": {
-                            templateUrl: "views/layout/private.html",
-                            controller: ['$scope', '$state',
-                                function($scope, $state) {
-                                    console.log('private')
-                                        // $state.go('private.apps');
+                        ],
+                    }
+                }
 
-                                }
-                            ],
+            })
+
+            .state('private.accounts', {
+                    url: "/accounts/",
+                    views: {
+                        "main": {
+                            templateUrl: "views/private/account.html",
+                            controller: function($scope, appService, token, userService, $uibModal, $log, sweet) {
+
+                            }
                         }
                     }
-
                 })
                 .state('private.apps', {
                     url: "/apps/",
@@ -276,7 +260,7 @@ angular.module('ngdeployApp')
                                             });
 
                                         } else {
-                                            sweet.show('Cancelled', 'Your imaginary file is safe :)', 'error');
+                                            sweet.show('Cancelled', 'Nothing changed', 'error');
                                         }
                                     });
 
@@ -340,22 +324,35 @@ angular.module('ngdeployApp')
 
         }
     ]).controller('setupHostingCtrl', function($scope, appService, app) {
-        $scope.save = function(hosting) {
-            console.log(app)
-            hosting.ngDeployUrl = app.ngDeployUrl;
-            hosting.zoneId = app.zoneId;
+        $scope.addDomain = function(hosting) {
+            var postData = {}
+            postData.ngDeployUrl = app.ngDeployUrl;
             var data = angular.copy(hosting);
             if (data.domain) {
-                appService.zoneAlias.post(data).then(function(results) {
+                postData.domain = data.domain;
+                appService.domains.post(postData).then(function(results) {
+
                     console.log(results);
                 });
             }
-            console.log(data);
-
-            if (data.ssl && data.ssl.key && data.ssl.certificate) {
-                data.name = data.domain;
-                data.sslcert = "custom";
-                appService.zone.put(data).then(function(results) {
+        }
+        $scope.addSSL = function(hosting) {
+            var postData = {}
+            postData.ngDeployUrl = app.ngDeployUrl;
+            var data = angular.copy(hosting);
+            if (data && data.ssl && data.ssl.key && data.ssl.certificate) {
+                postData.ssl = "enabled";
+                postData.sslKey = data.ssl.key;
+                postData.sslCert = data.ssl.certificate;
+                appService.ssls.post(postData).then(function(results) {
+                    if ($scope.ssl) {
+                        $scope.ssl.key = '';
+                        $scope.ssl.cert = '';
+                    }
+                })
+            } else {
+                postData.ssl = "disabled";
+                appService.ssls.post(postData).then(function(results) {
                     if ($scope.ssl) {
                         $scope.ssl.key = '';
                         $scope.ssl.cert = '';

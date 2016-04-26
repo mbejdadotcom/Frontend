@@ -10,15 +10,11 @@
 angular.module('ngdeployApp')
     .service('appService', function(API_ENDPOINT, $q, $http, $base64) {
         var self = this;
-        self.zoneAlias = {
+        self.domains = {
             post: function(data) {
                 var defer = $q.defer();
-                data.zoneId = data.zoneId.toLowerCase();
-                if (!data.zoneId || data.zoneId == "") {
-                    //// zone id is needed
-                    return false;
-                }
-                $http.post(API_ENDPOINT + '/apps/zonealias', data).then(function(response) {
+        
+                $http.post(API_ENDPOINT + '/apps/domains', data).then(function(response) {
                     defer.resolve(response.data);
 
                 }, function(response) {
@@ -28,22 +24,12 @@ angular.module('ngdeployApp')
                 return defer.promise;
             }
         }
-        self.zone = {
-            put: function(data) {
+        self.ssls = {
+            post: function(data) {
                 var defer = $q.defer();
-                if (!data.zoneId || data.zoneId == "") {
-                    ///// zone id is needed
-                    return false;
-                }
-                if (!data.ssl) {
-                    delete data.ssl;
-                } else {
-                    data.customsslkey = data.ssl.key;
-                    data.customsslcert = data.ssl.certificate;
-                }
-                data.zoneId = data.zoneId.toLowerCase();
+    
 
-                $http.put(API_ENDPOINT + '/apps/zones', data).then(function(response) {
+                $http.post(API_ENDPOINT + '/apps/ssls', data).then(function(response) {
                     defer.resolve(response.data);
 
                 }, function(response) {
