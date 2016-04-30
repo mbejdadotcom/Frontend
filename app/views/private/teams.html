@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="panel panel-default app">
+            <div class="panel-heading">
+                <h2>Collaborators for {{app.name}}</h2>
+            </div>
+            <div class="panel-body body">
+                <div class="col-md-6">
+                    <small class="block">
+            Invite collaborators to work with you on your projects.
+            </small>
+                    <label>Email</label>
+                    <div class="input-group">
+                        <input placeholder="Email" class="form-control" type="text" ng-model="email" />
+                        <span class="input-group-addon">
+        <button class="btn btn-default" type="button" ng-click="add(email)">Add Collaborator</button>
+
+    </span>
+                    </div>
+                </div>
+                <table class="table col-md-12">
+                    <thead>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in items">
+                            <td>{{item.name}}</td>
+                            <td>{{item.email}}</td>
+                            <td>
+                                <button class="btn btn-danger" ng-click="remove(item.id)">Remove</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

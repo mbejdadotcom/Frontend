@@ -1,3 +1,6 @@
+/*
+
+*/
 angular.module('ngdeployApp')
 
 
@@ -12,7 +15,6 @@ angular.module('ngdeployApp')
 
                 function() {
                     var token = localStorage.getItem('token');
-                    console.log(token)
                     return token;
                 }
             ];
@@ -21,22 +23,22 @@ angular.module('ngdeployApp')
 
 
 
+            /*
+                        $urlRouterProvider.rule(function($injector, $location) {
+                            var path = $location.url();
 
-            $urlRouterProvider.rule(function($injector, $location) {
-                var path = $location.url();
+                            // check to se/e if the path already has a slash where it should be
+                            if (path[path.length - 1] === '' || path.indexOf('?') > -1) {
+                                return;
+                            }
 
-                // check to see if the path already has a slash where it should be
-                if (path[path.length - 1] === '/' || path.indexOf('/?') > -1) {
-                    return;
-                }
+                            if (path.indexOf('?') > -1) {
+                                return path.replace('?', '/?');
+                            }
 
-                if (path.indexOf('?') > -1) {
-                    return path.replace('?', '/?');
-                }
-
-                return path + '/';
-            });
-
+                            return path + '';
+                        });
+            */
 
 
             $locationProvider.hashPrefix('!');
@@ -70,7 +72,9 @@ angular.module('ngdeployApp')
 
 
                                                 var u = $window.User.getIdentity();
+                                                console.log(u);
                                                 userService.getToken({
+                                                    email: u.data.email,
                                                     name: u.data.name,
                                                     stormId: u.data.id
                                                 }).then(function(response) {
@@ -125,6 +129,7 @@ angular.module('ngdeployApp')
                             var token = localStorage.getItem('token');
                             if (!token) {
                                 userService.getToken({
+                                    email: u.data.email,
                                     name: u.data.name,
                                     stormId: u.data.id
                                 }).then(function(response) {
@@ -178,7 +183,7 @@ angular.module('ngdeployApp')
             })
 
             .state('private.accounts', {
-                    url: "/accounts/",
+                    url: "/accounts",
                     views: {
                         "main": {
                             templateUrl: "views/private/account.html",
@@ -189,139 +194,23 @@ angular.module('ngdeployApp')
                     }
                 })
                 .state('private.apps', {
-                    url: "/apps/",
+                    url: "/apps",
                     views: {
                         "main": {
                             templateUrl: "views/private/apps.html",
-                            controller: function($scope, appService, token, userService, $uibModal, $log, sweet) {
-                                $scope.token = token;
-                                $scope.loadApps = function() {
-                                    appService.get().then(function(response) {
-                                        $scope.apps = response;
-                                    });
-                                }
-
-                                $scope.createApplication = function(ngDeployUrl, name) {
-                                    appService.post({
-                                        ngDeployUrl: ngDeployUrl,
-                                        name: name
-                                    }).then(function(response) {
-                                        sweet.show('Created!', 'The application has been created.', 'success');
-
-                                        $scope.loadApps();
-                                        console.log(response);
-                                    })
-                                }
-
-
-                                $scope.promote = function(app, phase) {
-                                    sweet.show({
-                                        title: 'Confirm',
-                                        text: 'Promote to ' + phase + '?',
-                                        type: 'success',
-                                        showCancelButton: true,
-                                        confirmButtonText: 'Yes, promote it!',
-                                        closeOnConfirm: false,
-                                        closeOnCancel: false
-                                    }, function(isConfirm) {
-                                        if (isConfirm) {
-                                            appService.promote({
-                                                ngDeployUrl: app.ngDeployUrl,
-                                                phase: phase
-                                            }).then(function() {
-                                                sweet.show('Promoted!', 'Application has been promoted to ' + phase, 'success');
-
-                                            })
-
-                                        } else {
-                                            sweet.show('Cancelled', 'Nothing changed', 'error');
-                                        }
-                                    });
-                                }
-
-                                $scope.delete = function(ngDeployUrl) {
-
-                                    sweet.show({
-                                        title: 'Confirm',
-                                        text: 'Delete this application?',
-                                        type: 'warning',
-                                        showCancelButton: true,
-                                        confirmButtonText: 'Yes, delete it!',
-                                        closeOnConfirm: false,
-                                        closeOnCancel: false
-                                    }, function(isConfirm) {
-                                        if (isConfirm) {
-                                            appService.delete(ngDeployUrl).then(function(response) {
-                                                sweet.show('Deleted!', 'The application has been deleted.', 'success');
-                                                $scope.loadApps();
-                                            }, function(error) {
-
-                                                console.log(error)
-                                            });
-
-                                        } else {
-                                            sweet.show('Cancelled', 'Nothing changed', 'error');
-                                        }
-                                    });
-
-
-                                }
-                                $scope.setupHosting = function(app) {
-                                    var modalInstance = $uibModal.open({
-                                        animation: true,
-                                        templateUrl: 'setupHosting.html',
-                                        controller: 'setupHostingCtrl',
-                                        size: 'sm',
-                                        resolve: {
-                                            app: function() {
-                                                return app
-                                            }
-                                        }
-                                    });
-
-                                    modalInstance.result.then(function(selectedItem) {
-                                        $scope.selected = selectedItem;
-                                    }, function() {
-                                        $log.info('Modal dismissed at: ' + new Date());
-                                    });
-                                }
-
-                                $scope.upgrade = function(app) {
-
-                                    sweet.show({
-                                        title: 'Confirm',
-                                        text: 'Upgrade to production hosting?',
-                                        showCancelButton: true,
-                                        confirmButtonText: 'Yes, upgrade it!',
-                                        closeOnConfirm: false,
-                                        closeOnCancel: false
-                                    }, function(isConfirm) {
-                                        if (isConfirm) {
-                                            appService.upgrade(app.ngDeployUrl).then(function(response) {
-                                                sweet.show('Deleted!', 'The application has been deleted.', 'success');
-                                                $scope.loadApps();
-                                            }, function(error) {
-
-                                                console.log(error)
-                                            });
-
-                                        } else {
-                                            sweet.show('Cancelled', 'Your imaginary file is safe :)', 'error');
-                                        }
-                                    });
-
-
-
-
-
-
-                                }
-                                $scope.loadApps();
-                            }
+                            controller: "AppsCtrl"
                         }
                     }
                 })
-
+                .state('private.teams', {
+                    url: "/apps/:appId/teams",
+                    views: {
+                        "main": {
+                            templateUrl: "views/private/teams.html",
+                            controller: "TeamsCtrl"
+                        }
+                    }
+                })
         }
     ]).controller('setupHostingCtrl', function($scope, appService, app) {
         $scope.addDomain = function(hosting) {

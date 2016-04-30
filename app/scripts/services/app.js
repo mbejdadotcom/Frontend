@@ -53,8 +53,23 @@ angular.module('ngdeployApp')
 
             });
             return defer.promise;
-
         }
+        self.fetch = function(appId) {
+            var defer = $q.defer();
+            $http({
+                method: 'GET',
+                url: API_ENDPOINT + '/apps/'+appId
+            }).then(function(response) {
+                defer.resolve(response.data);
+
+            }, function(response) {
+                defer.reject(response);
+
+            });
+            return defer.promise;
+        }
+
+
         self.post = function(data) {
             var defer = $q.defer();
             $http.post(API_ENDPOINT + '/apps', data).then(function(response) {

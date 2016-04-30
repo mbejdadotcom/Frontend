@@ -43,6 +43,7 @@ module.exports = function(config) {
       'bower_components/angular-sweetalert/dist/ngSweetAlert.min.js',
       'bower_components/clipboard/dist/clipboard.js',
       'bower_components/ngclipboard/dist/ngclipboard.js',
+      'bower_components/angular-block-ui/dist/angular-block-ui.js',
       'bower_components/mockfirebase/browser/mockfirebase.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
