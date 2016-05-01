@@ -95,8 +95,8 @@ Staging
                     <div class="phase-body">
                         <b class="block col-md-12">Production
 <ul class="list-unstyled list-inline pull-right">
-<li ng-if="!app.apps.zoneId"><small class="pull-right btn btn-xs btn-info"><a href="javascript:;" ng-click="upgrade(app.apps,'staging')">Upgrade</a></small></li>
-<li ng-if="app.apps.zoneId"><small class="pull-right btn btn-xs btn-success"><a href="javascript:;" ng-click="setupHosting(app.apps,'staging')">Setup</a></small></li>
+<li ng-if="!app.apps.zoneId"><small class="pull-right"><button class="btn btn-xs btn-info" href="javascript:;" ng-click="upgrade(app.apps,'staging')">Upgrade</button></small></li>
+<li ng-if="app.apps.zoneId"><small class="pull-right"><button class="btn btn-xs btn-success" href="javascript:;" ui-sref="private.domains({appId:app.apps.id})" ng-disabled="app.teams.type != 'owner'">Setup</button></small></li>
 
 </ul>
 

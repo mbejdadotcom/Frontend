@@ -78,28 +78,6 @@
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>
     </script>
-    <script type="text/ng-template" id="setupHosting.html">
-        <div class="modal-header">
-            <h3 class="modal-title">Setup Hosting</h3>
-        </div>
-        <div class="modal-body">
-            <label class="block">DOMAIN</label>
-            <input class="form-control" type="text" ng-model="hosting.domain" />
-            <small>example.com</small>
-            <button class="btn btn-primary" type="button" ng-click="addDomain(hosting)">Add Domain</button>
-            <hr>
-            <label class="block">SSL KEY</label>
-            <textarea class="form-control" ng-model="hosting.ssl.key">
-            </textarea>
-            <label class="block">SSL CERTIFICATE</label>
-            <textarea class="form-control" ng-model="hosting.ssl.certificate">
-            </textarea>
-            <button class="btn btn-primary" type="button" ng-click="addSSL(hosting)">Add SSL</button>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-        </div>
-    </script>
 
 
 
@@ -158,6 +136,7 @@
     <script src="scripts/controllers/teams.js"></script>
     <script src="scripts/controllers/apps.js"></script>
     <script src="scripts/services/teams.js"></script>
+    <script src="scripts/controllers/domains.js"></script>
     <!-- endbuild -->
 </body>
 

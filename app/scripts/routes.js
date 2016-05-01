@@ -1,3 +1,4 @@
+
 /*
 
 */
@@ -202,6 +203,19 @@ angular.module('ngdeployApp')
                         }
                     }
                 })
+
+
+                  .state('private.domains', {
+                    url: "/:appId/domains",
+                    views: {
+                        "main": {
+                            templateUrl: "views/private/domains.html",
+                            controller: "DomainsCtrl"
+                        }
+                    }
+                })
+
+
                 .state('private.teams', {
                     url: "/apps/:appId/teams",
                     views: {
@@ -212,45 +226,7 @@ angular.module('ngdeployApp')
                     }
                 })
         }
-    ]).controller('setupHostingCtrl', function($scope, appService, app) {
-        $scope.addDomain = function(hosting) {
-            var postData = {}
-            postData.ngDeployUrl = app.ngDeployUrl;
-            var data = angular.copy(hosting);
-            if (data.domain) {
-                postData.domain = data.domain;
-                appService.domains.post(postData).then(function(results) {
-
-                    console.log(results);
-                });
-            }
-        }
-        $scope.addSSL = function(hosting) {
-            var postData = {}
-            postData.ngDeployUrl = app.ngDeployUrl;
-            var data = angular.copy(hosting);
-            if (data && data.ssl && data.ssl.key && data.ssl.certificate) {
-                postData.ssl = "enabled";
-                postData.sslKey = data.ssl.key;
-                postData.sslCert = data.ssl.certificate;
-                appService.ssls.post(postData).then(function(results) {
-                    if ($scope.ssl) {
-                        $scope.ssl.key = '';
-                        $scope.ssl.cert = '';
-                    }
-                })
-            } else {
-                postData.ssl = "disabled";
-                appService.ssls.post(postData).then(function(results) {
-                    if ($scope.ssl) {
-                        $scope.ssl.key = '';
-                        $scope.ssl.cert = '';
-                    }
-                })
-            }
-        }
-
-    }).controller('createApplicationModalCtrl', function($scope, appService) {
+    ]).controller('createApplicationModalCtrl', function($scope, appService) {
         $scope.createApplication = function(ngDeployUrl, name) {
             appService.post({
                 ngDeployUrl: ngDeployUrl,
