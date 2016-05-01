@@ -66,11 +66,10 @@ angular.module('ngdeployApp')
                                 $scope.login = function(provider) {
                                     $window.OAuth.popup(provider)
                                         .done(function(result) {
-                                            console.log(result)
+                                            console.log(result);
+                                            var git_result = result;
                                             $rootScope.$broadcast('USER::LOGIN', result);
                                             $window.User.signin(result).then(function(result) {
-
-
                                                 var u = $window.User.getIdentity();
                                                 console.log(u);
                                                 userService.getToken({
@@ -80,6 +79,7 @@ angular.module('ngdeployApp')
                                                 }).then(function(response) {
 
                                                     localStorage.setItem('token', response);
+                                                    localStorage.setItem('g', JSON.stringify(git_result));
                                                     $state.go('private.apps');
 
 
@@ -88,7 +88,7 @@ angular.module('ngdeployApp')
 
 
 
-                                            //use result.access_token in your API request 
+                                            //use result.access_token in your API request
                                             //or use result.get|post|put|del|patch|me methods (see below)
                                         })
                                         .fail(function(err) {
@@ -259,7 +259,6 @@ angular.module('ngdeployApp')
                 console.log(response);
             })
         }
-
     })
     .controller('domainModalCtrl', function($scope) {
 

@@ -8,7 +8,7 @@
  * Controller of the ngdeployApp
  */
 angular.module('ngdeployApp')
-    .controller('AppsCtrl', function($scope, appService, token, userService, $uibModal, $log, sweet, teams) {
+    .controller('AppsCtrl', function($scope, $http, appService, token, userService, $uibModal, $log, sweet, teams) {
         $scope.token = token;
         $scope.loadApps = function() {
             appService.get().then(function(response) {
@@ -28,6 +28,61 @@ angular.module('ngdeployApp')
             })
         }
 
+      $scope.ListRepos = function ListRepos(){
+        /// Grab REPOS  ///
+        var g = JSON.parse(localStorage.getItem('g'));
+        console.log("Hello ");
+
+        $http({
+          method:"GET",
+          url: "https://api.github.com/user/repos",
+          headers:{
+            Authorization: "token " + g.access_token,
+            "Content-Type": "application/json"
+          }
+        }).then(function(resp){
+          var resp = resp.data;
+          var admin = [];
+          var repos = resp || [];
+          repos.forEach(function(item){
+            if(item.permissions.admin){
+              admin.push(item);
+            }
+          });
+
+          console.log(admin);
+          $scope.hookit(admin[3])
+        }, function err(){
+          console.log("There was an error" , arguments);
+        });
+        /// Grab REPOS  ////
+      }
+
+       $scope.hookit = function hookit(repo){
+         var g = JSON.parse(localStorage.getItem('g'));
+         $http({
+           method:"POST",
+           url: repo['hooks_url'],
+           data:
+           { name: "web",
+             active: true,
+             events: ["push"],
+             config: {
+               url:"http://5e35dd5b.ngrok.io/payload",
+               content_type: "json"
+             }
+           },
+           headers:{
+             Authorization: "token "+ g.access_token,
+             "Content-Type": "application/json"
+           }
+         }).then(function(resp){
+           console.log("Success ", arguments);
+         }, function err(){
+           console.log("There was an error" , arguments);
+         });
+         /// \SET HOOK   ////}
+        }
 
         $scope.promote = function(app, phase) {
             sweet.show({
