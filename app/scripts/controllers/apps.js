@@ -28,7 +28,17 @@ angular.module('ngdeployApp')
             })
         }
 
+   $scope.purgeCache = function(app, phase) {
+            console.log(app)
+            appService.purge({
+                        ngDeployUrl: app.ngDeployUrl,
+                    }).then(function() {
+                        sweet.show('Cache Purged!', 'Application cache has been purged', 'success');
 
+                    })
+
+
+   }
         $scope.promote = function(app, phase) {
             sweet.show({
                 title: 'Confirm',
@@ -81,8 +91,6 @@ angular.module('ngdeployApp')
                 });
             }
 
-
-console.log(team);
 
 
 
