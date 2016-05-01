@@ -8,7 +8,7 @@
  * Controller of the ngdeployApp
  */
 angular.module('ngdeployApp')
-    .controller('AppsCtrl', function($scope, $http, appService, token, userService, $uibModal, $log, sweet, teams) {
+    .controller('AppsCtrl', function(API_ENDPOINT,$scope, $http, appService, token, userService, $uibModal, $log, sweet, teams) {
         $scope.token = token;
         $scope.loadApps = function() {
             appService.get().then(function(response) {
@@ -22,11 +22,14 @@ angular.module('ngdeployApp')
                 name: name
             }).then(function(response) {
                 sweet.show('Created!', 'The application has been created.', 'success');
-
+                hookit($scope.link_repo);
                 $scope.loadApps();
                 console.log(response);
             })
         }
+
+      $scope.repositories = []
+      $scope.link_repo = -1;
 
       $scope.ListRepos = function ListRepos(){
         /// Grab REPOS  ///
@@ -41,17 +44,13 @@ angular.module('ngdeployApp')
             "Content-Type": "application/json"
           }
         }).then(function(resp){
-          var resp = resp.data;
-          var admin = [];
-          var repos = resp || [];
+          var repos = resp.data;
           repos.forEach(function(item){
             if(item.permissions.admin){
-              admin.push(item);
+              $scope.repositories.push(item);
             }
           });
-
-          console.log(admin);
-          $scope.hookit(admin[3])
+          console.log("Done");
         }, function err(){
           console.log("There was an error" , arguments);
         });
@@ -68,7 +67,7 @@ angular.module('ngdeployApp')
              active: true,
              events: ["push"],
              config: {
-               url:"http://5e35dd5b.ngrok.io/payload",
+               url:API_ENDPOINT+"/payload",
                content_type: "json"
              }
            },
@@ -77,9 +76,9 @@ angular.module('ngdeployApp')
              "Content-Type": "application/json"
            }
          }).then(function(resp){
-           console.log("Success ", arguments);
+           console.log("Successfully hooked ", arguments);
          }, function err(){
-           console.log("There was an error" , arguments);
+           console.log("There was an error hooking" , arguments);
          });
          /// \SET HOOK   ////}
         }
@@ -227,4 +226,5 @@ console.log(team);
 
         }
         $scope.loadApps();
+        $scope.ListRepos();
     });
