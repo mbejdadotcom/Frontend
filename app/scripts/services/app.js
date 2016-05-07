@@ -75,7 +75,7 @@ angular.module('ngdeployApp')
                 defer.resolve(response.data);
 
             }, function errorCallback(response) {
-                defer.reject(response);
+                defer.reject(response.data);
 
             });
             return defer.promise;

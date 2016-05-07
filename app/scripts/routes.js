@@ -108,7 +108,7 @@ angular.module('ngdeployApp')
 
                 })
                 .state('public.home', {
-                    url: "/",
+                    url: "",
                     views: {
                         "main": {
                             templateUrl: "views/main.html",
