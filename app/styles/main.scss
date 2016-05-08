@@ -118,7 +118,7 @@ h2 a {
 .input-group-addon.glyphicon {
   top:0px;
 }
-.phase {
+.stage {
   padding:10px;
   clear:both;
   border-bottom:1px solid #2C4052;
@@ -148,11 +148,11 @@ a,h1, {
 .form-control {
 margin-bottom:5px;
 }
-.phase [class*="col-"] {
+.stage [class*="col-"] {
   margin:0px;
   padding:0px;
 }
-.phase ul {
+.stage ul {
 margin:0px;
 padding:0px;
   
@@ -348,7 +348,7 @@ h1 {
 box-shadow:inset 0px 10px 10px 0px rgb(44, 62, 78);
 background:linear-gradient(45deg, #2C4154 0, #2C3F50 48%, #2B4256 100%);
 }
-.phase:last-child {
+.stage:last-child {
 border-bottom:0px;
 }
 .app .title {
