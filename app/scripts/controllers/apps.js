@@ -28,7 +28,7 @@ angular.module('ngdeployApp')
             })
         }
 
-        $scope.purgeCache = function(app, phase) {
+        $scope.purgeCache = function(app, stage) {
             console.log(app)
             appService.purge({
                 ngDeployUrl: app.ngDeployUrl,
@@ -42,10 +42,10 @@ angular.module('ngdeployApp')
 
 
         }
-        $scope.promote = function(app, phase) {
+        $scope.promote = function(app, stage) {
             sweet.show({
                 title: 'Confirm',
-                text: 'Promote to ' + phase + '?',
+                text: 'Promote to ' + stage + '?',
                 type: 'success',
                 showCancelButton: true,
                 confirmButtonText: 'Yes, promote it!',
@@ -55,9 +55,9 @@ angular.module('ngdeployApp')
                 if (isConfirm) {
                     appService.promote({
                         ngDeployUrl: app.ngDeployUrl,
-                        phase: phase
+                        stage: stage
                     }).then(function() {
-                        sweet.show('Promoted!', 'Application has been promoted to ' + phase, 'success');
+                        sweet.show('Promoted!', 'Application has been promoted to ' + stage, 'success');
 
                     })
 
