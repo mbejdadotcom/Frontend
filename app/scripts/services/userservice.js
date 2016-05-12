@@ -20,6 +20,16 @@ angular.module('ngdeployApp')
             })
             return defer.promise;
         }
+        self.self = function(postData) {
+            var defer = $q.defer();
+            $http.get(API_ENDPOINT + '/users/self').then(function(success) {
+                defer.resolve(success.data.response);
+            }, function(error) {
+                defer.resolve(error.response);
+            })
+            return defer.promise;
+        }
+
 
         return self;
     });
