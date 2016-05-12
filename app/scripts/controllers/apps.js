@@ -9,6 +9,9 @@
  */
 angular.module('ngdeployApp')
     .controller('AppsCtrl', function($scope, appService, token, userService, $uibModal, $log, sweet, teams) {
+        userService.self().then(function(user){
+            console.log("ME ",user)
+        })
         $scope.token = token;
         $scope.loadApps = function() {
             appService.get().then(function(response) {
