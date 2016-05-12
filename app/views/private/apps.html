@@ -1,3 +1,4 @@
+<div class="container page">
 <div class="row">
     <div class="col-md-12">
         <h1>Applications</h1>
@@ -59,8 +60,8 @@
                 </div>
             </div>
             <div class="col-md-12 body">
-                <div class="phase">
-                    <div class="phase-body">
+                <div class="stage">
+                    <div class="stage-body">
                         <b class="block col-md-12">Development
 <ul class="list-unstyled list-inline pull-right">
 <li><small class="pull-right"><a href="javascript:;" ng-click="promote(app.apps,'staging')">Promote</a></small></li>
@@ -72,13 +73,20 @@
                         <small class="block">
 <span class="lnr lnr-link"></span>  https://development-{{app.apps.ngDeployUrl}}.ngdeploy.com
 </small>
-                        <small class="block">
-  <span class="lnr lnr-file-add"></span> <a href="javascript:;" ng-click="environment(app.apps,'development')">Environment</a>
+<small class="block">
+<ul class="list-inline list-unstyled actions">
+<li><span class="lnr lnr-file-add"></span><a target="_blank" ng-href="https://development-{{app.apps.ngDeployUrl}}.ngdeploy.com/__env.js"> Environment</a></li>
+<li></li>
+<li class="pull-right"><span ng-if="app.apps.promotedToDevelopment" class="time-ago" am-time-ago="app.apps.promotedToDevelopment | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span></li>
+</ul>
 </small>
+
+
+
                     </div>
                 </div>
-                <div class="phase">
-                    <div class="phase-body">
+                <div class="stage">
+                    <div class="stage-body">
                         <b class="block col-md-12">
 Staging
 <ul class="list-unstyled list-inline pull-right">
@@ -88,18 +96,26 @@ Staging
                         <small>
 <span class="lnr lnr-link"></span>  https://staging-{{app.apps.ngDeployUrl}}.ngdeploy.com
 </small>
-                        <small class="block">
-  <span class="lnr lnr-file-add"></span> <a href="javascript:;" ng-click="environment(app.apps,'staging')">Environment</a>
 
+<small class="block">
+<ul class="list-inline list-unstyled actions">
+<li><span class="lnr lnr-file-add"></span><a target="_blank" ng-href="https://staging-{{app.apps.ngDeployUrl}}.ngdeploy.com/__env.js"> Environment</a></li>
+<li></li>
+<li class="pull-right"><span ng-if="app.apps.promotedToStaging" class="time-ago" am-time-ago="app.apps.promotedToStaging | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span></li>
+</ul>
 </small>
+
+
+
                     </div>
                 </div>
-                <div class="phase">
-                    <div class="phase-body">
+                <div class="stage">
+                    <div class="stage-body">
                         <b class="block col-md-12">Production
 <ul class="list-unstyled list-inline pull-right">
-<li ng-if="!app.apps.zoneId"><small class="pull-right btn btn-xs btn-info"><a href="javascript:;" ng-click="upgrade(app.apps,'staging')">Upgrade</a></small></li>
-<li ng-if="app.apps.zoneId"><small class="pull-right btn btn-xs btn-success"><a href="javascript:;" ng-click="setupHosting(app.apps,'staging')">Setup</a></small></li>
+
+<li ng-if="!app.apps.zoneId"><small class="pull-right"><button class="btn btn-xs btn-info" href="javascript:;" ng-click="upgrade(app.apps,'staging')">Upgrade</button></small></li>
+<li ng-if="app.apps.zoneId"><small class="pull-right"><button class="btn btn-xs btn-success" href="javascript:;" ui-sref="private.domains({appId:app.apps.id})" ng-disabled="app.teams.type != 'owner'">Setup</button></small></li>
 
 </ul>
 
@@ -111,12 +127,21 @@ Staging
 </small>
                         <small class="block">
                         <ul class="list-inline list-unstyled actions">
-  <li><span class="lnr lnr-file-add"></span> <a href="javascript:;" ng-click="environment(app,'production')">Environment</a></li>
-    <li><span class="lnr lnr-cloud-sync"></span> <a href="javascript:;" ng-click="purgeCache(app)">Purge Cache</a></li>
+
+<li><span class="lnr lnr-file-add"></span><a target="_blank" ng-href="https://production-{{app.apps.ngDeployUrl}}.ngdeploy.com/__env.js"> Environment</a></li>
+
+    <li><span class="lnr lnr-cloud-sync"></span> <a href="javascript:;" ng-click="purgeCache(app.apps)">Purge Cache</a></li>
+ <li class="pull-right"><span ng-if="app.apps.promotedToProduction" class="time-ago" am-time-ago="app.apps.promotedToProduction | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span></li>
+
     </ul>
 
 
+
 </small>
+<small class="block text-right">
+
+</small>
+
                     </div>
                 </div>
             </div>
@@ -144,4 +169,5 @@ Staging
             </div>
         </div>
     </div>
+</div>
 </div>

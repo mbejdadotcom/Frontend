@@ -31,10 +31,24 @@ angular.module('ngdeployApp')
       $scope.repositories = []
       $scope.link_repo = -1;
 
-        $scope.promote = function(app, phase) {
+        $scope.purgeCache = function(app, stage) {
+            console.log(app)
+            appService.purge({
+                ngDeployUrl: app.ngDeployUrl,
+            }).then(function() {
+                sweet.show('Cache Purged!', 'Application cache has been purged', 'success');
+
+            }, function(error) {
+                sweet.show('Error', error.error, 'error');
+
+            })
+
+
+        }
+        $scope.promote = function(app, stage) {
             sweet.show({
                 title: 'Confirm',
-                text: 'Promote to ' + phase + '?',
+                text: 'Promote to ' + stage + '?',
                 type: 'success',
                 showCancelButton: true,
                 confirmButtonText: 'Yes, promote it!',
@@ -44,9 +58,9 @@ angular.module('ngdeployApp')
                 if (isConfirm) {
                     appService.promote({
                         ngDeployUrl: app.ngDeployUrl,
-                        phase: phase
+                        stage: stage
                     }).then(function() {
-                        sweet.show('Promoted!', 'Application has been promoted to ' + phase, 'success');
+                        sweet.show('Promoted!', 'Application has been promoted to ' + stage, 'success');
 
                     })
 
@@ -83,8 +97,6 @@ angular.module('ngdeployApp')
                 });
             }
 
-
-console.log(team);
 
 
 

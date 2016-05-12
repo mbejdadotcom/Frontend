@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
-    <meta name="fragment" content="!">
     <meta name="google-site-verification" content="5G1QYlK1FBmRSMUd40Uy60ph51b8cXch9kq5MaG_ROA" />
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <script src="//use.edgefonts.net/quattrocento-sans.js"></script>
@@ -27,7 +26,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Add your site or application content here -->
-    <nav class="navbar navbar-default">
+    <nav>
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -46,9 +45,11 @@
         </div>
         <!--/.container-fluid -->
     </nav>
-    <div class="container page">
+
         <div ui-view="layout"></div>
-    </div>
+
+
+
     <script type="text/ng-template" id="ssl.html">
         <div class="modal-header">
             <h3 class="modal-title">Add SSL</h3>
@@ -75,28 +76,6 @@
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" type="button" ng-click="createApplication(ngDeployUrl,name)">Create</button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-        </div>
-    </script>
-    <script type="text/ng-template" id="setupHosting.html">
-        <div class="modal-header">
-            <h3 class="modal-title">Setup Hosting</h3>
-        </div>
-        <div class="modal-body">
-            <label class="block">DOMAIN</label>
-            <input class="form-control" type="text" ng-model="hosting.domain" />
-            <small>example.com</small>
-            <button class="btn btn-primary" type="button" ng-click="addDomain(hosting)">Add Domain</button>
-            <hr>
-            <label class="block">SSL KEY</label>
-            <textarea class="form-control" ng-model="hosting.ssl.key">
-            </textarea>
-            <label class="block">SSL CERTIFICATE</label>
-            <textarea class="form-control" ng-model="hosting.ssl.certificate">
-            </textarea>
-            <button class="btn btn-primary" type="button" ng-click="addSSL(hosting)">Add SSL</button>
-        </div>
-        <div class="modal-footer">
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>
     </script>
@@ -158,6 +137,7 @@
     <script src="scripts/controllers/teams.js"></script>
     <script src="scripts/controllers/apps.js"></script>
     <script src="scripts/services/teams.js"></script>
+    <script src="scripts/controllers/domains.js"></script>
     <script src="scripts/services/git.js"></script>
     <!-- endbuild -->
 </body>

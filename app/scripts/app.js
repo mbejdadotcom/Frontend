@@ -21,7 +21,8 @@ angular.module('ngdeployApp', [
     'base64',
     'hSweetAlert',
     'ngclipboard',
-    'blockUI'
+    'blockUI',
+    'angularMoment'
 ])
     .constant('API_ENDPOINT', 'http://c43f3ff5.ngrok.io')
     .run(function($window, $rootScope, $state) {

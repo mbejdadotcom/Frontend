@@ -69,6 +69,19 @@ angular.module('ngdeployApp')
             return defer.promise;
         }
 
+        self.purge = function(data) {
+            var defer = $q.defer();
+            $http.post(API_ENDPOINT + '/apps/purges', data).then(function(response) {
+                defer.resolve(response.data);
+
+            }, function errorCallback(response) {
+                defer.reject(response.data);
+
+            });
+            return defer.promise;
+
+        }
+
 
         self.post = function(data) {
             var defer = $q.defer();

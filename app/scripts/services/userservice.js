@@ -12,6 +12,7 @@ angular.module('ngdeployApp')
         var self = this;
         self.getToken = function(postData) {
             var defer = $q.defer();
+            console.log('POST ',postData)
             $http.post(API_ENDPOINT + '/tokens', postData).then(function(success) {
                 defer.resolve(success.data.response);
             }, function(error) {
