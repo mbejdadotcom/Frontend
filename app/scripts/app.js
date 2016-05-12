@@ -23,7 +23,7 @@ angular.module('ngdeployApp', [
     'ngclipboard',
     'blockUI'
 ])
-    .constant('API_ENDPOINT', 'https://api.ngdeploy.com')
+    .constant('API_ENDPOINT', 'http://c43f3ff5.ngrok.io')
     .run(function($window, $rootScope, $state) {
         $rootScope.$on('USER::LOGIN', function(evt, data) {
             $rootScope.user = data;

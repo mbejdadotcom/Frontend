@@ -8,7 +8,7 @@
  * Controller of the ngdeployApp
  */
 angular.module('ngdeployApp')
-    .controller('AppsCtrl', function(API_ENDPOINT,$scope, $http, appService, token, userService, $uibModal, $log, sweet, teams) {
+    .controller('AppsCtrl', function(API_ENDPOINT,$scope, $http, appService, token, userService, $uibModal, $log, sweet, teams, git) {
         $scope.token = token;
         $scope.loadApps = function() {
             appService.get().then(function(response) {
@@ -30,58 +30,6 @@ angular.module('ngdeployApp')
 
       $scope.repositories = []
       $scope.link_repo = -1;
-
-      $scope.ListRepos = function ListRepos(){
-        /// Grab REPOS  ///
-        var g = JSON.parse(localStorage.getItem('g'));
-        console.log("Hello ");
-
-        $http({
-          method:"GET",
-          url: "https://api.github.com/user/repos",
-          headers:{
-            Authorization: "token " + g.access_token,
-            "Content-Type": "application/json"
-          }
-        }).then(function(resp){
-          var repos = resp.data;
-          repos.forEach(function(item){
-            if(item.permissions.admin){
-              $scope.repositories.push(item);
-            }
-          });
-          console.log("Done");
-        }, function err(){
-          console.log("There was an error" , arguments);
-        });
-        /// Grab REPOS  ////
-      }
-
-       $scope.hookit = function hookit(repo){
-         var g = JSON.parse(localStorage.getItem('g'));
-         $http({
-           method:"POST",
-           url: repo['hooks_url'],
-           data:
-           { name: "web",
-             active: true,
-             events: ["push"],
-             config: {
-               url:API_ENDPOINT+"/payload",
-               content_type: "json"
-             }
-           },
-           headers:{
-             Authorization: "token "+ g.access_token,
-             "Content-Type": "application/json"
-           }
-         }).then(function(resp){
-           console.log("Successfully hooked ", arguments);
-         }, function err(){
-           console.log("There was an error hooking" , arguments);
-         });
-         /// \SET HOOK   ////}
-        }
 
         $scope.promote = function(app, phase) {
             sweet.show({
@@ -218,13 +166,27 @@ console.log(team);
                     sweet.show('Cancelled', 'Your imaginary file is safe :)', 'error');
                 }
             });
-
-
-
-
-
-
         }
-        $scope.loadApps();
-        $scope.ListRepos();
+
+      $scope.listRepos= function listRepos(){
+        git.listRepos().then(function(){
+          forEach(function(item){
+            if(item.permissions.admin){
+              $scope.repositories.push(item);
+            }})
+        })
+      }
+
+      $scope.hookIt= function hookIt(){
+        git.hookit().then(function() {
+          sweet.show('Git Repo Hooked!', 'We hooked the repo sucesfuly and the next push will be deployed automatically.', 'success');
+
+        }, function(error) {
+          sweet.show('Error', error.error, 'error');
+
+        })
+      }
+
+      $scope.loadApps();
+      $scope.listRepos();
     });
