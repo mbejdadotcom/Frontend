@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
-    <meta name="fragment" content="!">
     <meta name="google-site-verification" content="5G1QYlK1FBmRSMUd40Uy60ph51b8cXch9kq5MaG_ROA" />
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <script src="//use.edgefonts.net/quattrocento-sans.js"></script>
@@ -27,7 +26,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Add your site or application content here -->
-    <nav class="navbar navbar-default">
+    <nav>
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -46,9 +45,11 @@
         </div>
         <!--/.container-fluid -->
     </nav>
-    <div class="container page">
+
         <div ui-view="layout"></div>
-    </div>
+
+
+
     <script type="text/ng-template" id="ssl.html">
         <div class="modal-header">
             <h3 class="modal-title">Add SSL</h3>

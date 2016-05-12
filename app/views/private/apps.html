@@ -1,3 +1,4 @@
+<div class="container page">
 <div class="row">
     <div class="col-md-12">
         <h1>Applications</h1>
@@ -69,8 +70,12 @@
                         <small class="block">
 <span class="lnr lnr-link"></span>  https://development-{{app.apps.ngDeployUrl}}.ngdeploy.com
 </small>
-<small class="block text-right">
-<span class="time-ago" am-time-ago="app.apps.promotedToDevelopment | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span>
+<small class="block">
+<ul class="list-inline list-unstyled actions">
+<li><span class="lnr lnr-file-add"></span><a target="_blank" ng-href="https://development-{{app.apps.ngDeployUrl}}.ngdeploy.com/__env.js"> Environment</a></li>
+<li></li>
+<li class="pull-right"><span ng-if="app.apps.promotedToDevelopment" class="time-ago" am-time-ago="app.apps.promotedToDevelopment | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span></li>
+</ul>
 </small>
 
 
@@ -88,9 +93,15 @@ Staging
                         <small>
 <span class="lnr lnr-link"></span>  https://staging-{{app.apps.ngDeployUrl}}.ngdeploy.com
 </small>
-<small class="block text-right">
-<span class="time-ago" am-time-ago="app.apps.promotedToStaging | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span>
+
+<small class="block">
+<ul class="list-inline list-unstyled actions">
+<li><span class="lnr lnr-file-add"></span><a target="_blank" ng-href="https://staging-{{app.apps.ngDeployUrl}}.ngdeploy.com/__env.js"> Environment</a></li>
+<li></li>
+<li class="pull-right"><span ng-if="app.apps.promotedToStaging" class="time-ago" am-time-ago="app.apps.promotedToStaging | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span></li>
+</ul>
 </small>
+
 
 
                     </div>
@@ -114,14 +125,18 @@ Staging
                         <small class="block">
                         <ul class="list-inline list-unstyled actions">
 
+<li><span class="lnr lnr-file-add"></span><a target="_blank" ng-href="https://production-{{app.apps.ngDeployUrl}}.ngdeploy.com/__env.js"> Environment</a></li>
 
     <li><span class="lnr lnr-cloud-sync"></span> <a href="javascript:;" ng-click="purgeCache(app.apps)">Purge Cache</a></li>
+ <li class="pull-right"><span ng-if="app.apps.promotedToProduction" class="time-ago" am-time-ago="app.apps.promotedToProduction | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span></li>
+
     </ul>
+
 
 
 </small>
 <small class="block text-right">
-<span class="time-ago" am-time-ago="app.apps.promotedToProduction | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span>
+
 </small>
 
                     </div>
@@ -151,4 +166,5 @@ Staging
             </div>
         </div>
     </div>
+</div>
 </div>

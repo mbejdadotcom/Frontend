@@ -70,16 +70,13 @@ angular.module('ngdeployApp')
                                             console.log(result)
                                             $rootScope.$broadcast('USER::LOGIN', result);
                                             $window.User.signin(result).then(function(result) {
-
-
                                                 var u = $window.User.getIdentity();
-                                                console.log(u);
                                                 userService.getToken({
                                                     email: u.data.email,
                                                     name: u.data.name,
-                                                    stormId: u.data.id
+                                                    stormId: u.data.id,
+                                                    accessToken:result.access_token
                                                 }).then(function(response) {
-
                                                     localStorage.setItem('token', response);
                                                     $state.go('private.apps');
 
