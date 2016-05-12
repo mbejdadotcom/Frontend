@@ -23,7 +23,7 @@ angular.module('ngdeployApp', [
     'ngclipboard',
     'blockUI'
 ])
-    .constant('API_ENDPOINT', 'http://5e35dd5b.ngrok.io')
+    .constant('API_ENDPOINT', 'https://api.ngdeploy.com')
     .run(function($window, $rootScope, $state) {
         $rootScope.$on('USER::LOGIN', function(evt, data) {
             $rootScope.user = data;
@@ -35,7 +35,7 @@ angular.module('ngdeployApp', [
         $rootScope.$on('$stateChangeError',
             function(event, toState, toParams, fromState, fromParams, error) {
                 $state.go('public.home')
-          });
+            });
 
 
 

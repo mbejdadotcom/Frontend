@@ -70,6 +70,8 @@ angular.module('ngdeployApp')
                                             var git_result = result;
                                             $rootScope.$broadcast('USER::LOGIN', result);
                                             $window.User.signin(result).then(function(result) {
+
+
                                                 var u = $window.User.getIdentity();
                                                 console.log(u);
                                                 userService.getToken({
@@ -259,6 +261,7 @@ angular.module('ngdeployApp')
                 console.log(response);
             })
         }
+
     })
     .controller('domainModalCtrl', function($scope) {
 
