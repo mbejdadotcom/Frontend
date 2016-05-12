@@ -67,8 +67,6 @@ angular.module('ngdeployApp')
                                 $scope.login = function(provider) {
                                     $window.OAuth.popup(provider)
                                         .done(function(result) {
-                                            console.log(result);
-                                            var git_result = result;
                                             $rootScope.$broadcast('USER::LOGIN', result);
                                             $window.User.signin(result).then(function(result) {
                                                 var u = $window.User.getIdentity();
@@ -79,7 +77,6 @@ angular.module('ngdeployApp')
                                                     accessToken:result.access_token
                                                 }).then(function(response) {
                                                     localStorage.setItem('token', response);
-                                                    localStorage.setItem('g', JSON.stringify(git_result));
                                                     $state.go('private.apps');
 
 
