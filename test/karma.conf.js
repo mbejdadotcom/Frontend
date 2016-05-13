@@ -44,6 +44,10 @@ module.exports = function(config) {
       'bower_components/clipboard/dist/clipboard.js',
       'bower_components/ngclipboard/dist/ngclipboard.js',
       'bower_components/angular-block-ui/dist/angular-block-ui.js',
+      'bower_components/stripe-angular/stripe-angular.js',
+      'bower_components/angular-stripe/release/angular-stripe.js',
+      'bower_components/angular-credit-cards/release/angular-credit-cards.js',
+      'bower_components/angular-ui-mask/dist/mask.js',
       'bower_components/mockfirebase/browser/mockfirebase.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower

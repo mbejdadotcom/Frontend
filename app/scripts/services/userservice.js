@@ -12,7 +12,6 @@ angular.module('ngdeployApp')
         var self = this;
         self.getToken = function(postData) {
             var defer = $q.defer();
-            console.log('POST ',postData)
             $http.post(API_ENDPOINT + '/tokens', postData).then(function(success) {
                 defer.resolve(success.data.response);
             }, function(error) {
@@ -20,6 +19,16 @@ angular.module('ngdeployApp')
             })
             return defer.promise;
         }
+        self.subscribe = function(postData) {
+            var defer = $q.defer();
+            $http.post(API_ENDPOINT + '/users/subscribes', postData).then(function(success) {
+                defer.resolve(success.data.response);
+            }, function(error) {
+                defer.resolve(error.response);
+            })
+            return defer.promise;
+        }
+        
         self.self = function() {
             var defer = $q.defer();
             $http.get(API_ENDPOINT + '/users/self').then(function(success) {

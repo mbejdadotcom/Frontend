@@ -185,9 +185,7 @@ angular.module('ngdeployApp')
                     views: {
                         "main": {
                             templateUrl: "views/private/account.html",
-                            controller: function($scope, appService, token, userService, $uibModal, $log, sweet) {
-
-                            }
+                            controller: "AccountCtrl"
                         }
                     }
                 })

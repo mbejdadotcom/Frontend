@@ -53,9 +53,9 @@ a:hover {
   margin-top:10px;
 }
 .app {
--webkit-box-shadow: -1px -2px 18px -1px rgba(15,15,15,0.57);
--moz-box-shadow: -1px -2px 18px -1px rgba(15,15,15,0.57);
-box-shadow: -1px -2px 18px -1px rgba(15,15,15,0.57);
+-webkit-box-shadow: -1px -2px 18px -1px rgba(15,15,15,0.10);
+-moz-box-shadow: -1px -2px 18px -1px rgba(15,15,15,0.10);
+box-shadow: -1px -2px 18px -1px rgba(15,15,15,0.10);
 
     border-radius: 0px;
 
@@ -67,7 +67,7 @@ box-shadow: -1px -2px 18px -1px rgba(15,15,15,0.57);
   width:100%;
 }
 .app.hero{
-background-color:transparent;
+
 
 }
 .app.hero .panel-footer {
@@ -92,8 +92,6 @@ a,small,b,label,h2,h3,h4,h5 {
 }
 .app.hero .body {
     height:248px;
-     box-shadow:inset 0 4px 14px 14px rgba(26, 43, 58, 0.62);
-     background-color:rgba(31, 52, 70, 0.59);
 
 
 }
@@ -510,4 +508,11 @@ color:white;
 }
 .section-wrapper {
   height:900px;
+}
+input[type="text"] {
+  box-shadow:none;
+  border:0px;
+  background-color:transparent;
+  color:white;
+  border-bottom:2px solid #20303E;
 }
