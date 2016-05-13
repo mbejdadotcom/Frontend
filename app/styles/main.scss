@@ -322,7 +322,6 @@ clear:both;
   border-radius:0px;
 }
 .input-group-addon .btn {
-  border-left:0px;
 }
 h1 {
   margin-bottom:5px;
@@ -518,4 +517,7 @@ input[type="text"] {
   background-color:transparent;
   color:white;
   border-bottom:2px solid #20303E;
+}
+.logo-font {
+  font-family: quattrocento-sans, serif !important;
 }
