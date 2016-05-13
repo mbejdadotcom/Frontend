@@ -1,4 +1,4 @@
-var GLOBALS = {
+window.GLOBALS = {
     "localhost": {
       STRIP_APIKEY:"pk_07bMnvtw1B0waY5ZG52Jmq8b3c8J8",
     },
@@ -8,14 +8,7 @@ var GLOBALS = {
     }
 }
 
-/**
- * @ngdoc overview
- * @name ngdeployApp
- * @description
- * # ngdeployApp
- *
- * Main module of the application.
- */
+
 angular.module('ngdeployApp', [
         'ngAnimate',
         'ngCookies',
