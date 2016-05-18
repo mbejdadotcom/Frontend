@@ -48,6 +48,10 @@ module.exports = function(config) {
       'bower_components/angular-stripe/release/angular-stripe.js',
       'bower_components/angular-credit-cards/release/angular-credit-cards.js',
       'bower_components/angular-ui-mask/dist/mask.js',
+      'bower_components/angular-snapscroll/dist/angular-snapscroll.js',
+      'bower_components/angular-tooltips/dist/angular-tooltips.min.js',
+      'bower_components/codemirror/lib/codemirror.js',
+      'bower_components/angular-ui-codemirror/ui-codemirror.js',
       'bower_components/mockfirebase/browser/mockfirebase.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower

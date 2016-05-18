@@ -1,77 +1,131 @@
 <div class="container page">
 
-<div class="row">
+  <div class="row">
+
+
     <div class="col-xs-12 col-md-8">
-        <div class="panel panel-default app">
-            <div class="panel-heading">
-                <h2>Account Details</h2>
-            </div>
-            <div class="panel-body body">
-            <div class="col-md-6">
-                <label>First Name</label>
-                <input class="form-control" type="text" />
-                </div>
-                  <div class="col-md-6">
-                <label>Last Name</label>
-                <input class="form-control" type="text" />
-                </div>
-                <div class="col-md-12">
-                <label>Email </label>
-                <input class="form-control" type="text" />
-                </div>
-            </div>
+      <div class="panel panel-default app">
+        <div class="panel-heading">
+          <h2>Account Details</h2>
         </div>
+        <div class="panel-body body">
+
+          <div class="col-md-12">
+            <h5>Account Token
+              <div class="pull-right">
+                <span tooltips tooltip-template="ngdeploy CLI token"
+                                            class="lnr lnr-question-circle "></span></div>
+            </h5>
+            <div class="input-group">
+
+
+              <input type="text" id="token" class="form-control" ng-model="user.accountToken"/>
+            <span class="input-group-addon">
+
+
+<div class="btn-group text-left" style="width:120px;">
+
+
+        <button class="btn btn-warning" type="button" ngclipboard data-clipboard-target="#token">
+
+            <i class="lnr lnr lnr-lock"></i>
+        </button>
+        <button class="btn btn-danger" type="button" ng-click="newAccountToken()">
+            <i class="lnr lnr-undo"></i>
+        </button>
+  </div>
+    </span>
+            </div>
+            <hr>
+          </div>
+
+
+          <div class="col-md-6">
+            <label>Email</label>
+            <input class="form-control" type="text" ng-model="user.email"/>
+          </div>
+
+        </div>
+      </div>
     </div>
     <div class="col-xs-12 col-md-4">
-        <div class="panel panel-default credit-card-box app">
-            <div class="panel-heading display-table">
-                <h2>Payment </h2>
-            </div>
-            <div class="panel-body body">
-                <form role="form" name="paymentForm" novalidate ng-submit="subscribe(paymentForm)">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="form-group">
-                                <label for="cardNumber">Card Number</label>
-                                <div class="input-group">
-                                    <input ng-model="payment.number" type="text" class="form-control" name="cardNumber" placeholder="Valid Card Number"
-                                           />
-                                    <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-12">
-                            <div class="form-group">
-                              <div class="col-md-4 no-padding">
-                                                              <label for="cardExpiry"><span class="hidden-xs">Exp </span><span class="visible-xs-inline">Exp</span> Month</label>
-
-                                <input  ng-model="payment.exp_month"type="text" class="form-control" name="cardExpiry" placeholder="MM" autocomplete="cc-exp" required />
-                            </div>
-                             <div class="col-md-4 no-padding">
-                            <label for="cardExpiry"><span class="hidden-xs">Exp </span><span class="visible-xs-inline">Exp</span> Year</label>
-                                <input  ng-model="payment.exp_year"type="text" class="form-control" name="cardExpiry" placeholder="YYYY" autocomplete="cc-exp" required />
-                             </div>
-                                <div class="col-md-4 no-padding">
-                                  <label for="cardCVC">CV Code</label>
-                                <input ng-model="payment.csv" type="text" class="form-control" name="cardCVC" placeholder="CVC" autocomplete="cc-csc" required />
-                  
-                                  
-                                </div>
-                            </div>
-                        </div>
-         
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <input class="subscribe btn btn-success btn-lg btn-block" type="submit"/>
-                        </div>
-                    </div>
-  
-                </form>
-            </div>
+      <div class="panel panel-default credit-card-box app">
+        <div class="panel-heading display-table">
+          <h2>Payment </h2>
         </div>
+        <div class="panel-body body">
+          <form role="form" name="paymentForm" novalidate ng-submit="subscribe(paymentForm)">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="cardNumber">Card Number</label>
+                  <input ng-model="payment.number" type="text" class="form-control" name="cardNumber"
+                         placeholder="Valid Card Number"/>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-md-12">
+                <div class="form-group">
+                  <div class="col-md-4 no-padding">
+                    <label for="cardExpiry"><span class="hidden-xs">Exp </span><span
+                      class="visible-xs-inline">Exp</span> Month</label>
+
+                    <input ng-model="payment.exp_month" type="text" class="form-control" name="cardExpiry"
+                           placeholder="MM" autocomplete="cc-exp" required/>
+                  </div>
+                  <div class="col-md-4 no-padding">
+                    <label for="cardExpiry"><span class="hidden-xs">Exp </span><span
+                      class="visible-xs-inline">Exp</span> Year</label>
+                    <input ng-model="payment.exp_year" type="text" class="form-control" name="cardExpiry"
+                           placeholder="YYYY" autocomplete="cc-exp" required/>
+                  </div>
+                  <div class="col-md-4 no-padding">
+                    <label for="cardCVC">CV Code</label>
+                    <input ng-model="payment.csv" type="text" class="form-control" name="cardCVC" placeholder="CVC"
+                           autocomplete="cc-csc" required/>
+
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <input class="subscribe btn btn-success btn-lg btn-block" type="submit"/>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
     </div>
-</div>
+
+    <div class="col-xs-12 col-md-12">
+      <div class="panel panel-default app">
+        <div class="panel-heading">
+          <h2>Cards On Account</h2>
+        </div>
+        <div class="panel-body body">
+          <table class="table">
+            <thead>
+            <th>Type</th>
+            <th>Last 4</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="card in cards">
+              <td>{{card.brand}}</td>
+              <td>{{card.last4}}</td>
+            </tr>
+            </tbody>
+
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
 </div>

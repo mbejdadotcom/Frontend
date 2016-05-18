@@ -89,7 +89,7 @@ angular.module('ngdeployApp')
                 defer.resolve(response.data);
 
             }, function errorCallback(response) {
-                defer.reject(response);
+                defer.reject(response.data.error);
 
             });
             return defer.promise;
@@ -115,7 +115,7 @@ angular.module('ngdeployApp')
                 defer.resolve(response.data);
 
             }, function errorCallback(response) {
-                defer.reject(response);
+                defer.reject(response.data.error);
 
             });
             return defer.promise;

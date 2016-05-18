@@ -67,7 +67,7 @@ angular.module('ngdeployApp')
                                 $scope.login = function(provider) {
                                     $window.OAuth.popup(provider)
                                         .done(function(result) {
-                                            console.log(result)
+
                                             $rootScope.$broadcast('USER::LOGIN', result);
                                             $window.User.signin(result).then(function(result) {
                                                 var u = $window.User.getIdentity();
@@ -86,7 +86,7 @@ angular.module('ngdeployApp')
 
 
 
-                                            //use result.access_token in your API request 
+                                            //use result.access_token in your API request
                                             //or use result.get|post|put|del|patch|me methods (see below)
                                         })
                                         .fail(function(err) {
@@ -118,6 +118,20 @@ angular.module('ngdeployApp')
                 url: "/user",
                 abstract: true,
                 resolve: {
+                    dbUser : function($q,$window,userService){
+                      var deferred = $q.defer();
+                      if ($window.User.isLogged()) {
+                         userService.self().then(function(me){
+                           deferred.resolve(me)
+
+                        });
+
+                      }else{
+                        deferred.reject();
+                      }
+                      return deferred.promise;
+
+                    },
                     token: function($q, $window, userService) {
                         if ($window.User.isLogged()) {
 

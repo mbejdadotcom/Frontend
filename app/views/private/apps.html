@@ -1,170 +1,194 @@
 <div class="container page">
-<div class="row">
+  <div class="row">
     <div class="col-md-12">
-        <h1>Applications</h1>
+      <h1>Applications</h1>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-3">
-        <h5>Account Token</h5>
-        <div class="input-group">
-            <input id="token" class="form-control" ng-model="token" />
-            <span class="input-group-addon">
-        <button class="btn btn-default" type="button" ngclipboard data-clipboard-target="#token">
-            
-            <i class="lnr lnr-paperclip"></i>
-        </button>
+  </div>
 
-    </span>
-        </div>
-    </div>
-</div>
-<div class="row">
+  <div class="row">
     <div class="col-md-4 app-panel">
-        <div class="wrapper app panel panel-default hero">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-md-12 header">
-                        <h2 class="uppercase title">Create Application</h2>
-                    </div>
-                </div>
+      <div class="wrapper app panel panel-default hero">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-12 header">
+              <h2 class="uppercase title">Create Application</h2>
             </div>
-            <div class="col-md-12 body">
-                <label>APP NAME</label>
-                <input class="form-control" type="text" ng-model="name" />
-                <label>APP URL</label>
-                <input class="form-control" type="text" ng-model="ngDeployUrl" />
-                <small>https://development-<span class="">example</span>.ngdeploy.com</small>
-            </div>
-            <div class="panel-footer">
-                <button class="btn btn-info full-width create-app" ng-click="createApplication(ngDeployUrl,name)">Create Application</button>
-            </div>
+          </div>
         </div>
+        <div class="col-md-12 body">
+          <label>APP NAME
+            <span   tooltips tooltip-template="Friendly name of your application"  class="lnr lnr-question-circle "></span>
+          </label>
+          <input class="form-control" type="text" ng-model="name" placeholder="Friendly Name"/>
+          <label>APP URL
+            <span   tooltips tooltip-template="Publicly accessible name"  class="lnr lnr-question-circle "></span>
+          </label>
+          <input class="form-control" type="text" ng-model="ngDeployUrl" placeholder="Unique Name"/>
+          <small>https://development-<span class="">example</span>.ngdeploy.com</small>
+        </div>
+        <div class="panel-footer">
+          <button class="btn btn-info full-width create-app" ng-click="createApplication(ngDeployUrl,name)">Create
+            Application
+          </button>
+        </div>
+      </div>
     </div>
     <div class="col-md-4 app-panel" ng-repeat="app in apps">
-        <div class="wrapper app panel panel-default">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h2 class="uppercase title">
+      <div class="wrapper app panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-6">
+              <h2 class="uppercase title">
                 {{app.apps.name}}
-                </h2>
-                    </div>
-                    <div class="col-md-6">
-                        <small class="pull-right" ng-if="app.teams.type == 'owner'"> owner </small>
-                        <small class="pull-right" ng-if="app.teams.type != 'owner'"> collaborator </small>
-                    </div>
-                </div>
+              </h2>
             </div>
-            <div class="col-md-12 body">
-                <div class="stage">
-                    <div class="stage-body">
-                        <b class="block col-md-12">Development
-<ul class="list-unstyled list-inline pull-right">
-<li><small class="pull-right"><a href="javascript:;" ng-click="promote(app.apps,'staging')">Promote</a></small></li>
-</ul>
-
-
-
-</b>
-                        <small class="block">
-<span class="lnr lnr-link"></span>  https://development-{{app.apps.ngDeployUrl}}.ngdeploy.com
-</small>
-<small class="block">
-<ul class="list-inline list-unstyled actions">
-<li><span class="lnr lnr-file-add"></span><a target="_blank" ng-href="https://development-{{app.apps.ngDeployUrl}}.ngdeploy.com/__env.js"> Environment</a></li>
-<li></li>
-<li class="pull-right"><span ng-if="app.apps.promotedToDevelopment" class="time-ago" am-time-ago="app.apps.promotedToDevelopment | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span></li>
-</ul>
-</small>
-
-
-
-                    </div>
-                </div>
-                <div class="stage">
-                    <div class="stage-body">
-                        <b class="block col-md-12">
-Staging
-<ul class="list-unstyled list-inline pull-right">
-<li><small class="pull-right"><a href="javascript:;" ng-click="promote(app.apps,'production')">Promote</a></small></li>
-</ul>
-</b>
-                        <small>
-<span class="lnr lnr-link"></span>  https://staging-{{app.apps.ngDeployUrl}}.ngdeploy.com
-</small>
-
-<small class="block">
-<ul class="list-inline list-unstyled actions">
-<li><span class="lnr lnr-file-add"></span><a target="_blank" ng-href="https://staging-{{app.apps.ngDeployUrl}}.ngdeploy.com/__env.js"> Environment</a></li>
-<li></li>
-<li class="pull-right"><span ng-if="app.apps.promotedToStaging" class="time-ago" am-time-ago="app.apps.promotedToStaging | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span></li>
-</ul>
-</small>
-
-
-
-                    </div>
-                </div>
-                <div class="stage">
-                    <div class="stage-body">
-                        <b class="block col-md-12">Production
-<ul class="list-unstyled list-inline pull-right">
-
-<li ng-if="!app.apps.zoneId"><small class="pull-right"><button class="btn btn-xs btn-info" href="javascript:;" ng-click="upgrade(app.apps,'staging')">Upgrade</button></small></li>
-<li ng-if="app.apps.zoneId"><small class="pull-right"><button class="btn btn-xs btn-success" href="javascript:;" ui-sref="private.domains({appId:app.apps.id})" ng-disabled="app.teams.type != 'owner'">Setup</button></small></li>
-
-</ul>
-
-
-</b>
-                        <small class="block">
- <span class="lnr lnr-link"></span> https://production-{{app.apps.ngDeployUrl}}.ngdeploy.com
-  
-</small>
-                        <small class="block">
-                        <ul class="list-inline list-unstyled actions">
-
-<li><span class="lnr lnr-file-add"></span><a target="_blank" ng-href="https://production-{{app.apps.ngDeployUrl}}.ngdeploy.com/__env.js"> Environment</a></li>
-
-    <li><span class="lnr lnr-cloud-sync"></span> <a href="javascript:;" ng-click="purgeCache(app.apps)">Purge Cache</a></li>
- <li class="pull-right"><span ng-if="app.apps.promotedToProduction" class="time-ago" am-time-ago="app.apps.promotedToProduction | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span></li>
-
-    </ul>
-
-
-
-</small>
-<small class="block text-right">
-
-</small>
-
-                    </div>
-                </div>
+            <div class="col-md-6">
+              <small class="pull-right" ng-if="app.teams.type == 'owner'"> owner</small>
+              <small class="pull-right" ng-if="app.teams.type != 'owner'"> collaborator</small>
             </div>
-            <div class="panel-footer">
-                <div class="row">
-                    <div class="col-md-6">
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <div class="menu">
-                            <ul class="list-inline list-unstyled">
-                                <li>
-                                    <button class="btn  btn-xs btn-info" ui-sref="private.teams({appId:app.apps.id})" ng-disabled="app.teams.type != 'owner'">
-                                        <span class="lnr lnr-users"></span>
-                                    </button>
-                                </li>
-                                <li>
-                                    <button class="btn btn-danger btn-xs" ng-click="delete(app.apps.ngDeployUrl,app.teams,app.apps)">
-                                        <span class="lnr lnr-trash"></span>
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="col-md-12 body">
+          <div class="stage">
+            <div class="stage-body">
+              <b class="block col-md-12">Development
+                <ul class="list-unstyled list-inline pull-right">
+                  <li>
+                    <small class="pull-right"><a href="javascript:;" ng-click="promote(app.apps,'staging')">Promote</a>
+                    </small>
+                  </li>
+                </ul>
+
+
+              </b>
+              <small class="block">
+                <span class="lnr lnr-link"></span> https://development-{{app.apps.ngDeployUrl}}.ngdeploy.com
+              </small>
+              <small class="block">
+                <ul class="list-inline list-unstyled actions">
+                  <li><span class="lnr lnr-file-add"></span><a target="_blank"
+                                                               ng-href="https://development-{{app.apps.ngDeployUrl}}.ngdeploy.com/__env.js">
+                    Environment</a></li>
+                  <li></li>
+                  <li class="pull-right"><span ng-if="app.apps.promotedToDevelopment" class="time-ago"
+                                               am-time-ago="app.apps.promotedToDevelopment | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span>
+                  </li>
+                </ul>
+              </small>
+
+
+            </div>
+          </div>
+          <div class="stage">
+            <div class="stage-body">
+              <b class="block col-md-12">
+                Staging
+                <ul class="list-unstyled list-inline pull-right">
+                  <li>
+                    <small class="pull-right"><a href="javascript:;"
+                                                 ng-click="promote(app.apps,'production')">Promote</a></small>
+                  </li>
+                </ul>
+              </b>
+              <small>
+                <span class="lnr lnr-link"></span> https://staging-{{app.apps.ngDeployUrl}}.ngdeploy.com
+              </small>
+
+              <small class="block">
+                <ul class="list-inline list-unstyled actions">
+                  <li><span class="lnr lnr-file-add"></span><a target="_blank"
+                                                               ng-href="https://staging-{{app.apps.ngDeployUrl}}.ngdeploy.com/__env.js">
+                    Environment</a></li>
+                  <li></li>
+                  <li class="pull-right"><span ng-if="app.apps.promotedToStaging" class="time-ago"
+                                               am-time-ago="app.apps.promotedToStaging | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span>
+                  </li>
+                </ul>
+              </small>
+
+
+            </div>
+          </div>
+          <div class="stage">
+            <div class="stage-body">
+              <b class="block col-md-12">Production
+                <ul class="list-unstyled list-inline pull-right">
+
+                  <li ng-if="!app.apps.zoneId">
+                    <small class="pull-right">
+                      <button class="btn btn-xs btn-info" href="javascript:;" ng-click="upgrade(app.apps,'staging')">
+                        Upgrade
+                      </button>
+                    </small>
+                  </li>
+                  <li ng-if="app.apps.zoneId">
+                    <small class="pull-right">
+                      <button class="btn btn-xs btn-success" href="javascript:;"
+                              ui-sref="private.domains({appId:app.apps.id})" ng-disabled="app.teams.type != 'owner'">
+                        Setup
+                      </button>
+                    </small>
+                  </li>
+
+                </ul>
+
+
+              </b>
+              <small class="block">
+                <span class="lnr lnr-link"></span> https://production-{{app.apps.ngDeployUrl}}.ngdeploy.com
+
+              </small>
+              <small class="block">
+                <ul class="list-inline list-unstyled actions">
+
+                  <li><span class="lnr lnr-file-add"></span><a target="_blank"
+                                                               ng-href="https://production-{{app.apps.ngDeployUrl}}.ngdeploy.com/__env.js">
+                    Environment</a></li>
+
+                  <li><span class="lnr lnr-cloud-sync"></span> <a href="javascript:;" ng-click="purgeCache(app.apps)">Purge
+                    Cache</a></li>
+                  <li class="pull-right"><span ng-if="app.apps.promotedToProduction" class="time-ago"
+                                               am-time-ago="app.apps.promotedToProduction | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span>
+                  </li>
+
+                </ul>
+
+
+              </small>
+              <small class="block text-right">
+
+              </small>
+
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6 text-right">
+              <div class="menu">
+                <ul class="list-inline list-unstyled">
+
+   
+
+                  <li>
+                    <button class="btn  btn-xs btn-info" ui-sref="private.teams({appId:app.apps.id})"
+                            ng-disabled="app.teams.type != 'owner'">
+                      <span class="lnr lnr-users"></span>
+                    </button>
+                  </li>
+                  <li>
+                    <button class="btn btn-danger btn-xs" ng-click="delete(app.apps.ngDeployUrl,app.teams,app.apps)">
+                      <span class="lnr lnr-trash"></span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 </div>
