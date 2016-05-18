@@ -1,0 +1,523 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+html {
+  height:100%;
+
+}
+
+  html, body {
+    margin: 0px;
+        height: auto;
+    }
+
+body{
+  background-color:#373D46;
+
+
+}
+.bold {
+  font-weight: bold;
+}
+.navbar-btn{
+  margin-left:4px;
+}
+.no-padding {
+  padding:0px;
+  margin:0px;
+}
+.navbar {
+  border-radius: 0px;
+}
+.purple {
+  color:purple;
+}
+.block {
+  display:block;
+}
+html,body {
+
+}
+.uppercase {
+text-transform: uppercase;
+}
+h2 a {
+  text-decoration:none;
+}
+a:hover {
+  text-decoration:none;
+}
+.app-panel {
+  margin-top:10px;
+}
+.app {
+-webkit-box-shadow: -1px -2px 18px -1px rgba(0, 0, 0, 0.30);
+-moz-box-shadow: -1px -2px 18px -1px rgba(0, 0, 0, 0.30);
+box-shadow: -1px -2px 18px -1px rgba(0, 0, 0, 0.30);
+    border-radius: 0px;
+
+    border: 1px solid #211e1e;
+    color: inherit!important;
+}
+.app.wrapper {
+  float:left;
+  width:100%;
+}
+.app.hero{
+
+
+}
+.app.hero .panel-footer {
+  padding:4px;
+}
+.app .menu {
+
+}
+.app h2 a{
+  font-size:20px;
+}
+a:hover {
+color:white;  
+}
+a,small,b,label,h2,h3,h4,h5 {
+  color:white;
+}
+.app .body{
+  min-height:250px !important;
+
+  box-shadow:inset 0 1px 4px 4px rgba(29, 36, 39, 0.51);
+}
+.app.hero .body {
+    height:248px;
+
+
+}
+
+
+.app .footer{
+  height:20px;
+}
+h1,h2,h3,h4 {
+  margin:0px;
+}
+
+h2 a {
+  color:#92969A;
+}
+.full-width {
+  width:100%;
+}
+.navbar-default {
+  border:0px;
+}
+.input-group-addon.glyphicon {
+  top:0px;
+}
+.stage {
+  padding:10px;
+  clear:both;
+  border-bottom:1px solid #2C4052;
+}
+img.logo {
+  width:125px;
+  height:auto;
+}
+.btn {
+  background:transparent;
+  color:white;
+}
+a,h1, {
+          color:white;
+}
+.navbar {
+  background-color:#626E7B;
+}
+.small-glyphicon {
+  font-size:8px;
+}
+.app label {
+  margin-bottom:0px;
+  margin-top:8px;
+  font-size:12px;
+}
+.form-control {
+margin-bottom:5px;
+}
+.stage [class*="col-"] {
+  margin:0px;
+  padding:0px;
+}
+.stage ul {
+margin:0px;
+padding:0px;
+  
+}
+.btn.create-app {
+}
+.sweet-alert {
+  background-color:#373D46;
+  border-radius:0px;
+}
+.sweet-alert .sa-icon.sa-success::before, .sweet-alert .sa-icon.sa-success::after {
+  background:#373D46;
+}
+.sweet-alert .sa-icon.sa-success .sa-fix {
+  background-color:#373D46;
+}
+.sweet-alert .sa-icon.sa-success .sa-placeholder {
+  border:4px solid rgba(165, 220, 134,.5);
+}
+.sweet-alert h2,.sweet-alert a, .sweet-alert h2 span, .sweet-alert h3, .sweet-alert h1 {
+  color:white;
+}
+.sweet-alert button {
+  background-color:transparent;
+  border:1px solid;
+  border-radius:0px;
+}
+
+.btn.btn-default {
+    color: white;
+     -webkit-transition: background linear 200ms;
+    background: transparent;
+
+}
+
+.btn.btn-default:hover {
+ -webkit-transition: background linear 200ms;
+    background: white ;
+    color:black;
+}
+
+
+.btn.btn-success {
+    color: white;
+     -webkit-transition: background linear 200ms;
+    background: transparent;
+
+}
+
+.btn.btn-success:hover {
+ -webkit-transition: background linear 200ms;
+    background: #5cb85c ;
+    color:white;
+}
+
+
+.btn.btn-danger:hover {
+ -webkit-transition: background linear 200ms;
+    background: #d43f3a ;
+    color:white;
+}
+
+.btn.btn-danger {
+ -webkit-transition: background linear 200ms;
+    background: transparent ;
+        color:white;
+
+}
+
+.btn.btn-info:hover {
+ -webkit-transition: background linear 200ms;
+    background: #5bc0de ;
+    color:white;
+}
+
+.btn.btn-info {
+   -webkit-transition: background linear 200ms;
+    background: transparent ;
+        color:white;
+}
+
+.sweet-alert button.cancel {
+  background-color:transparent;
+  border:1px solid #C1C1C1;
+}
+.sweet-alert button.cancel:hover {
+ -webkit-transition: background linear 200ms;
+
+  background-color:#C1C1C1;
+  border:1px solid #C1C1C1;
+}
+.modal-content {
+  background-color:#373D46;
+  border-radius:0px;
+}
+.app h2 a{
+  cursor:default;
+}
+.menu ul li {
+  margin:0px;
+  padding:0px;
+}
+.nav  li.active a {
+  background-color:white !important;
+  color:black !important;
+}
+.nav  li.active .btn {
+  background-color:white !important;
+  color:black !important;
+}
+
+
+
+/* CSS for Credit Card Payment form */
+.credit-card-box .panel-title {
+    display: inline;
+    font-weight: bold;
+}
+.credit-card-box .form-control.error {
+    border-color: red;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(255,0,0,0.6);
+}
+.credit-card-box label.error {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.credit-card-box .payment-errors {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.credit-card-box label {
+    display: block;
+}
+/* The old "center div vertically" hack */
+.credit-card-box .display-table {
+    display: table;
+}
+.credit-card-box .display-tr {
+    display: table-row;
+}
+.credit-card-box .display-td {
+    display: table-cell;
+    vertical-align: middle;
+    width: 50%;
+}
+/* Just looks nicer */
+.credit-card-box .panel-heading img {
+    min-width: 180px;
+}
+.panel-default {
+  background-color:#1B2731;
+  border:1px solid rgba(19, 24, 29, 0.65);
+}
+.panel-default > .panel-heading , .panel-default > .panel-footer {
+background-color:#134E71;
+  border:1px solid #3D5367;
+
+width:100%;
+clear:both;
+}
+.panel-heading h3, .panel-heading h2, .panel-heading a {
+  color:white;
+}
+.btn, input.form-control,.input-group-addon, .panel-heading  {
+  border-radius:0px;
+}
+.input-group-addon .btn {
+}
+h1 {
+  margin-bottom:5px;
+}
+.app .panel-heading {
+}
+.app .panel-heading .menu {
+  text-align:right;
+}
+.app .body {
+  border:1px solid rgba(62, 73, 90, 0.75);
+  border-top:1px solid #000;
+  border-bottom:1px solid #000;
+}
+.menu ul {
+  margin:0px;
+  padding:0px;
+}
+.panel-heading,.panel-footer {
+box-shadow:inset 0px 10px 10px 0px rgb(44, 62, 78);
+background:linear-gradient(45deg, #2C4154 0, #2C3F50 48%, #2B4256 100%);
+}
+.stage:last-child {
+border-bottom:0px;
+}
+.app .title {
+  font-size:20px;
+}
+
+h1,h2  {
+  color: white;
+}
+
+.navbar-brand {
+  color:white !important;
+}
+.modal-header {
+  border-bottom:0px;
+}
+.modal-footer {
+  border-top:0px;
+}
+.input-group-addon {
+  margin:0px;
+  padding:0px;
+  background-color:transparent;
+  border:0px;
+}
+.app ul.actions li {
+  margin-left:0px;
+  padding-left:0px;
+}
+.table {
+  color:white;
+  background-color:#31353A !important;
+  border:1px solid #181f25;
+}
+table thead {
+  background-color:#3d668a;
+}
+
+.table > thead > tr > th {
+  border:0px;
+}
+th:first-child {
+border-left:0px;
+  box-shadow:
+inset 0px 11px 8px -10px rgba(0, 0, 0, 0.75), 
+inset 0px -11px 8px -10px rgba(0, 0, 0, 0.75)
+}
+th {
+border-left:1px solid #2E4A63;
+  box-shadow:
+ inset 0px 11px 8px -10px rgba(0, 0, 0, 0.75), 
+inset 0px -11px 8px -10px rgba(0, 0, 0, 0.75)
+}
+th:last-child {
+  box-shadow:
+inset 0px 11px 8px -10px rgba(0, 0, 0, 0.75), 
+inset 0px -11px 8px -10px rgba(0, 0, 0, 0.75)
+  }
+
+.table > tbody {
+border-left:1px solid #191C1F;
+border-right:1px solid #191C1F;
+}
+.table > tbody > tr > td {
+  border-top:0px;
+  vertical-align:middle;
+}
+
+
+
+td:first-child {
+border-left:0px;
+  box-shadow:
+    inset 0px 11px 8px -10px rgba(35, 42, 47, 0.75),
+    inset 0px -11px 8px -10px rgba(35, 42, 47, 0.75),
+    inset 11px 0px 8px -10px rgba(35, 42, 47, 0.75); 
+}
+tr {
+  border-top:1px solid #191C1F;
+}
+
+td {
+border-top:0px;
+border-left:1px solid #191C1F;
+  box-shadow:
+    inset 0px 11px 8px -10px rgba(35, 42, 47, 0.75),
+    inset 0px -11px 8px -10px rgba(35, 42, 47, 0.75);
+}
+td:last-child {
+border-right:1px solid 0px;
+  box-shadow:
+    inset 0px 11px 8px -10px rgba(35, 42, 47, 0.75),
+    inset 0px -11px 8px -10px rgba(35, 42, 47, 0.75),
+    inset -11px 0px 8px -10px rgba(35, 42, 47, 0.75); 
+}
+.table {
+  margin:5px;
+}
+.panel-footer {
+  border-radius:0px;
+}
+p, p b {
+  color:#969696;
+}
+hr {
+  border-top:1px solid #394E5F !important;
+}
+
+
+.body h3 {
+  margin-bottom:3px;
+}
+kbd{display:inline-block;padding:3px 5px;font:11px Consolas, "Liberation Mono", Menlo, Courier, monospace;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:solid 1px #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}
+.sweet-overlay {
+  z-index:25 !important;
+}
+.sweet-alert {
+  z-index:30;
+}
+.time-ago {
+  font-size:8px;
+  font-style:italic;
+}
+.hero-image {
+  background-image:url("https://res.cloudinary.com/lqyghlh2f/image/upload/v1462812347/AdobeStock_107797505_zodjpn.jpg");
+  width:100%;
+  height:900px;
+  background-size:cover;
+  opacity:.9;
+
+}
+nav {
+  position:absolute;
+  width:100%;
+  background-color:#454A50;
+  top:0px;
+  left:0px;
+}
+.page {
+  margin-top:75px;
+}
+.hero-field h1 {
+    opacity:.8;
+
+}
+.hero-field .btn {
+  margin-top:12px;
+}
+.hero-field {
+
+  position:absolute;
+  top:300px;
+  width:400px;
+  left:150px;
+}
+.hero-field ul li{
+font-size:12px;
+color:white;
+}
+.section-wrapper {
+  height:900px;
+}
+input[type="text"]:focus {
+  border-color:white;
+  box-shadow:none;
+}
+input[type="text"] {
+  box-shadow:none;
+  border:0px;
+  background-color:transparent;
+  color:white;
+  border-bottom:2px solid #20303E;
+}
+.logo-font {
+  font-family: quattrocento-sans, serif !important;
+}
