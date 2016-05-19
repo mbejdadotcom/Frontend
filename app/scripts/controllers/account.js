@@ -12,19 +12,23 @@ angular.module('ngdeployApp')
       $scope.user = dbUser;
 
       $scope.cards = [];
+      var loadCards = function() {
+        userService.cards.get().then(function (cards) {
+          $scope.cards = cards.data;
+        });
+      };
 
-       userService.cards.get().then(function(cards){
-         $scope.cards = cards.data;
-       })
       if (DEBUG) {
         $scope.payment = {
           number : "4242424242424242",
           exp_year : 17,
           exp_month:10,
           csv : 1234
-        }
+        };
         //code
       }
+
+
       $scope.newAccountToken = function(){
         sweet.show({
           title: 'Delete Account Token',
@@ -48,7 +52,8 @@ angular.module('ngdeployApp')
             sweet.show('Cancelled', 'Nothing changed', 'error');
           }
         });
-      }
+      };
+
         $scope.subscribe = function(form) {
           if (!$scope.payment) {
             return false;
@@ -66,7 +71,7 @@ angular.module('ngdeployApp')
                   }).then(function(response){
                     sweet.show('Card added!', 'Card has been added to your account..', 'success');
 
-                    console.log(response);
+                    loadCards();
 
                   })
 
@@ -74,5 +79,5 @@ angular.module('ngdeployApp')
                   console.log(error);
                 });
         }
-
+      loadCards();
     });
