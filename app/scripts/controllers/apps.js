@@ -8,10 +8,9 @@
  * Controller of the ngdeployApp
  */
 angular.module('ngdeployApp')
-  .controller('AppsCtrl', function ($rootScope,$scope, appService, token, userService, $uibModal, $log, sweet, teams,dbUser) {
+  .controller('AppsCtrl', function ($rootScope,$scope, appService, token, userService, $uibModal, $log, sweet, teams,dbUser,git) {
 
    $scope.user = dbUser;
-
 
 
     $scope.token = token;
