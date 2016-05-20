@@ -165,9 +165,9 @@
         </div>
         <div class="panel-footer">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
               <div class="input-group">
-                <input id="{{app.apps.ngDeployUrl}}" style="background-color:black" type="text" class="form-control input-xs" ng-model="'ngdeploy init '+app.apps.ngDeployUrl"/>
+                <input id="{{app.apps.ngDeployUrl}}" style="background-color:black" type="text" class="form-control input-xs" ng-model="me" ng-init="me = cli(app.apps.ngDeployUrl)"/>
 <div class="input-group-addon">
 
 
@@ -178,12 +178,9 @@
 </div>
               </div>
             </div>
-            <div class="col-md-6 text-right">
+            <div class="col-md-4 text-right">
               <div class="menu">
                 <ul class="list-inline list-unstyled">
-
-
-
                   <li>
                     <button class="btn  btn-xs btn-info" ui-sref="private.teams({appId:app.apps.id})"
                             ng-disabled="app.teams.type != 'owner'">

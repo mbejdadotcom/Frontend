@@ -59,6 +59,12 @@ angular.module('ngdeployApp')
 
 
     };
+    $scope.cli = function (name) {
+      return 'ngdeploy init '+name+' .';
+    }
+    
+    
+    
     $scope.promote = function (app, stage) {
       sweet.show({
         title: 'Confirm',
