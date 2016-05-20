@@ -165,6 +165,17 @@
         <div class="panel-footer">
           <div class="row">
             <div class="col-md-6">
+              <div class="input-group">
+                <input id="{{app.apps.ngDeployUrl}}" style="background-color:black" type="text" class="form-control input-sm" ng-model="'ngdeploy init '+app.apps.ngDeployUrl"/>
+<div class="input-group-addon">
+
+
+                <button class="btn btn-warning ng-isolate-scope" type="button" ngclipboard="" data-clipboard-target="#{{app.apps.ngDeployUrl}}">
+
+                  <i class="lnr lnr lnr-paperclip"></i>
+                </button>
+</div>
+              </div>
             </div>
             <div class="col-md-6 text-right">
               <div class="menu">
