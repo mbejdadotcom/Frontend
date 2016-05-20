@@ -8,7 +8,7 @@
  * Controller of the ngdeployApp
  */
 angular.module('ngdeployApp')
-    .controller('AccountCtrl', function(DEBUG,$scope, $http,$state, stripe,userService,sweet,dbUser) {
+    .controller('AccountCtrl', function(DEBUG,$scope, $http,$state, stripe,userService,sweet,dbUser, $window) {
       $scope.user = dbUser;
 
       $scope.cards = [];
@@ -29,6 +29,21 @@ angular.module('ngdeployApp')
       }
 
 
+
+
+
+      $scope.linkGithub = function(){
+
+        var u = $window.User.getIdentity();
+
+        $window.OAuth.popup("github").then(function(p) {
+          return u.addProvider(p);
+        }).done(function() {
+          sweet.show('Github Linked', 'Github linked to your account', 'success');
+
+        });
+
+      };
       $scope.newAccountToken = function(){
         sweet.show({
           title: 'Delete Account Token',

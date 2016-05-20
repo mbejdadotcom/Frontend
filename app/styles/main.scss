@@ -267,16 +267,18 @@ a, h1, {
 }
 
 .sweet-alert {
-  background-color: #373D46;
+  background-color: #364456;
   border-radius: 0px;
 }
-
+.sweet-alert p {
+  color:#f5f5ff;
+}
 .sweet-alert .sa-icon.sa-success::before, .sweet-alert .sa-icon.sa-success::after {
-  background: #373D46;
+  background: #364456;
 }
 
 .sweet-alert .sa-icon.sa-success .sa-fix {
-  background-color: #373D46;
+  background-color: #364456;
 }
 
 .sweet-alert .sa-icon.sa-success .sa-placeholder {

@@ -14,7 +14,8 @@
             <h5>Account Token
               <div class="pull-right">
                 <span tooltips tooltip-template="ngdeploy CLI token"
-                                            class="lnr lnr-question-circle "></span></div>
+                                            class="lnr lnr-question-circle "></span>
+              </div>
             </h5>
             <div class="input-group">
 
@@ -36,6 +37,7 @@
   </div>
     </span>
             </div>
+
             <hr>
           </div>
 
@@ -43,6 +45,9 @@
           <div class="col-md-6">
             <label>Email</label>
             <input class="form-control" type="text" ng-model="user.email"/>
+          </div>
+          <div class="col-md-6">
+            <button class="btn btn-info btn-lg pull-right" ng-click="linkGithub()">Link Github</button>
           </div>
 
         </div>
