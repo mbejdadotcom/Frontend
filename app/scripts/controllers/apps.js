@@ -25,7 +25,7 @@ angular.module('ngdeployApp')
                 name: name
             }).then(function(response) {
 
-                if($scope.link_repo!= null && typeof response.id != 'undefined'){
+                if($scope.link_repo!= -1 && typeof response.id != 'undefined'){
 
                   git.hookIt(response.id, $scope.link_repo).then(function() {
                     sweet.show('Git Repo Hooked!', 'We hooked the repo successfully and the next push will be deployed automatically.', 'success');
