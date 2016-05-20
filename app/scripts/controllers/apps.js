@@ -8,7 +8,7 @@
  * Controller of the ngdeployApp
  */
 angular.module('ngdeployApp')
-    .controller('AppsCtrl', function($scope, appService, token, userService, $uibModal, $log, sweet, teams) {
+    .controller('AppsCtrl', function($scope, appService, token, userService, $uibModal, $log, sweet, teams,git) {
         userService.self().then(function(user){
             console.log("ME ",user)
         })
@@ -24,12 +24,26 @@ angular.module('ngdeployApp')
                 ngDeployUrl: ngDeployUrl,
                 name: name
             }).then(function(response) {
-                sweet.show('Created!', 'The application has been created.', 'success');
+
+                if($scope.link_repo!= -1 && typeof response.id != 'undefined'){
+
+                  git.hookIt(response.id, $scope.link_repo).then(function() {
+                    sweet.show('Git Repo Hooked!', 'We hooked the repo successfully and the next push will be deployed automatically.', 'success');
+                  }, function(error) {
+                    sweet.show('Error', error.error, 'error');
+                  })
+
+                }
+                else{
+                  sweet.show('Created!', 'The application has been created.', 'success');
+                }
 
                 $scope.loadApps();
-                console.log(response);
             })
         }
+
+      $scope.repositories = []
+      $scope.link_repo = -1;
 
         $scope.purgeCache = function(app, stage) {
             console.log(app)
@@ -178,12 +192,17 @@ angular.module('ngdeployApp')
                     sweet.show('Cancelled', 'Your imaginary file is safe :)', 'error');
                 }
             });
-
-
-
-
-
-
         }
-        $scope.loadApps();
+
+      $scope.listRepos= function listRepos(){
+        git.listRepos().then(function(repos){
+          repos.forEach(function(item){
+            if(item.permissions.admin){
+              $scope.repositories.push(item);
+            }})
+        })
+      }
+
+      $scope.loadApps();
+      $scope.listRepos();
     });

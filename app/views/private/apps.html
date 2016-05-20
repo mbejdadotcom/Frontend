@@ -11,7 +11,7 @@
             <input id="token" class="form-control" ng-model="token" />
             <span class="input-group-addon">
         <button class="btn btn-default" type="button" ngclipboard data-clipboard-target="#token">
-            
+
             <i class="lnr lnr-paperclip"></i>
         </button>
 
@@ -35,7 +35,10 @@
                 <label>APP URL</label>
                 <input class="form-control" type="text" ng-model="ngDeployUrl" />
                 <small>https://development-<span class="">example</span>.ngdeploy.com</small>
+                <select class="full-width" style="width:90%; margin-left:15px;" ng-options="repo.full_name for repo in repositories" ng-model="link_repo"> </select>
             </div>
+
+
             <div class="panel-footer">
                 <button class="btn btn-info full-width create-app" ng-click="createApplication(ngDeployUrl,name)">Create Application</button>
             </div>
@@ -120,7 +123,7 @@ Staging
 </b>
                         <small class="block">
  <span class="lnr lnr-link"></span> https://production-{{app.apps.ngDeployUrl}}.ngdeploy.com
-  
+
 </small>
                         <small class="block">
                         <ul class="list-inline list-unstyled actions">
