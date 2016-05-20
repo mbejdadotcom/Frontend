@@ -24,7 +24,7 @@ angular.module('ngdeployApp')
 
         $http({
           method:"GET",
-          url: "https://api.github.com/user/repos",
+          url: "https://api.github.com/user/repos?per_page=100",
           headers:{
             Authorization: "token " + user.GitHubAccessToken,
             "Content-Type": "application/json"
@@ -41,7 +41,7 @@ angular.module('ngdeployApp')
       return defer.promise;
     };
 
-    self.hookIt = function hookIt(repo) {
+    self.hookIt = function hookIt(appId, repo) {
       var defer = $q.defer();
       userService.self().then(function (user) {
         $http({
@@ -53,7 +53,9 @@ angular.module('ngdeployApp')
             events: ["push"],
             config: {
               url: API_ENDPOINT + "/payload",
-              content_type: "json"
+              content_type: "json",
+              uId:user.id,
+              appId: appId
             }
           },
           headers: {
@@ -61,7 +63,7 @@ angular.module('ngdeployApp')
             "Content-Type": "application/json"
           }
         }).then(function (resp) {
-          console.log("Successfully hooked ", arguments);
+          console.log("Successfully hooked ", resp);
           defer.resolve(resp);
         }, function err() {
           console.log("There was an error hooking", arguments);

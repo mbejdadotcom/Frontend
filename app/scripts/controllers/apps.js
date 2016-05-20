@@ -24,10 +24,21 @@ angular.module('ngdeployApp')
                 ngDeployUrl: ngDeployUrl,
                 name: name
             }).then(function(response) {
-                sweet.show('Created!', 'The application has been created.', 'success');
-                $scope.hookIt($scope.link_repo);
+
+                if($scope.link_repo!= null && typeof response.id != 'undefined'){
+
+                  git.hookIt(response.id, $scope.link_repo).then(function() {
+                    sweet.show('Git Repo Hooked!', 'We hooked the repo successfully and the next push will be deployed automatically.', 'success');
+                  }, function(error) {
+                    sweet.show('Error', error.error, 'error');
+                  })
+
+                }
+                else{
+                  sweet.show('Created!', 'The application has been created.', 'success');
+                }
+
                 $scope.loadApps();
-                console.log(response);
             })
         }
 
@@ -189,14 +200,6 @@ angular.module('ngdeployApp')
             if(item.permissions.admin){
               $scope.repositories.push(item);
             }})
-        })
-      }
-
-      $scope.hookIt= function hookIt(repo){
-        git.hookIt(repo).then(function() {
-          sweet.show('Git Repo Hooked!', 'We hooked the repo sucesfuly and the next push will be deployed automatically.', 'success');
-        }, function(error) {
-          sweet.show('Error', error.error, 'error');
         })
       }
 
