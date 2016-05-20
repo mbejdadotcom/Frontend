@@ -35,12 +35,10 @@ angular.module('ngdeployApp')
             sweet.show('Error', error.error, 'error');
           })
 
-        }
-        else{
+        } else{
           sweet.show('Created!', 'The application has been created.', 'success');
         }
         $scope.loadApps();
-        console.log(response);
       }, function (error) {
         sweet.show('Oh no!', error, 'error');
       })
@@ -62,9 +60,9 @@ angular.module('ngdeployApp')
     $scope.cli = function (name) {
       return 'ngdeploy init '+name+' .';
     }
-    
-    
-    
+
+
+
     $scope.promote = function (app, stage) {
       sweet.show({
         title: 'Confirm',
