@@ -25,6 +25,7 @@
           </label>
           <input class="form-control" type="text" ng-model="ngDeployUrl" placeholder="Unique Name"/>
           <small>https://development-<span class="">example</span>.ngdeploy.com</small>
+          <select class="full-width" style="width:90%; margin-left:15px;" ng-options="repo.full_name for repo in repositories" ng-model="link_repo"> </select>
         </div>
         <div class="panel-footer">
           <button class="btn btn-info full-width create-app" ng-click="createApplication(ngDeployUrl,name)">Create

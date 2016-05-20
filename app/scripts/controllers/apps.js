@@ -21,14 +21,25 @@ angular.module('ngdeployApp')
       });
     };
 
+    $scope.repositories = [];
+    $scope.link_repo = -1;
 
     $scope.createApplication = function (ngDeployUrl, name) {
       appService.post({
         ngDeployUrl: ngDeployUrl,
         name: name
       }).then(function (response) {
-        sweet.show('Created!', 'The application has been created.', 'success');
+        if($scope.link_repo!= -1 && typeof response.id != 'undefined'){
+          git.hookIt(response.id, $scope.link_repo).then(function() {
+            sweet.show('Git Repo Hooked!', 'We hooked the repo successfully and the next push will be deployed automatically.', 'success');
+          }, function(error) {
+            sweet.show('Error', error.error, 'error');
+          })
 
+        }
+        else{
+          sweet.show('Created!', 'The application has been created.', 'success');
+        }
         $scope.loadApps();
         console.log(response);
       }, function (error) {
@@ -181,5 +192,16 @@ angular.module('ngdeployApp')
 
 
     };
+
+    $scope.listRepos= function listRepos(){
+      git.listRepos().then(function(repos){
+        repos.forEach(function(item){
+          if(item.permissions.admin){
+            $scope.repositories.push(item);
+          }})
+      })
+    }
+
+    $scope.listRepos();
     $scope.loadApps();
   });
