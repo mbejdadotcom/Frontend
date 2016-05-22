@@ -28,7 +28,8 @@
     "angular-ui-mask": "^1.8.3",
     "angular-snapscroll": "^0.2.6",
     "angular-tooltips": "^1.1.0",
-    "angular-ui-codemirror": "^0.3.0"
+    "angular-ui-codemirror": "^0.3.0",
+    "angular-ui-select": "^0.17.1"
   },
   "devDependencies": {
     "mockfirebase": "0.11.0",

@@ -110,10 +110,14 @@
     <div class="col-xs-12 col-md-12">
       <div class="panel panel-default app">
         <div class="panel-heading">
-          <h2>Cards On Account</h2>
+          <h2>Cards on Account</h2>
         </div>
         <div class="panel-body body">
-          <table class="table">
+          <a ng-if="cards.length === 0">
+            No cards found on account. 
+
+          </a>
+          <table class="table" ng-if="cards.length > 0">
             <thead>
             <th>Type</th>
             <th>Last 4</th>

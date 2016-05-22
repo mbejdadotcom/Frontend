@@ -25,7 +25,22 @@
           </label>
           <input class="form-control" type="text" ng-model="ngDeployUrl" placeholder="Unique Name"/>
           <small>https://development-<span class="">example</span>.ngdeploy.com</small>
-          <select class="full-width" style="width:90%; margin-left:15px;" ng-options="repo.full_name for repo in repositories" ng-model="link_repo"> </select>
+
+
+          <p class="small-text">Link your Github repo for automatic deployments. (optional)</p>
+
+          <ui-select ng-model="link_repo.selected">
+            <ui-select-match>
+              <span ng-bind="$select.selected.name"></span>
+            </ui-select-match>
+            <ui-select-choices repeat="item in (repositories | filter: $select.search) track by item.id">
+              <span ng-bind="item.full_name"></span>
+            </ui-select-choices>
+          </ui-select>
+
+
+
+
         </div>
         <div class="panel-footer">
           <button class="btn btn-info full-width create-app" ng-click="createApplication(ngDeployUrl,name)">Create
@@ -38,14 +53,22 @@
       <div class="wrapper app panel panel-default">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
               <h2 class="uppercase title">
                 {{app.apps.name}}
+
+
               </h2>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
               <small class="pull-right" ng-if="app.teams.type == 'owner'"> owner</small>
               <small class="pull-right" ng-if="app.teams.type != 'owner'"> collaborator</small>
+
+            </div>
+            <div class="col-md-12">
+              <a ng-if="app.github_hooked.repoName" class="small-text" style="margin:0px;padding:0px;font-size:10px;position:absolute;display:block;bottom:-10px;">
+                <i class="lnr lnr-cloud-sync"></i> {{app.github_hooked.repoName}}
+              </a>
             </div>
           </div>
         </div>
@@ -162,9 +185,15 @@
 
             </div>
           </div>
+
+
+
+
+
         </div>
         <div class="panel-footer">
           <div class="row">
+
             <div class="col-md-8">
               <div class="input-group">
                 <input id="{{app.apps.ngDeployUrl}}" style="background-color:black" type="text" class="form-control input-xs" ng-model="me" ng-init="me = cli(app.apps.ngDeployUrl)"/>

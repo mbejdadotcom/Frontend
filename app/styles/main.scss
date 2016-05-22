@@ -763,3 +763,27 @@ input[type="text"] {
   line-height: 1.5;
   border-radius: 3px;
 }
+input[type="search"] {
+  color:white;
+  margin:0px;
+}
+input[type="search"] {
+  width:100% !important;
+  background:transparent;
+}
+input[type="search"]:focus {
+  border:1px solid white;
+}
+
+.ui-select-bootstrap {
+  border:1px solid white;
+}
+.ui-select-container .btn {
+  margin-bottom:0px;
+}
+.ui-select-container .btn-default-focus {
+  background-color:transparent;
+}
+.small-text {
+  font-size:10px;
+}

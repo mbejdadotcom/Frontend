@@ -20,16 +20,21 @@ angular.module('ngdeployApp')
       });
     };
 
+
+
+
     $scope.repositories = [];
-    $scope.link_repo = -1;
+    $scope.link_repo = {selected:[]};
+
 
     $scope.createApplication = function (ngDeployUrl, name) {
       appService.post({
         ngDeployUrl: ngDeployUrl,
         name: name
       }).then(function (response) {
-        if($scope.link_repo!= -1 && typeof response.id != 'undefined'){
-          git.hookIt(response.id, $scope.link_repo).then(function() {
+
+        if(!angular.isArray($scope.link_repo.selected) && typeof response.id != 'undefined'){
+          git.hookIt(response.id, $scope.link_repo.selected).then(function() {
             sweet.show('Git Repo Hooked!', 'We hooked the repo successfully and the next push will be deployed automatically.', 'success');
           }, function(error) {
             sweet.show('Error', error.error, 'error');
