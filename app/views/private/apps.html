@@ -27,17 +27,6 @@
           <small>https://development-<span class="">example</span>.ngdeploy.com</small>
 
 
-          <p class="small-text">Link your Github repo for automatic deployments. (optional)</p>
-
-          <ui-select ng-model="link_repo.selected">
-            <ui-select-match>
-              <span ng-bind="$select.selected.name"></span>
-            </ui-select-match>
-            <ui-select-choices repeat="item in (repositories | filter: $select.search) track by item.id">
-              <span ng-bind="item.full_name"></span>
-            </ui-select-choices>
-          </ui-select>
-
 
 
 
@@ -67,7 +56,6 @@
             </div>
             <div class="col-md-12">
               <a ng-if="app.github_hooked.repoName" class="small-text" style="margin:0px;padding:0px;font-size:10px;position:absolute;display:block;bottom:-10px;">
-                <i class="lnr lnr-cloud-sync"></i> {{app.github_hooked.repoName}}
               </a>
             </div>
           </div>
@@ -169,7 +157,7 @@
                                                                ng-href="https://production-{{app.apps.ngDeployUrl}}.ngdeploy.com/__env.js">
                     Environment</a></li>
 
-                  <li><span class="lnr lnr-cloud-sync"></span> <a href="javascript:;" ng-click="purgeCache(app.apps)">Purge
+                  <li><span class="lnr lnr-sync"></span> <a href="javascript:;" ng-click="purgeCache(app.apps)">Purge
                     Cache</a></li>
                   <li class="pull-right"><span ng-if="app.apps.promotedToProduction" class="time-ago"
                                                am-time-ago="app.apps.promotedToProduction | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span>
@@ -210,6 +198,16 @@
             <div class="col-md-4 text-right">
               <div class="menu">
                 <ul class="list-inline list-unstyled">
+
+
+                  <li>
+                    <button class="btn  btn-xs btn-success" ui-sref="private.sync({appId:app.apps.id})"
+                            ng-disabled="app.teams.type != 'owner'">
+                      <span class="lnr lnr-cloud-sync"></span>
+                    </button>
+                  </li>
+
+
                   <li>
                     <button class="btn  btn-xs btn-info" ui-sref="private.teams({appId:app.apps.id})"
                             ng-disabled="app.teams.type != 'owner'">

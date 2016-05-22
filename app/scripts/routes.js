@@ -234,6 +234,29 @@ angular.module('ngdeployApp')
                         }
                     }
                 })
+              .state('private.sync', {
+                url: "/apps/:appId/sync",
+                views: {
+                  "main": {
+                    templateUrl: "views/private/sync.html",
+                    controller: "SyncCtrl"
+                  }
+                },
+                resolve: {
+                  appObject: function ($q, $window,appService,$stateParams) {
+                    var deferred = $q.defer();
+
+                      appService.fetch($stateParams.appId).then(function (app) {
+                        deferred.resolve(app.response)
+
+                      });
+                    
+
+                    return deferred.promise;
+
+                  }
+                }
+              })
         }
     ]).controller('createApplicationModalCtrl', function($scope, appService) {
         $scope.createApplication = function(ngDeployUrl, name) {

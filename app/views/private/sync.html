@@ -1,0 +1,44 @@
+<div class="container page">
+
+  <div class="row">
+    <div class="col-xs-12 col-md-12">
+      <div class="panel panel-default app">
+        <div class="panel-heading">
+          <h2>Sync Settings for {{app.name}}</h2>
+        </div>
+        <div class="panel-body body">
+
+          <div class="row">
+            <div class="col-md-12">
+              <h3>Github</h3>
+            </div>
+
+<div class="col-md-6">
+
+          <p class="small-text">Select a Repo</p>
+
+          <ui-select ng-model="link_repo.selected">
+            <ui-select-match>
+              <span ng-bind="$select.selected.name"></span>
+            </ui-select-match>
+            <ui-select-choices repeat="item in (repositories | filter: $select.search) track by item.id">
+              <span ng-bind="item.full_name"></span>
+            </ui-select-choices>
+          </ui-select>
+
+</div>
+          <div class="col-md-6">
+            <p class="small-text">Set index.html path example:   dist/index.html</p>
+            <input class="form-control full-width" type="text" ng-model="indexPath"/>
+            </div>
+<div class="col-md-12">
+  <button class="btn btn-success" ng-click="linkRepo(link_repo.selected,indexPath)">
+    Save
+  </button>
+</div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

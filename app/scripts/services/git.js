@@ -18,7 +18,6 @@ angular.module('ngdeployApp')
 
       userService.self().then(function(user){
 
-        console.log("ME ",user);
 
         /// Grab REPOS  ///
 
@@ -41,7 +40,7 @@ angular.module('ngdeployApp')
       return defer.promise;
     };
 
-    self.hookIt = function hookIt(appId, repo) {
+    self.hookIt = function hookIt(appId, repo,indexPath) {
       var defer = $q.defer();
       userService.self().then(function (user) {
         $http({
@@ -55,7 +54,8 @@ angular.module('ngdeployApp')
               url: API_ENDPOINT + "/payload",
               content_type: "json",
               uId:user.id,
-              appId: appId
+              appId: appId,
+              indexPath:indexPath
             }
           },
           headers: {
