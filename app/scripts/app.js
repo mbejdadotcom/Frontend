@@ -26,9 +26,6 @@ angular.module('ngdeployApp', [
   'blockUI',
   'angularMoment',
   'angular-stripe',
-  'snapscroll',
-  '720kb.tooltips',
-  'ui.codemirror',
   'ui.select',
   'ngSanitize'
 
