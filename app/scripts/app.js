@@ -1,10 +1,13 @@
 window.GLOBALS = {
   "localhost": {
-    STRIP_APIKEY: "pk_07bMnvtw1B0waY5ZG52Jmq8b3c8J8",
+    STRIP_APIKEY: "pk_07bMnvtw1B0waY5ZG52Jmq8b3c8J8"
   },
   "ngdeploy.com": {
     STRIP_APIKEY: "pk_07bMpaLqyXyW6OUFVYsqpALSnavDH"
 
+  },
+  "s3-us-west-2.amazonaws.com" :{
+    STRIP_APIKEY: "pk_07bMpaLqyXyW6OUFVYsqpALSnavDH"
   }
 };
 
