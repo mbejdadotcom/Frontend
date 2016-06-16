@@ -11,7 +11,7 @@ html, body {
 }
 
 body {
-  background-color: #88BEFF;
+  background-color: #71B2FF;
 
 }
 
@@ -555,7 +555,6 @@ nav {
 
 .hero-field h1 {
   font-weight: 700;
-  font-size: 4.5em;
   text-shadow: 0px 2px 3px #555;
 }
 
@@ -564,10 +563,10 @@ nav {
 }
 
 .hero-field {
-  position: absolute;
-  top: 250px;
-  width: 600px;
-  left: 400px;
+
+  width: 700px;
+margin:auto;
+  margin-bottom:200px;
 }
 
 .hero-field ul li {
