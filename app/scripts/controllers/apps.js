@@ -163,6 +163,7 @@ angular.module('ngdeployApp')
     };
 
     $scope.upgrade = function (app) {
+      console.log(app);
 
       sweet.show({
         title: 'Confirm',
@@ -173,7 +174,7 @@ angular.module('ngdeployApp')
         closeOnCancel: true
       }, function (isConfirm) {
         if (isConfirm) {
-          appService.upgrade(app.ngDeployUrl).then(function (response) {
+          appService.upgrade(app.id).then(function (response) {
             sweet.show('Deleted!', 'The application has been deleted.', 'success');
             $scope.loadApps();
           }, function (error) {
@@ -182,7 +183,7 @@ angular.module('ngdeployApp')
           });
 
         } else {
-          sweet.show('Cancelled', 'Your imaginary file is safe :)', 'error');
+          sweet.show('Cancelled', 'No upgrade for you', 'error');
         }
       });
 

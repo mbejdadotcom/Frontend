@@ -13,7 +13,7 @@ angular.module('ngdeployApp')
         self.domains = {
             post: function(data) {
                 var defer = $q.defer();
-        
+
                 $http.post(API_ENDPOINT + '/apps/domains', data).then(function(response) {
                     defer.resolve(response.data);
 
@@ -27,7 +27,7 @@ angular.module('ngdeployApp')
         self.ssls = {
             post: function(data) {
                 var defer = $q.defer();
-    
+
 
                 $http.post(API_ENDPOINT + '/apps/ssls', data).then(function(response) {
                     defer.resolve(response.data);
@@ -107,10 +107,10 @@ angular.module('ngdeployApp')
             return defer.promise;
 
         }
-        self.upgrade = function(ngDeployUrl) {
+        self.upgrade = function(id) {
             var defer = $q.defer();
             $http.post(API_ENDPOINT + '/apps/upgrades', {
-                ngDeployUrl: ngDeployUrl
+                id: id
             }).then(function(response) {
                 defer.resolve(response.data);
 
