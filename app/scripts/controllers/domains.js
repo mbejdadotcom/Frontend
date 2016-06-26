@@ -35,7 +35,7 @@ appService.fetch($scope.appId).then(function(results) {
         }
         $scope.addSSL = function(ssl) {
             var postData = {}
-            postData.ngDeployUrl = $scope.app.ngDeployUrl;
+            postData.id = $scope.app.id;
             if (ssl  && ssl.key && ssl.certificate) {
                 postData.ssl = "enabled";
                 postData.sslKey = ssl.key;
