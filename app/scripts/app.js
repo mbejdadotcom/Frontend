@@ -6,6 +6,10 @@ window.GLOBALS = {
     STRIP_APIKEY: "pk_07bMpaLqyXyW6OUFVYsqpALSnavDH"
 
   },
+  "development-ngdeploy.ngdeploy.com": {
+    STRIP_APIKEY: "pk_07bMpaLqyXyW6OUFVYsqpALSnavDH"
+
+  },
   "s3-us-west-2.amazonaws.com" :{
     STRIP_APIKEY: "pk_07bMpaLqyXyW6OUFVYsqpALSnavDH"
   }
