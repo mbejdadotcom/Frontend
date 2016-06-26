@@ -47,6 +47,16 @@ angular.module('ngdeployApp', [
   })
   .run(function (OAUTH_KEY, $window, $rootScope, $state) {
 
+    $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
+      if (toState.data && angular.isDefined(toState.data.bodyClasses)) {
+        $rootScope.bodyClasses = toState.data.bodyClasses;
+        return;
+      }
+
+    });
+
+
+
     if ($window.User.isLogged()) {
       var u = $window.User.getIdentity();
       $rootScope.user = u;

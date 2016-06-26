@@ -11,7 +11,7 @@ html, body {
 }
 
 body {
-  background-color: #71B2FF;
+  background-color: white;
 
 }
 
@@ -89,11 +89,9 @@ a:hover {
   font-size: 20px;
 }
 
-a:hover {
-  color: white;
-}
 
-a, small, b, label, h2, h3, h4, h5 {
+
+.dashboard a, .dashboard small, .dashboard b, .dashboard label, .dashboard h1, .dashboard h2, .dashboard h3, .dashboard h4, .dashboard h5 {
   color: white;
 }
 
@@ -147,9 +145,7 @@ img.logo {
   color: white;
 }
 
-a, h1, {
-  color: white;
-}
+
 
 .navbar {
   background-color: #626E7B;
@@ -414,13 +410,6 @@ h1 {
   font-size: 20px;
 }
 
-h1, h2 {
-  color: white;
-}
-
-.navbar-brand {
-  color: white !important;
-}
 
 .modal-header {
   border-bottom: 0px;
@@ -542,19 +531,20 @@ kbd {
 }
 
 nav {
-  position: absolute;
   width: 100%;
-  background-color: transparent;
   top: 0px;
   left: 0px;
 }
+.dashboard nav {
+  background-color: #73ADFF;
 
+}
 .page {
-  margin-top: 75px;
 }
 
 .hero-field h1 {
   font-weight: 700;
+  color:black;
 }
 
 .hero-field .btn {
@@ -565,12 +555,15 @@ nav {
 
   width: 700px;
 margin:auto;
-  margin-bottom:200px;
+  color:black;
+  position:relative;
+  top:-180px;
+
 }
 
 .hero-field ul li {
   font-size: 1.0em;
-  color: white;
+  color: black;
   margin: 3px 0px;
 }
 
@@ -781,3 +774,16 @@ a,p,span,label,b {
   font-family:'Yandex Sans Display Web', Arial, sans-serif;
 }
 
+.btn-black {
+  -webkit-transition: background linear 200ms;
+  border:3px solid black !important;
+  border-radius:20px  !important;
+  color:black  !important;
+}
+.navbar-brand {
+  color:black;
+}
+.dashboard {
+  background-color:#73adff;
+}
+* {}
