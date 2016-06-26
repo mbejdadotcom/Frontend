@@ -3,6 +3,7 @@
     <div class="col-md-12">
       <h1>Applications</h1>
     </div>
+<<<<<<< HEAD
   </div>
 
   <div class="row">
@@ -12,6 +13,46 @@
           <div class="row">
             <div class="col-md-12 header">
               <h2 class="uppercase title">Create Application</h2>
+=======
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <h5>Account Token</h5>
+        <div class="input-group">
+            <input id="token" class="form-control" ng-model="token" />
+            <span class="input-group-addon">
+        <button class="btn btn-default" type="button" ngclipboard data-clipboard-target="#token">
+
+            <i class="lnr lnr-paperclip"></i>
+        </button>
+
+    </span>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 app-panel">
+        <div class="wrapper app panel panel-default hero">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-12 header">
+                        <h2 class="uppercase title">Create Application</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 body">
+                <label>APP NAME</label>
+                <input class="form-control" type="text" ng-model="name" />
+                <label>APP URL</label>
+                <input class="form-control" type="text" ng-model="ngDeployUrl" />
+                <small>https://development-<span class="">example</span>.ngdeploy.com</small>
+                <select class="full-width" style="width:90%; margin-left:15px;" ng-options="repo.full_name for repo in repositories" ng-model="link_repo"> </select>
+            </div>
+
+
+            <div class="panel-footer">
+                <button class="btn btn-info full-width create-app" ng-click="createApplication(ngDeployUrl,name)">Create Application</button>
+>>>>>>> 6ae79884e6a4c3e334184b2680d7eb240f64dcad
             </div>
           </div>
         </div>
@@ -171,8 +212,18 @@
 
               </small>
 
+<<<<<<< HEAD
             </div>
           </div>
+=======
+</b>
+                        <small class="block">
+ <span class="lnr lnr-link"></span> https://production-{{app.apps.ngDeployUrl}}.ngdeploy.com
+
+</small>
+                        <small class="block">
+                        <ul class="list-inline list-unstyled actions">
+>>>>>>> 6ae79884e6a4c3e334184b2680d7eb240f64dcad
 
 
 

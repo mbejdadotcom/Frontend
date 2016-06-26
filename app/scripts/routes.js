@@ -250,7 +250,7 @@ angular.module('ngdeployApp')
                         deferred.resolve(app.response)
 
                       });
-                    
+
 
                     return deferred.promise;
 

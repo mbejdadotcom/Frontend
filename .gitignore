@@ -5,4 +5,5 @@ dist
 .tmp
 .sass-cache
 bower_components
+.idea
 ngdeploy.komodoproject

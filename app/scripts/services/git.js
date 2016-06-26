@@ -19,6 +19,7 @@ angular.module('ngdeployApp')
       userService.self().then(function(user){
 
 
+
         /// Grab REPOS  ///
 
         $http({
@@ -70,9 +71,11 @@ angular.module('ngdeployApp')
           defer.reject(resp);
         });
 
-      })
-      return defer.promise;
+        /// \SET HOOK   ////}
 
+        return defer.promise;
+
+      })
     }
 
     return self;
