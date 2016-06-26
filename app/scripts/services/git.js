@@ -17,6 +17,7 @@ angular.module('ngdeployApp')
       var defer = $q.defer();
 
       userService.self().then(function(user){
+        console.log("USER",user)
 
 
 

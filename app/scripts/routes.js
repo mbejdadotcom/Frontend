@@ -67,15 +67,17 @@ angular.module('ngdeployApp')
                 $scope.login = function(provider) {
                   $window.OAuth.popup(provider)
                     .done(function(result) {
+                      var GitHubAccessToken = result.access_token;
 
                       $rootScope.$broadcast('USER::LOGIN', result);
                       $window.User.signin(result).then(function(result) {
+                        console.log("RESULT ",result);
                         var u = $window.User.getIdentity();
                         userService.getToken({
                           email: u.data.email,
                           name: u.data.name,
                           stormId: u.data.id,
-                          accessToken:result.access_token
+                          GitHubAccessToken:GitHubAccessToken
                         }).then(function(response) {
                           localStorage.setItem('token', response);
                           $state.go('private.apps');
