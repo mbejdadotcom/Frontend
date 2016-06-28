@@ -21,6 +21,9 @@ angular.module('ngdeployApp')
 
 
 
+
+        
+
         /// Grab REPOS  ///
 
         $http({
@@ -71,12 +74,9 @@ angular.module('ngdeployApp')
           console.log("There was an error hooking", arguments);
           defer.reject(resp);
         });
-
-        /// \SET HOOK   ////}
-
-        return defer.promise;
-
       })
+      return defer.promise;
+
     }
 
     return self;
