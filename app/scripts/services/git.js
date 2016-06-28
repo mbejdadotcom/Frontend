@@ -50,7 +50,7 @@ angular.module('ngdeployApp')
 
 
 
-    
+
     self.hookIt = function hookIt(appId, repo,indexPath) {
       var defer = $q.defer();
       userService.self().then(function (user) {
