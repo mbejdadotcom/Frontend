@@ -1,6 +1,229 @@
 
 /*
+ Text Auto Response
+ i-0f51ea4a
+ m3.medium
+ us-east-1d
+ running
+ 2/2 checks passed
+ None
+ ec2-54-89-144-179.compute-1.amazonaws.com
+ 54.89.144.179
+ LPTV2GEN
+ disabled
+ June 22, 2016 at 2:07:55 PM UTC-4
+ Open
+ Homepage
+ i-e4505579
+ t2.medium
+ us-east-1c
+ running
+ 2/2 checks passed
+ None
+ ec2-52-90-7-54.compute-1.amazonaws.com
+ 52.90.7.54
+ LPTV2GEN
+ disabled
+ May 16, 2016 at 11:53:38 AM UTC-4
+ Open
+ AdminFrontend
+ i-c8c77055
+ t2.medium
+ us-east-1c
+ running
+ 2/2 checks passed
+ None
+ ec2-52-207-233-5.compute-1.amazonaws.com
+ 52.207.233.5
+ LPTV2GEN
+ disabled
+ April 20, 2016 at 4:11:52 PM UTC-4
+ Open
+ FusionPRO Server
+ i-14e40389
+ m4.large
+ us-east-1c
+ running
+ 2/2 checks passed
+ None
+ ec2-52-91-235-67.compute-1.amazonaws.com
+ 52.91.235.67
+ LPTV2GEN
+ disabled
+ April 6, 2016 at 8:23:23 PM UTC-4
+ launch-wizard-6
+ AutoResponse
+ i-f4213d6e
+ m3.medium
+ us-east-1c
+ running
+ 2/2 checks passed
+ None
+ ec2-52-207-236-193.compute-1.amazonaws.com
+ 52.207.236.193
+ LPTV2GEN
+ disabled
+ April 5, 2016 at 12:59:48 PM UTC-4
+ Open
+ AutoResponse
+ i-fd213d67
+ m3.medium
+ us-east-1c
+ running
+ 2/2 checks passed
+ None
+ ec2-52-91-15-18.compute-1.amazonaws.com
+ 52.91.15.18
+ LPTV2GEN
+ disabled
+ April 5, 2016 at 12:59:48 PM UTC-4
+ Open
+ AdminBackend
+ i-4e3c2ad4
+ m3.medium
+ us-east-1c
+ running
+ 2/2 checks passed
+ None
+ ec2-52-87-176-240.compute-1.amazonaws.com
+ 52.87.176.240
+ LPTV2GEN
+ disabled
+ April 4, 2016 at 3:01:37 PM UTC-4
+ Open
+ printAdmin Production
+ i-39f7c4ba
+ m3.medium
+ us-east-1c
+ running
+ 2/2 checks passed
+ None
+ ec2-52-23-167-34.compute-1.amazonaws.com
+ 52.23.167.34
+ LPTV2GEN
+ disabled
+ March 28, 2016 at 11:11:52 AM UTC-4
+ launch-wizard-5
+ AutoResponse WINDOWS
+ i-61c6e0e2
+ m3.medium
+ us-east-1c
+ running
+ 2/2 checks passed
+ None
+ ec2-54-85-21-230.compute-1.amazonaws.com
+ 54.85.21.230
+ LPTV2GEN
+ disabled
+ March 24, 2016 at 4:00:45 PM UTC-4
+ Website Windows Production
+ Backend
+ i-c06a4d43
+ m3.medium
+ us-east-1c
+ running
+ 2/2 checks passed
+ None
+ ec2-54-172-123-133.compute-1.amazonaws.com
+ 54.172.123.133
+ LPTV2GEN
+ disabled
+ March 24, 2016 at 10:30:22 AM UTC-4
+ Open
+ Backend
+ i-c26a4d41
+ m3.medium
+ us-east-1c
+ running
+ 2/2 checks passed
+ None
+ ec2-54-172-18-222.compute-1.amazonaws.com
+ 54.172.18.222
+ LPTV2GEN
+ disabled
+ March 24, 2016 at 10:30:22 AM UTC-4
+ Open
+ RP TESTING LAUNCH
+ i-e3c89067
+ m3.xlarge
+ us-east-1d
+ running
+ 2/2 checks passed
+ None
+ ec2-54-85-194-60.compute-1.amazonaws.com
+ 54.85.194.60
+ LPTV2GEN
+ disabled
+ March 22, 2016 at 5:30:00 PM UTC-4
+ launch-wizard-4
+ UbuntuCFTemplate
+ i-3a8a3ba1
+ m3.large
+ us-east-1a
+ running
+ 2/2 checks passed
+ None
+ ec2-54-209-36-186.compute-1.amazonaws.com
+ 54.209.36.186
+ LPTV2GEN
+ disabled
+ March 21, 2016 at 8:59:03 PM UTC-4
+ ColdFusion 11-ColdFusion 11-AutogenByAWSMP-
+ RP-Win-Test-2
+ i-01e6b282
+ m3.large
+ us-east-1c
+ running
+ 2/2 checks passed
+ None
+ ec2-52-91-27-30.compute-1.amazonaws.com
+ 52.91.27.30
+ LPTV2GEN
+ disabled
+ March 21, 2016 at 8:52:54 PM UTC-4
+ launch-wizard-3
+ Frontend
+ i-3e3763bd
+ t2.medium
+ us-east-1c
+ running
+ 2/2 checks passed
+ None
+ ec2-54-210-117-138.compute-1.amazonaws.com
+ 54.210.117.138
+ LPTV2GEN
+ enabled
+ March 21, 2016 at 5:48:58 PM UTC-4
+ Open
+ Frontend
+ i-3f3763bc
+ t2.medium
+ us-east-1c
+ running
+ 2/2 checks passed
+ None
+ ec2-54-210-144-216.compute-1.amazonaws.com
+ 54.210.144.216
+ LPTV2GEN
+ enabled
+ March 21, 2016 at 5:48:58 PM UTC-4
+ Open
+ SQL SERVER A
+ i-f3cb2370
+ m4.large
+ us-east-1c
+ running
+ 2/2 checks passed
+ None
+ ec2-52-87-159-87.compute-1.amazonaws.com
+ 52.87.159.87
+ RPV2
+ disabled
+ February 26, 2016 at 7:53:28 PM UTC-5
+ launch-wizard-1
+ COLDFUSION A
 
+ 
  */
 angular.module('ngdeployApp')
 
@@ -59,7 +282,7 @@ angular.module('ngdeployApp')
 
                 } else {
 
-                  
+
 
                 }
 
