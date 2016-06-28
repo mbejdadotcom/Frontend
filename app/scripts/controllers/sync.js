@@ -27,11 +27,8 @@ angular.module('ngdeployApp')
       }, function (error) {
         sweet.show('Error', error.error, 'error');
       })
-
     };
-
-
-
+    
     $scope.listRepos = function listRepos() {
       git.listRepos().then(function (repos) {
         repos.forEach(function (item) {
