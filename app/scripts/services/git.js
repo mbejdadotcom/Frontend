@@ -22,7 +22,7 @@ angular.module('ngdeployApp')
 
 
 
-        
+
 
         /// Grab REPOS  ///
 
@@ -44,6 +44,9 @@ angular.module('ngdeployApp')
 
       return defer.promise;
     };
+
+
+    
 
     self.hookIt = function hookIt(appId, repo,indexPath) {
       var defer = $q.defer();
