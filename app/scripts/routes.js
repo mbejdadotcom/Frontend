@@ -52,17 +52,19 @@ angular.module('ngdeployApp')
             "navbar@": {
               templateUrl: "views/navbar/public.html",
               controller: function($rootScope, $scope, $window, $state, userService,$stateParams) {
-                console.log("State",$stateParams)
 
-                var query = window.location.href.split("?").slice(1).join("?");
-                var redirect = query.split("=");
-                if(redirect[0] == "redirectTo"){
-                  var redirectToState = redirect[1];
-                }
+
 
                 var u = $window.User.getIdentity();
                 if ($window.User.isLogged()) {
-                  $state.go('private.apps')
+
+
+                  if($stateParams.redirectTo){
+                    $state.go($stateParams.redirectTo);
+                  }else {
+                    $state.go('private.apps');
+                  }
+                  
 
                 } else {
 
@@ -89,8 +91,8 @@ angular.module('ngdeployApp')
                           GitHubAccessToken:GitHubAccessToken
                         }).then(function(response) {
                           localStorage.setItem('token', response);
-                          if(redirectToState){
-                            $state.go(redirectToState);
+                          if($stateParams.redirectTo){
+                            $state.go($stateParams.redirectTo);
                           }else {
                             $state.go('private.apps');
                           }
@@ -282,7 +284,7 @@ angular.module('ngdeployApp')
       ngDeployUrl: ngDeployUrl,
       name: name
     }).then(function(response) {
-      console.log(response);
+
     })
   }
 
