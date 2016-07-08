@@ -48,6 +48,11 @@ angular.module('ngdeployApp', [
   })
   .run(function (OAUTH_KEY, $window, $rootScope, $state) {
 
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){
+      console.log(toState,toParams);
+
+    });
+
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
       if (toState.data && angular.isDefined(toState.data.bodyClasses)) {
         $rootScope.bodyClasses = toState.data.bodyClasses;
