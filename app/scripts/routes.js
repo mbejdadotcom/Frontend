@@ -10,7 +10,7 @@ angular.module('ngdeployApp')
 // before trying to access that route
   .config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'jwtInterceptorProvider', '$httpProvider',
     function($stateProvider, $locationProvider, $urlRouterProvider, jwtInterceptorProvider, $httpProvider) {
-
+      $urlRouterProvider.otherwise('/');
 
       jwtInterceptorProvider.tokenGetter = [
 
@@ -46,12 +46,14 @@ angular.module('ngdeployApp')
 
       $stateProvider
         .state('public', {
-          url: "",
+          url:"?redirectTo",
           abstract: true,
           views: {
             "navbar@": {
               templateUrl: "views/navbar/public.html",
               controller: function($rootScope, $scope, $window, $state, userService,$stateParams) {
+                console.log("State",$stateParams)
+
                 var query = window.location.href.split("?").slice(1).join("?");
                 var redirect = query.split("=");
                 if(redirect[0] == "redirectTo"){
@@ -118,7 +120,7 @@ angular.module('ngdeployApp')
 
         })
         .state('public.home', {
-          url: "?redirectTo",
+          url: "/?redirectTo",
           views: {
             "main": {
               templateUrl: "views/main.html",

@@ -56,7 +56,6 @@ angular.module('ngdeployApp')
         }, function (isConfirm) {
           if (isConfirm) {
             userService.tokens.post().then(function (res) {
-              console.log(res);
               localStorage.removeItem('token');
               localStorage.setItem('token',res);
               sweet.show('Created!', 'New account token has been created');

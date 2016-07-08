@@ -8,8 +8,8 @@
  * Controller of the ngdeployApp
  */
 angular.module('ngdeployApp')
-    .controller('MainCtrl', function($rootScope, $scope, $window, userService, $state) {
+    .controller('MainCtrl', function($rootScope, $scope, $window, userService, $state,$stateParams) {
 
 
-   
+
     });
