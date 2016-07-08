@@ -49,7 +49,6 @@ angular.module('ngdeployApp', [
   .run(function (OAUTH_KEY, $window, $rootScope, $state) {
 
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options){
-      console.log(toState,toParams);
 
     });
 

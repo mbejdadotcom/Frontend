@@ -64,7 +64,7 @@ angular.module('ngdeployApp')
                   }else {
                     $state.go('private.apps');
                   }
-                  
+
 
                 } else {
 
@@ -204,7 +204,6 @@ angular.module('ngdeployApp')
               templateUrl: "views/layout/private.html",
               controller: ['$scope', '$state',
                 function($scope, $state) {
-                  console.log('private')
                   // $state.go('private.apps');
 
                 }
@@ -224,7 +223,7 @@ angular.module('ngdeployApp')
           }
         })
         .state('private.apps', {
-          url: "/apps",
+          url: "/apps?redirectTo",
           views: {
             "main": {
               templateUrl: "views/private/apps.html",

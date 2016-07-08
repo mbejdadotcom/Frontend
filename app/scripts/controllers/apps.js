@@ -8,8 +8,15 @@
  * Controller of the ngdeployApp
  */
 angular.module('ngdeployApp')
-  .controller('AppsCtrl', function ($rootScope,$scope, appService, token, userService, $uibModal, $log, sweet, teams,dbUser,git) {
+  .controller('AppsCtrl', function ($rootScope,$scope, appService, token, userService, $uibModal, $log, sweet, teams,dbUser,git,$stateParams) {
 
+    if($stateParams.redirectTo){
+      $state.go($stateParams.redirectTo);
+    }
+
+
+
+    
     $scope.user = dbUser;
 
 
