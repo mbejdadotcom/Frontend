@@ -37,7 +37,7 @@ angular.module('ngdeployApp')
         $http.post(API_ENDPOINT + '/users/cards', postData).then(function (success) {
           defer.resolve(success.data.response);
         }, function (error) {
-          defer.resolve(error.response);
+          defer.reject(error.data.error.message);
         })
         return defer.promise;
       },

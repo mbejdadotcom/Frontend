@@ -84,9 +84,9 @@ angular.module('ngdeployApp')
                     debug:true
                   }).then(function(response){
                     sweet.show('Card added!', 'Card has been added to your account..', 'success');
-
                     loadCards();
-
+                  },function(error){
+                    sweet.show('Oh no!', error, 'error');
                   })
 
                 }, function(error){
