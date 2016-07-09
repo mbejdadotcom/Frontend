@@ -660,7 +660,7 @@ input[type="text"] {
   border:1px solid black;
 }
 .app .panel-footer .btn {
-  border:1px solid black;
+  border:0px solid black;
   color:white;
 }
 .navbar-btn .btn {
