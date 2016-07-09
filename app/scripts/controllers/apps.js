@@ -16,7 +16,7 @@ angular.module('ngdeployApp')
 
 
 
-    
+
     $scope.user = dbUser;
 
 
@@ -181,7 +181,7 @@ angular.module('ngdeployApp')
       }, function (isConfirm) {
         if (isConfirm) {
           appService.upgrade(app.id).then(function (response) {
-            sweet.show('Deleted!', 'The application has been deleted.', 'success');
+            sweet.show('Upgraded!', 'Application has been upgraded.', 'success');
             $scope.loadApps();
           }, function (error) {
             sweet.show('Upgrade Failed !', error, 'error');
@@ -189,7 +189,7 @@ angular.module('ngdeployApp')
           });
 
         } else {
-          sweet.show('Cancelled', 'Your imaginary file is safe :)', 'error');
+          sweet.show('Cancelled', 'Nothing changed', 'error');
         }
       });
 
