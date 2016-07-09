@@ -90,7 +90,7 @@ angular.module('ngdeployApp')
                   })
 
                 }, function(error){
-                  console.log(error);
+                  sweet.show('Oh no!', error, 'error');
                 });
         }
       loadCards();
