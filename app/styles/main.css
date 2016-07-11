@@ -795,4 +795,7 @@ a,p,span,label,b {
 .dashboard {
   background-color:white;
 }
+app.hero .heading {
+  padding-bottom:10px;
+}
 * {}
