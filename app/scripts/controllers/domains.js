@@ -7,8 +7,8 @@
  * # DomainsCtrl
  * Controller of the ngdeployApp
  */
-angular.module('ngdeployApp')
-    .controller('DomainsCtrl', function($scope,$stateParams, appService) {
+angular.module('ngdeployAsweetpp')
+    .controller('DomainsCtrl', function($scope,$stateParams, appService,sweet) {
 
         $scope.cname = "cname"
         $scope.appId = $stateParams.appId;
@@ -33,7 +33,7 @@ appService.fetch($scope.appId).then(function(results) {
                     console.log(results);
                 },function(error){
                   console.log(error);
-                  sweet.show('Error occured ', 'Domain was not added. Please contact support', 'error');
+                  sweet.show('Error occured ', 'Domain was not added. Please contact support | '+error, 'error');
 
                 });
             }
@@ -50,6 +50,9 @@ appService.fetch($scope.appId).then(function(results) {
                         $scope.ssl.key = '';
                         $scope.ssl.cert = '';
                     }
+                },function(error){
+                  sweet.show('Error occured ', 'SSL was not added. Please contact support | '+error, 'error');
+
                 })
             } else {
                 postData.ssl = "disabled";

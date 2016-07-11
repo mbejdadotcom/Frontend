@@ -18,7 +18,7 @@ angular.module('ngdeployApp')
                     defer.resolve(response.data);
 
                 }, function(response) {
-                    defer.reject(response);
+                    defer.reject(response.data.error);
 
                 });
                 return defer.promise;
@@ -33,7 +33,7 @@ angular.module('ngdeployApp')
                     defer.resolve(response.data);
 
                 }, function(response) {
-                    defer.reject(response);
+                    defer.reject(response.data.error);
 
                 });
                 return defer.promise;
@@ -74,8 +74,8 @@ angular.module('ngdeployApp')
             $http.post(API_ENDPOINT + '/apps/purges', data).then(function(response) {
                 defer.resolve(response.data);
 
-            }, function errorCallback(response) {
-                defer.reject(response.data);
+            }, function(response) {
+                defer.reject(response.data.error);
 
             });
             return defer.promise;
