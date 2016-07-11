@@ -7,7 +7,7 @@
  * # DomainsCtrl
  * Controller of the ngdeployApp
  */
-angular.module('ngdeployAsweetpp')
+angular.module('ngdeployApp')
     .controller('DomainsCtrl', function($scope,$stateParams, appService,sweet) {
 
         $scope.cname = "cname"

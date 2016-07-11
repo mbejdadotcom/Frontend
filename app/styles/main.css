@@ -357,7 +357,9 @@ img.logo {
   background-color: white;
   border: 2px solid black;
 }
-
+.panel-default > .panel-heading {
+  padding-bottom:0px;
+}
 .panel-default > .panel-heading, .panel-default > .panel-footer {
   background-color: black;
   border: none;

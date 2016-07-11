@@ -55,10 +55,19 @@
               <small class="pull-right" ng-if="app.teams.type != 'owner'"> collaborator</small>
 
             </div>
-            <div class="col-md-12">
-              <a ng-if="app.github_hooked.repoName" class="small-text" style="margin:0px;padding:0px;font-size:10px;position:absolute;display:block;bottom:-10px;">
+            <div class="col-md-6">
+              <a  class="small-text" style=ma"rgin:0px;padding:0px;font-size:10px;position:absolute;display:block;bottom:-10px;">
+            repo : {{app.github_hooked.repoName}}
               </a>
             </div>
+
+            <div class="col-md-6">
+              <a  class="small-text" style=ma"rgin:0px;padding:0px;font-size:10px;position:absolute;display:block;bottom:-10px;">
+                status : {{app.status.status}}
+              </a>
+            </div>
+
+
           </div>
         </div>
         <div class="col-md-12 body">
