@@ -24,12 +24,17 @@ appService.fetch($scope.appId).then(function(results) {
 
         $scope.addDomain = function(domain) {
             var postData = {}
-            postData.ngDeployUrl = $scope.app.ngDeployUrl;
+            postData.id = $scope.app.id;
             if (domain) {
                 postData.domain = domain;
                 appService.domains.post(postData).then(function(results) {
+                  sweet.show('Domain added!', 'Domain has been added to your application', 'success');
 
                     console.log(results);
+                },function(error){
+                  console.log(error);
+                  sweet.show('Error occured ', 'Domain was not added. Please contact support', 'error');
+
                 });
             }
         }
