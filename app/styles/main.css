@@ -795,7 +795,10 @@ a,p,span,label,b {
 .dashboard {
   background-color:white;
 }
-app.hero .heading {
+.app.hero .header {
   padding-bottom:10px;
+}
+.app textarea {
+  width:100%;
 }
 * {}
