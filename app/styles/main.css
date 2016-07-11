@@ -703,6 +703,7 @@ input[type="search"]:focus {
 }
 .small-text {
   font-size:10px;
+  vertical-align: top;
 }
 
 
