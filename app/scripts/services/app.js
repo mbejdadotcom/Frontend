@@ -121,14 +121,13 @@ angular.module('ngdeployApp')
             return defer.promise;
 
         }
-        self.delete = function(ngDeployUrl) {
+        self.delete = function(appId) {
             var defer = $q.defer();
-            var ngDeployUrl = ngDeployUrl.toLowerCase();
-            $http.delete(API_ENDPOINT + '/apps/' + ngDeployUrl).then(function(response) {
+            $http.delete(API_ENDPOINT + '/apps/' + appId).then(function(response) {
                 defer.resolve(response.data);
 
             }, function errorCallback(response) {
-                defer.reject(response);
+                defer.reject(response.data.error);
 
             });
             return defer.promise;

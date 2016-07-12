@@ -88,7 +88,7 @@ angular.module('ngdeployApp')
       });
     };
 
-    $scope.delete = function (ngDeployUrl, team, apps) {
+    $scope.delete = function (appId, team, apps) {
       if (team.type == "owner") {
 
         sweet.show({
@@ -101,10 +101,11 @@ angular.module('ngdeployApp')
           closeOnCancel: false
         }, function (isConfirm) {
           if (isConfirm) {
-            appService.delete(ngDeployUrl).then(function (response) {
+            appService.delete(appId).then(function (response) {
               sweet.show('Deleted!', 'The application has been deleted.', 'success');
               $scope.loadApps();
             }, function (error) {
+              sweet.show('Error', 'Error has occured '+error, 'error');
 
               console.log(error)
             });
