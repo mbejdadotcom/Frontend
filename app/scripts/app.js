@@ -1,9 +1,12 @@
+/*
+ production pk_07bMpaLqyXyW6OUFVYsqpALSnavDH
+ */
 window.GLOBALS = {
   "localhost": {
     STRIP_APIKEY: "pk_07bMnvtw1B0waY5ZG52Jmq8b3c8J8"
   },
   "ngdeploy.com": {
-    STRIP_APIKEY: "pk_07bMpaLqyXyW6OUFVYsqpALSnavDH"
+    STRIP_APIKEY: "pk_07bMnvtw1B0waY5ZG52Jmq8b3c8J8"
 
   },
   "development-ngdeploy.ngdeploy.com": {
