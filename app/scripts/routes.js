@@ -20,6 +20,14 @@ angular.module('ngdeployApp')
         }
       ];
 
+      $httpProvider.defaults.headers.post['Accept'] = 'application/json, text/javascript';
+      $httpProvider.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
+      $httpProvider.defaults.headers.common['Accept'] = 'application/json, text/javascript';
+      $httpProvider.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
+      $httpProvider.defaults.useXDomain = true;
+
+      
+
       $httpProvider.interceptors.push('jwtInterceptor');
 
 
