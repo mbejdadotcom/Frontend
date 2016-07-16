@@ -11,7 +11,7 @@ angular.module('ngdeployApp')
     .controller('DomainsCtrl', function($scope,$stateParams, appService,sweet) {
 
         $scope.cname = "cname"
-        $scope.appId = $stateParams.appId;
+        $scope.appId = parseInt($stateParams.appId);
 
 appService.fetch($scope.appId).then(function(results) {
             $scope.app = results.response;
@@ -24,7 +24,7 @@ appService.fetch($scope.appId).then(function(results) {
 
         $scope.addDomain = function(domain) {
             var postData = {}
-            postData.id = $scope.app.id;
+            postData.id =  $scope.appId;
             if (domain) {
                 postData.domain = domain;
                 appService.domains.post(postData).then(function(results) {
@@ -40,7 +40,7 @@ appService.fetch($scope.appId).then(function(results) {
         }
         $scope.addSSL = function(ssl) {
             var postData = {}
-            postData.id = $scope.app.id;
+            postData.id = $scope.appId;
             if (ssl  && ssl.key && ssl.certificate) {
                 postData.ssl = "enabled";
                 postData.sslKey = ssl.key;
