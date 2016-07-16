@@ -92,7 +92,7 @@ a:hover {
 
 
 .dashboard a, .dashboard small, .dashboard b, .dashboard label, .dashboard h1, .dashboard h2, .dashboard h3, .dashboard h4, .dashboard h5 {
-  color: black;
+  color: #151513;
 }
 
 .app .body {
@@ -209,7 +209,7 @@ img.logo {
 }
 
 .btn.btn-default {
-  color: black;
+  color: #151513;
   -webkit-transition: background linear 200ms;
   background: transparent;
 
@@ -217,12 +217,12 @@ img.logo {
 
 .btn.btn-default:hover {
   -webkit-transition: background linear 200ms;
-  background: black;
+  background: #151513;
   color: white;
 }
 
 .btn.btn-success {
-  color: black;
+  color: #151513;
   -webkit-transition: background linear 200ms;
   background: transparent;
 
@@ -251,7 +251,7 @@ img.logo {
 .btn.btn-danger {
   -webkit-transition: background linear 200ms;
   background: transparent;
-  color: black;
+  color: #151513;
 
 }
 
@@ -264,7 +264,7 @@ img.logo {
 .btn.btn-info {
   -webkit-transition: background linear 200ms;
   background: transparent;
-  color: black;
+  color: #151513;
 }
 
 .sweet-alert button.cancel {
@@ -294,12 +294,12 @@ img.logo {
 }
 
 .nav li.active a {
-  background-color: black !important;
+  background-color: #151513 !important;
   color: white !important;
 }
 
 .nav li.active .btn {
-  background-color: black !important;
+  background-color: #151513 !important;
   color: white !important;
 }
 
@@ -355,13 +355,13 @@ img.logo {
 
 .panel-default {
   background-color: white;
-  border: 2px solid black;
+  border: 2px solid #151513;
 }
 .panel-default > .panel-heading {
   padding-bottom:0px;
 }
 .panel-default > .panel-heading, .panel-default > .panel-footer {
-  background-color: black;
+  background-color: #151513;
   border: none;
 
   width: 100%;
@@ -391,8 +391,8 @@ h1 {
 }
 
 .app .body {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black
+  border-top: 1px solid #151513;
+  border-bottom: 1px solid #151513
 }
 
 .menu ul {
@@ -401,7 +401,7 @@ h1 {
 }
 
 .panel-heading, .panel-footer {
-  background-color:black;
+  background-color:#151513;
 }
 
 .stage:last-child {
@@ -434,9 +434,9 @@ h1 {
 }
 
 .table {
-  color: black;
+  color: #151513;
   background-color: white !important;
-  border: 1px solid black;
+  border: 1px solid #151513;
 }
 
 table thead {
@@ -546,7 +546,7 @@ nav {
 
 .hero-field h1 {
   font-weight: 700;
-  color:black;
+  color:#151513;
 }
 
 .hero-field .btn {
@@ -557,15 +557,14 @@ nav {
 
   width: 700px;
 margin:auto;
-  color:black;
+  color:#151513;
   position:relative;
-  top:-180px;
 
 }
 
 .hero-field ul li {
   font-size: 1.0em;
-  color: black;
+  color: #151513;
   margin: 3px 0px;
 }
 
@@ -577,7 +576,7 @@ margin:auto;
 
 input[type="text"]:focus {
   box-shadow: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #151513;
 
 }
 
@@ -587,7 +586,7 @@ input[type="text"] {
   box-shadow: none;
   border: 0px;
   background-color: #e2e2e2;
-  color: black;
+  color: #151513;
 }
 
 .logo-font {
@@ -599,7 +598,7 @@ input[type="text"] {
 }
 
 .btn-default:active, .btn-default:focus {
-  border-color: black;
+  border-color: #151513;
 }
 
 .input-group .form-control {
@@ -791,7 +790,7 @@ a,p,span,label,b {
   border-radius:20px  !important;
 }
 .navbar-brand {
-  color:black;
+  color:#151513;
 }
 .dashboard {
   background-color:white;
@@ -803,3 +802,39 @@ a,p,span,label,b {
   width:100%;
 }
 * {}
+.hero-container {
+  width:1000px;
+
+}
+.hero-container .panel {
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  border:0px;
+}
+
+.hero-container input {
+  display:block;
+  background-color:#151513;
+  padding:20px;
+  color:white;
+  border-radius:1px;
+  width:100%;
+}
+.hero-container b {
+  display:block;
+  margin-bottom:10px;
+}
+.hero-container .panel-body {
+  width:50%;
+  margin:auto;
+}
+.hero-container .panel-heading, .panel-footer {
+  background-color:white;
+
+}
+.hero-body .step {
+  width:800px;
+}
+.github-corner {
+  margin-top:-60px; height:60px; margin-right:-11px;float:right;
+}
