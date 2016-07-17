@@ -3,10 +3,10 @@
  */
 window.GLOBALS = {
   "localhost": {
-    STRIP_APIKEY: "pk_07bMnvtw1B0waY5ZG52Jmq8b3c8J8"
+    STRIP_APIKEY: "pk_07bMpaLqyXyW6OUFVYsqpALSnavDH"
   },
   "ngdeploy.com": {
-    STRIP_APIKEY: "pk_07bMnvtw1B0waY5ZG52Jmq8b3c8J8"
+    STRIP_APIKEY: "pk_07bMpaLqyXyW6OUFVYsqpALSnavDH"
 
   },
   "development-ngdeploy.ngdeploy.com": {
@@ -17,7 +17,6 @@ window.GLOBALS = {
     STRIP_APIKEY: "pk_07bMpaLqyXyW6OUFVYsqpALSnavDH"
   }
 };
-
 
 
 
@@ -44,7 +43,7 @@ angular.module('ngdeployApp', [
   .constant('API_ENDPOINT', 'https://api.ngdeploy.com')
   .constant('STRIP_APIKEY', window.GLOBALS[window.location.hostname].STRIP_APIKEY)
   .constant('OAUTH_KEY', 'eNUFQESkMZC0uSp5FtoVyrh1OQM')
-  .constant('DEBUG', true)
+  .constant('DEBUG', false)
   .config(function (STRIP_APIKEY, stripeProvider) {
     stripeProvider.setPublishableKey(STRIP_APIKEY);
 

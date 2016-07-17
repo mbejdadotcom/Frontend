@@ -10,7 +10,7 @@
 angular.module('ngdeployApp')
     .controller('DomainsCtrl', function($scope,$stateParams, appService,sweet) {
 
-        $scope.cname = "cname"
+        $scope.cname = "cname";
         $scope.appId = parseInt($stateParams.appId);
 
 appService.fetch($scope.appId).then(function(results) {
@@ -30,7 +30,6 @@ appService.fetch($scope.appId).then(function(results) {
                 appService.domains.post(postData).then(function(results) {
                   sweet.show('Domain added!', 'Domain has been added to your application', 'success');
 
-                    console.log(results);
                 },function(error){
                   console.log(error);
                   sweet.show('Error occured ', 'Domain was not added. Please contact support | '+error, 'error');
