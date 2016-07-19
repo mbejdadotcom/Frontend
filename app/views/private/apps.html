@@ -94,7 +94,7 @@
                                                am-time-ago="app.apps.promotedToDevelopment | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span>
                   </li>
                 </ul>
-                <textarea ng-model="app.status.status"></textarea>
+                <textarea ng-model="app.status.status" readonly></textarea>
               </small>
 
 
@@ -193,7 +193,7 @@
 
             <div class="col-md-8">
               <div class="input-group">
-                <input id="{{app.apps.ngDeployUrl}}"  type="text" class="form-control input-xs" ng-model="me" ng-init="me = cli(app.apps.ngDeployUrl)"/>
+                <input id="{{app.apps.ngDeployUrl}}"  type="text" class="form-control input-xs" ng-model="me" ng-init="me = cli(app.apps.ngDeployUrl)" readonly />
                 <div class="input-group-addon">
 
 
