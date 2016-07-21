@@ -44,7 +44,7 @@ angular.module('ngdeployApp')
                 if (isConfirm) {
                     teams.post({
                         email: email,
-                        appId: $scope.appId
+                        appId: parseInt($scope.appId)
                     }).then(function(results) {
                         console.log(results);
                         sweet.show('Added !', 'Collaborator ' + email + ' has been added', 'success');
