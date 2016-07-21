@@ -37,14 +37,14 @@ angular.module('ngdeployApp')
                 text: 'Add ' + email + ' as collaborator?',
                 type: 'success',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, promote it!',
+                confirmButtonText: 'Add',
                 closeOnConfirm: false,
                 closeOnCancel: false
             }, function(isConfirm) {
                 if (isConfirm) {
                     teams.post({
                         email: email,
-                        ngDeployUrl: $scope.app.ngDeployUrl
+                        appId: $scope.appId
                     }).then(function(results) {
                         console.log(results);
                         sweet.show('Added !', 'Collaborator ' + email + ' has been added', 'success');
