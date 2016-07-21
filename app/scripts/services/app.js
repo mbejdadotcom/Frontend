@@ -69,7 +69,7 @@ angular.module('ngdeployApp')
             return defer.promise;
         },
 
-        self.update = function(appId) {
+        self.refresh = function(appId) {
             var defer = $q.defer();
             $http({
               method: 'GET',

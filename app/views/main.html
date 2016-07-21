@@ -20,8 +20,21 @@
     margin-left:8px;
     margin-right:8px;
   }
-  .panel-body > img {
-    margin-left:7%;
+  .hero-field{
+    width:auto;
+  }
+  .hero-container{
+    width:100%;
+  }
+
+  @media(max-width: 480px) {
+    .hero-container  .panel-body {
+      width:100%;
+    }
+    .panel-body img {
+      width: 25px;
+      height: 25px;
+    }
   }
 </style>
 
@@ -29,9 +42,9 @@
 
 
 
-<div class="hero-field ">
-  <h1 class="text-center">Static Website and Application Hosting</h1>
-  <ul class="list-inline list-unstyled text-center">
+<div class="hero-field text-center ">
+  <h1 class="">Static Website and Application Hosting</h1>
+  <ul class="list-inline list-unstyled">
     <li>
       <span class="lnr lnr-laptop"></span> Multistage Environments
     </li>
@@ -44,13 +57,13 @@
 
   </ul>
 </div>
-<div class="hero hero-container container">
+<div class="hero hero-container container-fluid">
   <div class="panel panel-default">
     <div class="panel-body text-center">
       <img src="https://res.cloudinary.com/ngdeploy/image/upload/v1468976684/grunt-logo_osumwg.png" height="70">
-      <img src="https://res.cloudinary.com/ngdeploy/image/upload/v1468977002/gulp-logo_qzrjhe.png" height="70">
-      <img src="https://res.cloudinary.com/ngdeploy/image/upload/v1468977090/github-logo_y1nwow.png" height="70">
-      <img src="https://res.cloudinary.com/ngdeploy/image/upload/v1468977144/bower-logo_whs6f3.png" height="70">
+      <img src="https://res.cloudinary.com/ngdeploy/image/upload/v1469115992/gulp-logo_uac9yu.png" height="70" style="margin-left:7%;">
+      <img src="https://res.cloudinary.com/ngdeploy/image/upload/v1468977090/github-logo_y1nwow.png" height="70" style="margin-left:7%;">
+      <img src="https://res.cloudinary.com/ngdeploy/image/upload/v1468977144/bower-logo_whs6f3.png" height="70" style="margin-left:7%;">
     </div>
   </div>
 </div>

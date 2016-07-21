@@ -8,7 +8,7 @@
  * Controller of the ngdeployApp
  */
 angular.module('ngdeployApp')
-  .controller('AppsCtrl', function ($rootScope,$scope,$timeout, appService, token, userService, $uibModal, $log, sweet, teams,dbUser,git,$stateParams) {
+  .controller('AppsCtrl', function ($rootScope,$scope,$interval, appService, token, userService, $uibModal, $log, sweet, teams,dbUser,git,$stateParams) {
 
     if($stateParams.redirectTo){
       $state.go($stateParams.redirectTo);
@@ -198,22 +198,20 @@ angular.module('ngdeployApp')
     };
 
     $scope.refresh = function refresh(){
-      appService.update().then(function(response){
+      appService.refresh().then(function(response){
+        console.log("Refresh");
         angular.forEach(response, function(appStatus){
           angular.forEach($scope.apps, function(app){
             if(app.status.appId === appStatus.id && app.status.status !== appStatus.status ){
-                  console.log("Updating ", appStatus.id, appStatus.status);
                   app.status.status = appStatus.status;
                 }
            })
         })
-        $timeout($scope.refresh,30000);
-      },function(error){
-        $timeout($scope.refresh,30000);
-      })
+      },function(error){})
     };
 
     $scope.loadApps();
-    $scope.refresh();
 
-   });
+    $interval($scope.refresh,30000,false)
+
+  });
