@@ -21,14 +21,12 @@ angular.module('ngdeployApp')
 
 
       git.hookIt(appId, selected, indexPath).then(function () {
-        console.log(selected);
-        return;
         sweet.show('Git Repo Hooked!', 'We hooked the repo successfully and the next push will be deployed automatically.', 'success');
       }, function (error) {
         sweet.show('Error', error.error, 'error');
       })
     };
-    
+
     $scope.listRepos = function listRepos() {
       git.listRepos().then(function (repos) {
         repos.forEach(function (item) {
