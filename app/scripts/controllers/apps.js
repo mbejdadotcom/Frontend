@@ -201,10 +201,9 @@ angular.module('ngdeployApp')
       appService.update().then(function(response){
         angular.forEach(response, function(appStatus){
           angular.forEach($scope.apps, function(app){
-            if(app.status.appId == appStatus.id){
-              console.log("updating status: ", app.status.status, appStatus.status);
-                app.status.status = appStatus.status;
-              }
+            if(app.status.appId === appStatus.id && app.status.status !== appStatus.status ){
+                  app.status.status = appStatus.status;
+                }
            })
         })
       },function(error){})
@@ -212,7 +211,7 @@ angular.module('ngdeployApp')
 
     $interval(function(){
       $scope.refresh();
-    },10000);
+    },30000);
 
     $scope.loadApps();
 
