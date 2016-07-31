@@ -43,19 +43,18 @@ angular.module('ngdeployApp')
     };
 
     $scope.getSubscription = function (){
-        console.log($scope.user);
+
         userService.subscription.get($scope.user.customerId).then(function(response){
 
           var i = $filter('filter')($scope.plans, {pId: response},true);
 
-          console.log("Success!!!", response , i );
           if( i.length > 0 ){
             $scope.selectedPlan = i[0];
           }else{
-            $scope.selectedPlan.set($scope.plans[0]);
+            $scope.selectedPlan = $scope.plans[0];
           }
         },function(error){
-          console.log("Error retrieving subscriptionts. ", error);
+          console.log("Error retrieving subscriptions. ", error);
         })
     }
 

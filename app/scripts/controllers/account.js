@@ -8,17 +8,17 @@
  * Controller of the ngdeployApp
  */
 angular.module('ngdeployApp')
-    .controller('AccountCtrl', function(DEBUG,$scope, $http,$state, stripe,userService,sweet,dbUser, $window) {
+    .controller('AccountCtrl', function(DEBUG,$scope,$filter, $http,$state, stripe,userService,sweet,dbUser, $window) {
       $scope.user = dbUser;
-      $scope.plans = [{name:'Free  - 0 premium', id:0},
+      $scope.plans = [{name:'Free  - 0 premium', id:0, pId:'free'},
                       {name:'Developer - 1 premium $5/month', id:1, pId:'developer'},
-                      {name:'Team - 5 premium $25/month', id:2},
-                      {name:'Business - 30 premium $150/month', id:3},
-                      {name:'selected',id:5}];
-
-      $scope.link_repo = {selected: []};
+                      {name:'Team - 5 premium $25/month', id:2, pId:'team'},
+                      {name:'Business - 30 premium $150/month', id:3, pId:'business'}];
 
       $scope.selectedPlan = null;
+      $scope.link_repo = {};
+      $scope.link_repo.selected =  $scope.selectedPlan;
+
 
       $scope.changePlan = function(s){
         sweet.show({   title: "Are you sure?",
@@ -119,5 +119,25 @@ angular.module('ngdeployApp')
                   sweet.show('Oh no!', error, 'error');
                 });
         }
+
+
+      $scope.getSubscription = function (){
+        userService.subscription.get($scope.user.customerId).then(function(response){
+
+          var i = $filter('filter')($scope.plans, {pId: response},true);
+
+          if( i.length > 0 ){
+            $scope.selectedPlan = i[0];
+            $scope.link_repo.selected = i[0];
+          }else{
+            $scope.link_repo.selected = $scope.plans[0];
+          }
+
+        },function(error){
+          console.log("Error retrieving subscriptions. ", error);
+        })
+      }
+
       loadCards();
+      $scope.getSubscription();
     });
