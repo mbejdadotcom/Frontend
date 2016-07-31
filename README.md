@@ -21,7 +21,8 @@ in `package.json`. This property determines which files will be included in the 
 If the `files` property is not provided, a fallback pattern will be used that tries to create
 the zip best effort..
 
-ach 
+Once and for all! 
+
 ## Author
 
 - Milos Bejda [<mbejda@live.com>]
