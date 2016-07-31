@@ -10,6 +10,32 @@
 angular.module('ngdeployApp')
     .controller('AccountCtrl', function(DEBUG,$scope, $http,$state, stripe,userService,sweet,dbUser, $window) {
       $scope.user = dbUser;
+      $scope.plans = [{name:'Free  - 0 premium', id:0},
+                      {name:'Developer - 1 premium $5/month', id:1, pId:'developer'},
+                      {name:'Team - 5 premium $25/month', id:2},
+                      {name:'Business - 30 premium $150/month', id:3},
+                      {name:'selected',id:5}];
+
+      $scope.link_repo = {selected: []};
+
+      $scope.selectedPlan = null;
+
+      $scope.changePlan = function(s){
+        sweet.show({   title: "Are you sure?",
+          text: "Are you sure you want to update to the \n " + s.name + " plan?",
+          type: "success",
+          showCancelButton: true,
+          confirmButtonText: "Yes!",
+          cancelButtonText: "Not yet",
+          closeOnConfirm: true,
+          closeOnCancel: true
+        }, function(isConfirm){
+            if(isConfirm){
+              userService.upgrade(s.id);
+            }
+        });
+      };
+
 
       $scope.cards = [];
       var loadCards = function() {

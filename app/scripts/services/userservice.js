@@ -8,7 +8,7 @@
  * Service in the ngdeployApp.
  */
 angular.module('ngdeployApp')
-  .service('userService', function (API_ENDPOINT, $q, $http) {
+  .service('userService', function (API_ENDPOINT, $q, $http, stripe,STRIP_APIKEY) {
     var self = this;
     self.getToken = function (postData) {
       var defer = $q.defer();
@@ -50,6 +50,30 @@ angular.module('ngdeployApp')
         })
         return defer.promise;
       }
+    };
+
+
+    self.subscription = {
+        get: function (){
+          console.log("Grab user subscription...");
+          var defer = $q.defer();
+          $http.get(API_ENDPOINT+"/users/subscriptions").then(function(success){
+            defer.resolve(success.data.response);
+          },function(error){
+            defer.resolve(error.response);
+          })
+          return defer.promise;
+        }
+    }
+
+    self.upgrade = function (planId) {
+      var defer = $q.defer();
+      $http.post(API_ENDPOINT + '/users/subscriptions',{planId:planId}).then(function (success) {
+        defer.resolve(success.data.response);
+      }, function (error) {
+        defer.resolve(error.response);
+      })
+      return defer.promise;
     }
 
     self.self = function () {
