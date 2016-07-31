@@ -1,6 +1,6 @@
 # ngdeploy
 
-> asd
+> Single page app hosting with CI.
 
 
 ## Usage
