@@ -19,7 +19,7 @@ Best practice is to use the [files](https://docs.npmjs.com/files/package.json#fi
 in `package.json`. This property determines which files will be included in the zip file.
 
 If the `files` property is not provided, a fallback pattern will be used that tries to create
-the zip best effort.
+the zip best effort..
 
 
 ## Author
