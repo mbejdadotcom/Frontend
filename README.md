@@ -8,7 +8,7 @@
 Run the following command to create a zip file.
 
 ```
-$ npm run zip
+$ npm install ngdeploy --save -g 
 ```
 
 The zip file, generated in the `dist` directory, can now be deployed to AWS Lambda.
