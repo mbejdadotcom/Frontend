@@ -95,10 +95,7 @@ angular.module('ngdeployApp')
 
 
                       $window.User.signup(github).then(function(result) {
-                        if(result.indexOf("stormpath") > -1){
-                          $scope.error = "Please add your first and last name to your Github profile.";
-                          return;
-                        }
+
 
                         $rootScope.$broadcast('USER::LOGIN', github);
 
@@ -117,7 +114,11 @@ angular.module('ngdeployApp')
                           }
 
                         })
-                      });
+                      }).fail(function(error){
+                        console.log(error);
+                        $scope.error = "Please add your first and last name to your Github profile.";
+
+                      })
                       });
 
 
