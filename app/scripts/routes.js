@@ -91,7 +91,7 @@ angular.module('ngdeployApp')
                         var email = emails[0].email;
                         github.email = email;
 
-                      var GitHubAccessToken = result.access_token;
+                      var GitHubAccessToken = github.access_token;
 
 
                       $window.User.signup(github).then(function(result) {
