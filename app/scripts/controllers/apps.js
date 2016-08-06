@@ -8,14 +8,23 @@
  * Controller of the ngdeployApp
  */
 angular.module('ngdeployApp')
-  .controller('AppsCtrl', function ($rootScope,$scope, appService, token, userService, $uibModal, $log, sweet, teams,dbUser,git,$stateParams) {
+  .controller('AppsCtrl', function ($rootScope,$scope,$interval,$filter, appService, stripe, token, userService, $uibModal, $log, sweet, teams,dbUser,git,$stateParams) {
+
+    $scope.selectedPlan = null;
+    $scope.currentPremium = 0;
+
+    $scope.plans = [
+      {name:'Free', pId:'free', id:0, count:0, amt:0},
+      {name:'Developer', id:1, pId:'developer', count:1, amt:5},
+      {name:'Team', id:2 , pId:'team' ,count:5, amt:25},
+      {name:'Business', id:3,pId:'business', count: 30, amt:150},
+      {name:'selected',id:5, pId:'selected', count:0, amt:0}];
+
+
 
     if($stateParams.redirectTo){
       $state.go($stateParams.redirectTo);
     }
-
-
-
 
     $scope.user = dbUser;
 
@@ -23,9 +32,31 @@ angular.module('ngdeployApp')
     $scope.token = token;
     $scope.loadApps = function () {
       appService.get().then(function (response) {
+        console.log(response);
+        var countPremium = 0;
+        angular.forEach(response, function(app){
+          if(app.apps.zoneId != null && app.teams.type == "owner") ++countPremium;
+        });
         $scope.apps = response;
+        $scope.currentPremium = countPremium;
       });
     };
+
+    $scope.getSubscription = function (){
+
+        userService.subscription.get($scope.user.customerId).then(function(response){
+
+          var i = $filter('filter')($scope.plans, {pId: response},true);
+
+          if( i.length > 0 ){
+            $scope.selectedPlan = i[0];
+          }else{
+            $scope.selectedPlan = $scope.plans[0];
+          }
+        },function(error){
+          console.log("Error retrieving subscriptions. ", error);
+        })
+    }
 
 
 
@@ -197,5 +228,22 @@ angular.module('ngdeployApp')
 
     };
 
+    $scope.refresh = function refresh(){
+      appService.refresh().then(function(response){
+        console.log("Refresh");
+        angular.forEach(response, function(appStatus){
+          angular.forEach($scope.apps, function(app){
+            if(app.status.appId === appStatus.id && app.status.status !== appStatus.status ){
+                  app.status.status = appStatus.status;
+                }
+           })
+        })
+      },function(error){})
+    };
+
     $scope.loadApps();
+    $scope.getSubscription();
+
+    $interval($scope.refresh,30000,false)
+
   });

@@ -67,6 +67,21 @@ angular.module('ngdeployApp')
 
             });
             return defer.promise;
+        },
+
+        self.refresh = function(appId) {
+            var defer = $q.defer();
+            $http({
+              method: 'GET',
+              url: API_ENDPOINT + '/apps/status'
+            }).then(function(response) {
+              defer.resolve(response.data);
+
+            }, function(response) {
+              defer.reject(response);
+
+            });
+            return defer.promise;
         }
 
         self.purge = function(data) {
