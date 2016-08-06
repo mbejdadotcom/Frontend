@@ -26,7 +26,7 @@ angular.module('ngdeployApp')
       $httpProvider.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
       $httpProvider.defaults.useXDomain = true;
 
-      
+
 
       $httpProvider.interceptors.push('jwtInterceptor');
 
@@ -86,11 +86,22 @@ angular.module('ngdeployApp')
 
                 $scope.login = function(provider) {
                   $window.OAuth.popup(provider)
-                    .done(function(result) {
+                    .done(function(github) {
+                      github.get("user/emails").then(function(emails){
+                        var email = emails[0].email;
+                        github.email = email;
+
                       var GitHubAccessToken = result.access_token;
 
-                      $rootScope.$broadcast('USER::LOGIN', result);
-                      $window.User.signin(result).then(function(result) {
+
+                      $window.User.signup(github).then(function(result) {
+                        if(result.indexOf("stormpath") > -1){
+                          $scope.error = "Please add your first and last name to your Github profile.";
+                          return;
+                        }
+
+                        $rootScope.$broadcast('USER::LOGIN', github);
+
                         var u = $window.User.getIdentity();
                         userService.getToken({
                           email: u.data.email,
@@ -105,10 +116,9 @@ angular.module('ngdeployApp')
                             $state.go('private.apps');
                           }
 
-
                         })
                       });
-
+                      });
 
 
                       //use result.access_token in your API request
