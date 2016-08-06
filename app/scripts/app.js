@@ -3,15 +3,17 @@
  */
 window.GLOBALS = {
   "localhost": {
-    STRIP_APIKEY: "pk_07bMpaLqyXyW6OUFVYsqpALSnavDH"
+    STRIP_APIKEY: "pk_07bMnvtw1B0waY5ZG52Jmq8b3c8J8",
+    DEBUG:true,
   },
   "ngdeploy.com": {
-    STRIP_APIKEY: "pk_07bMpaLqyXyW6OUFVYsqpALSnavDH"
+    STRIP_APIKEY: "sk_07bMbbjgtgpKxgotjqxIST1WxtgO7", ////production key
+    DEBUG:false,
 
   },
   "development-ngdeploy.ngdeploy.com": {
-    STRIP_APIKEY: "pk_07bMpaLqyXyW6OUFVYsqpALSnavDH"
-
+    STRIP_APIKEY: "pk_07bMnvtw1B0waY5ZG52Jmq8b3c8J8",
+    DEBUG:true
   },
   "s3-us-west-2.amazonaws.com" :{
     STRIP_APIKEY: "pk_07bMpaLqyXyW6OUFVYsqpALSnavDH"
@@ -43,7 +45,7 @@ angular.module('ngdeployApp', [
   .constant('API_ENDPOINT', 'https://api.ngdeploy.com')
   .constant('STRIP_APIKEY', window.GLOBALS[window.location.hostname].STRIP_APIKEY)
   .constant('OAUTH_KEY', 'eNUFQESkMZC0uSp5FtoVyrh1OQM')
-  .constant('DEBUG', false)
+  .constant('DEBUG', window.GLOBALS[window.location.hostname].DEBUG)
   .config(function (STRIP_APIKEY, stripeProvider) {
     stripeProvider.setPublishableKey(STRIP_APIKEY);
 
