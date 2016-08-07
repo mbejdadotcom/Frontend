@@ -60,9 +60,8 @@ angular.module('ngdeployApp')
 
     self.subscription = {
         get: function (){
-          console.log("Grab user subscription...");
           var defer = $q.defer();
-          $http.get(API_ENDPOINT+"/users/subscriptions").then(function(success){
+          $http.get(API_ENDPOINT+"/users/subscriptions?DEBUG=true").then(function(success){
             defer.resolve(success.data.response);
           },function(error){
             defer.resolve(error.response);
