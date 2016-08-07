@@ -42,30 +42,29 @@
     </div>
     <div class="col-md-4 app-panel" ng-repeat="app in apps">
       <div class="wrapper app panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" style="color:#fff;">
           <div class="row">
             <div class="col-md-8">
               <h2 class="uppercase title">
                 {{app.apps.name}}
-
-
               </h2>
             </div>
-            <div class="col-md-3">
-              <small class="pull-right" ng-if="app.teams.type == 'owner'"> owner</small>
-              <small class="pull-right" ng-if="app.teams.type != 'owner'"> collaborator</small>
-
+            <div class="col-md-3 pull-right">
+              <span class="pull-right small-text" ng-if="app.teams.type == 'owner'"> owner</span>
+              <span class="pull-right small-text" ng-if="app.teams.type != 'owner'"> collaborator</span>
             </div>
-            <div class="col-md-6">
-              <a  class="small-text" style=ma"rgin:0px;padding:0px;font-size:10px;position:absolute;display:block;bottom:-10px;">
-            repo : {{app.github_hooked.repoName}}
-              </a>
             </div>
-
-            <div class="col-md-6">
-
+          <div class="row">
+            <div class="col-md-5">
+              <span  class="small-text">
+                  repo : {{app.github_hooked.repoName}}
+              </span>
             </div>
-
+            <div class="col-md-7">
+              <span class="small-text pull-right" ng-if="app.apps.domain">
+                domain: {{app.apps.domain}}
+              </span>
+            </div>
 
           </div>
         </div>
@@ -167,8 +166,7 @@
                                                                ng-href="https://production-{{app.apps.ngDeployUrl}}.ngdeploy.com/__env.js">
                     Environment</a></li>
 
-                  <li><span class="lnr lnr-sync"></span> <a href="javascript:;" ng-click="purgeCache(app.apps)">Purge
-                    Cache</a></li>
+                  <li><span class="lnr lnr-sync"></span> <a href="javascript:;" ng-click="purgeCache(app.apps)">Purge Cache</a></li>
                   <li class="pull-right"><span ng-if="app.apps.promotedToProduction" class="time-ago"
                                                am-time-ago="app.apps.promotedToProduction | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span>
                   </li>

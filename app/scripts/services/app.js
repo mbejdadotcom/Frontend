@@ -86,6 +86,7 @@ angular.module('ngdeployApp')
 
         self.purge = function(data) {
             var defer = $q.defer();
+
             $http.post(API_ENDPOINT + '/apps/purges', data).then(function(response) {
                 defer.resolve(response.data);
 

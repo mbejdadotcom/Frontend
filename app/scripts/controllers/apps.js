@@ -78,11 +78,12 @@ angular.module('ngdeployApp')
     $scope.purgeCache = function (app, stage) {
       appService.purge({
         id: app.id,
+        ngDeployUrl:app.ngDeployUrl
       }).then(function () {
         sweet.show('Cache Purged!', 'Application cache has been purged', 'success');
 
       }, function (error) {
-        sweet.show('Error', error.error, 'error');
+        sweet.show('Error', error, 'error');
 
       });
 
