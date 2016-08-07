@@ -230,9 +230,19 @@ angular.module('ngdeployApp')
     };
 
     $scope.refresh = function refresh(){
-      console.log("refresh");
       appService.refresh().then(function(response){
-        $scope.status=response;
+        console.log(response);
+        if($scope.status.length == 0){
+          console.log(1);
+            $scope.status=response;
+        }else {
+          console.log(2);
+          for (var idx = 0; idx < $scope.status.length; idx++ ) {
+            if($scope.status[idx].status != response[idx].status){
+              $scope.status[idx].status = response[idx].status;
+            }
+          }
+        }
       },function(error){})
     };
 
