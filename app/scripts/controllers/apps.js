@@ -17,10 +17,10 @@ angular.module('ngdeployApp')
       {name:'Free', pId:'free', id:0, count:0, amt:0},
       {name:'Developer', id:1, pId:'developer', count:1, amt:5},
       {name:'Team', id:2 , pId:'team' ,count:5, amt:25},
-      {name:'Business', id:3,pId:'business', count: 30, amt:150},
-      {name:'selected',id:5, pId:'selected', count:0, amt:0}];
+      {name:'Business', id:3,pId:'business', count: 30, amt:150}];
 
-
+    $scope.status= [];
+    ["Grunt","Building","Testing","One","Two","Three","Four"];
 
     if($stateParams.redirectTo){
       $state.go($stateParams.redirectTo);
@@ -230,21 +230,13 @@ angular.module('ngdeployApp')
     };
 
     $scope.refresh = function refresh(){
+      console.log("refresh");
       appService.refresh().then(function(response){
-        console.log("Refresh");
-        angular.forEach(response, function(appStatus){
-          angular.forEach($scope.apps, function(app){
-            if(app.status.appId === appStatus.id && app.status.status !== appStatus.status ){
-                  app.status.status = appStatus.status;
-                }
-           })
-        })
+        $scope.status=response;
       },function(error){})
     };
 
     $scope.loadApps();
     $scope.getSubscription();
-
-    $interval($scope.refresh,30000,false)
-
+    $interval($scope.refresh,15000,false)
   });
