@@ -123,12 +123,9 @@ angular.module('ngdeployApp')
 
       $scope.getSubscription = function (){
         userService.subscription.get($scope.user.customerId).then(function(response){
-
-          var i = $filter('filter')($scope.plans, {pId: response},true);
-
-          if( i.length > 0 ){
-            $scope.selectedPlan = i[0];
-            $scope.link_repo.selected = i[0];
+          if( $scope.plans[response] ){
+            $scope.selectedPlan = $scope.plans[response];
+            $scope.link_repo.selected = $scope.plans[response];
           }else{
             $scope.link_repo.selected = $scope.plans[0];
           }
