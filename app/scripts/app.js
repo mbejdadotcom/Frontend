@@ -7,7 +7,7 @@ window.GLOBALS = {
     DEBUG:true,
   },
   "ngdeploy.com": {
-    STRIP_APIKEY: "sk_07bMbbjgtgpKxgotjqxIST1WxtgO7", ////production key
+    STRIP_APIKEY: "pk_07bMpaLqyXyW6OUFVYsqpALSnavDH",
     DEBUG:false,
 
   },
