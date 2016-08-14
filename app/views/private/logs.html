@@ -1,0 +1,15 @@
+<div class="container page">
+  <div class="row">
+    <div class="col-xs-12 col-md-12">
+      <div class="panel panel-default app">
+        <div class="panel-heading">
+          <h2>Logs for {{app.ngDeployUrl}}</h2>
+        </div>
+        <div class="panel-body body">
+          <b ng-if="!logs || logs.length == 0">No logs available</b>
+         <textarea style="height:500px" ng-model="logs"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -86,15 +86,19 @@
               </small>
               <small class="block">
                 <ul class="list-inline list-unstyled actions">
-                  <li><span class="lnr lnr-file-add"></span><a target="_blank"
-                                                               ng-href="https://development-{{app.apps.ngDeployUrl}}.ngdeploy.com/__env.js">
-                    Environment</a></li>
-                  <li></li>
+                  <li>
+                    <span class="lnr lnr-file-add"></span><a target="_blank"  ng-href="https://development-{{app.apps.ngDeployUrl}}.ngdeploy.com/__env.js">
+                    Environment</a>
+                  </li>
+                  <li>
+
+                    <span class="lnr lnr-laptop"></span><a  ui-sref="private.logs({appId:app.apps.id})">
+                    Deployment Logs</a>
+                  </li>
                   <li class="pull-right"><span ng-if="app.apps.promotedToDevelopment" class="time-ago"
                                                am-time-ago="app.apps.promotedToDevelopment | amParse:'YYYY-MM-DD HH:mm:ssZ'"></span>
                   </li>
                 </ul>
-                <textarea ng-model="status[$index].status" readonly></textarea>
               </small>
 
 

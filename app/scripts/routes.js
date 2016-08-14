@@ -250,6 +250,39 @@ angular.module('ngdeployApp')
             }
           }
         })
+        .state('private.logs', {
+          url: "/apps/:appId/logs",
+          views: {
+            "main": {
+              templateUrl: "views/private/logs.html",
+              controller: "LogsCtrl"
+            }
+          },
+          resolve: {
+            appObject: function ($q, $window,appService,$stateParams) {
+              var deferred = $q.defer();
+
+              appService.fetch($stateParams.appId).then(function (app) {
+                deferred.resolve(app.response)
+
+              });
+              return deferred.promise;
+
+            },
+            logs: function ($q, $window,appService,$stateParams) {
+              var deferred = $q.defer();
+
+              appService.getLogs($stateParams.appId).then(function (app) {
+                deferred.resolve(app.response)
+
+              });
+              return deferred.promise;
+
+            }
+          }
+        })
+
+
 
 
         .state('private.domains', {

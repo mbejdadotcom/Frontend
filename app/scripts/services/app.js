@@ -69,11 +69,11 @@ angular.module('ngdeployApp')
             return defer.promise;
         },
 
-        self.refresh = function(appId) {
+        self.getLogs = function(appId) {
             var defer = $q.defer();
             $http({
               method: 'GET',
-              url: API_ENDPOINT + '/apps/status'
+              url: API_ENDPOINT + '/apps/logs?appId='+appId
             }).then(function(response) {
               defer.resolve(response.data);
 

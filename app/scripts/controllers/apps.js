@@ -20,7 +20,6 @@ angular.module('ngdeployApp')
       {name:'Business', id:3,pId:'business', count: 30, amt:150}];
 
     $scope.status= [];
-    ["Grunt","Building","Testing","One","Two","Three","Four"];
 
     if($stateParams.redirectTo){
       $state.go($stateParams.redirectTo);
@@ -226,21 +225,13 @@ angular.module('ngdeployApp')
 
     };
 
-    $scope.refresh = function refresh(){
-      appService.refresh().then(function(response){
-        if($scope.status.length == 0){
-            $scope.status=response;
-        }else {
-          for (var idx = 0; idx < $scope.status.length; idx++ ) {
-            if($scope.status[idx].status != response[idx].status){
-              $scope.status[idx].status = response[idx].status;
-            }
-          }
-        }
-      },function(error){})
+    $scope.getLogs = function(appId){
+      appService.getLogs(appId).then(function(response){
+        console.log(response);
+
+      })
     };
 
     $scope.loadApps();
     $scope.getSubscription();
-    $interval($scope.refresh,15000,false)
-  });
+  })
