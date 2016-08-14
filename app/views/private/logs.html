@@ -6,8 +6,10 @@
           <h2>Logs for {{app.ngDeployUrl}}</h2>
         </div>
         <div class="panel-body body">
+
           <b ng-if="!logs || logs.length == 0">No logs available</b>
-         <textarea style="height:500px" ng-model="logs"></textarea>
+          <a class="pull-right" ng-click="refresh()">refresh</a>
+         <textarea style="height:500px;display:block" ng-model="logs"></textarea>
       </div>
     </div>
   </div>
