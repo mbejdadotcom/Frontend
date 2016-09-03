@@ -251,7 +251,10 @@ angular.module('ngdeployApp')
           }
         })
         .state('private.logs', {
-          url: "/apps/:appId/logs",
+          url: "/apps/:appId/logs/:day",
+          params: {
+            day: "1"
+          },
           views: {
             "main": {
               templateUrl: "views/private/logs.html",
@@ -272,7 +275,8 @@ angular.module('ngdeployApp')
             logs: function ($q, $window,appService,$stateParams) {
               var deferred = $q.defer();
 
-              appService.getLogs($stateParams.appId).then(function (app) {
+
+              appService.getLogs($stateParams.appId,$stateParams.day).then(function (app) {
                 deferred.resolve(app.response)
 
               });

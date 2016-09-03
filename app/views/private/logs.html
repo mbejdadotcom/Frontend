@@ -3,12 +3,22 @@
     <div class="col-xs-12 col-md-12">
       <div class="panel panel-default app">
         <div class="panel-heading">
-          <h2>Logs for {{app.ngDeployUrl}}</h2>
+            <h2>Logs for {{app.ngDeployUrl}}</h2>
+
+
         </div>
         <div class="panel-body body">
 
           <b ng-if="!logs || logs.length == 0">No logs available</b>
-          <a class="pull-right" ng-click="refresh()">refresh</a>
+          <div class="box pull-right">
+
+
+<label>Days</label>
+            <select ng-model="day" ng-options="day as day for day in days"></select>
+
+
+          <a  ng-click="refresh()">refresh</a>
+          </div>
          <textarea style="height:500px;display:block" ng-model="logs"></textarea>
       </div>
     </div>
