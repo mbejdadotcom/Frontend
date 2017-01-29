@@ -1,5 +1,7 @@
 # ngdeploy
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/82adc96394e7482cb972da5db33e3818)](https://www.codacy.com/app/not-milos-bejda/Frontend?utm_source=github.com&utm_medium=referral&utm_content=NGDeployio/Frontend&utm_campaign=badger)
+
 > Single page app hosting with CI.
 
 
